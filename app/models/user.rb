@@ -23,5 +23,5 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :outfit_uploads, class_name: "Outfit", dependent: :destroy
+  has_many(:outfit_uploads, class_name: "Outfit", foreign_key: "user_id", dependent: :destroy)
 end
