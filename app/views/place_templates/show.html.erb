@@ -1,0 +1,81 @@
+<h1>
+  Place #<%= @the_place.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/places">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_place/<%= @the_place.id %>">
+      Delete place
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Outfit
+    </dt>
+    <dd>
+      <%= @the_place.outfit_id %>
+    </dd>
+
+    <dt>
+      Occasion
+    </dt>
+    <dd>
+      <%= @the_place.occasion_id %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_place.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_place.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit place
+    </h2>
+  </header>
+
+  <form action="/modify_place/<%= @the_place.id %>"  method="post" >
+    <div>
+      <label for="outfit_id_box">
+        Outfit
+      </label>
+
+      <input type="text" id="outfit_id_box" name="query_outfit_id" value="<%= @the_place.outfit_id %>">
+    </div>
+
+    <div>
+      <label for="occasion_id_box">
+        Occasion
+      </label>
+
+      <input type="text" id="occasion_id_box" name="query_occasion_id" value="<%= @the_place.occasion_id %>">
+    </div>
+
+    <button type="submit">
+      Update place
+    </button>
+  </form>
+</article>
+
+<hr>
