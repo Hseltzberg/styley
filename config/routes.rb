@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Feeling resource:
+
+  # CREATE
+  post("/insert_feeling", { :controller => "feelings", :action => "create" })
+
+  # READ
+  get("/feelings", { :controller => "feelings", :action => "index" })
+
+  get("/feelings/:path_id", { :controller => "feelings", :action => "show" })
+
+  # UPDATE
+
+  post("/modify_feeling/:path_id", { :controller => "feelings", :action => "update" })
+
+  # DELETE
+  get("/delete_feeling/:path_id", { :controller => "feelings", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Outfit resource:
 
   # CREATE

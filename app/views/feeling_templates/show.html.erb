@@ -1,0 +1,66 @@
+<h1>
+  Feeling #<%= @the_feeling.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/feelings">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_feeling/<%= @the_feeling.id %>">
+      Delete feeling
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Name
+    </dt>
+    <dd>
+      <%= @the_feeling.name %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_feeling.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_feeling.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit feeling
+    </h2>
+  </header>
+
+  <form action="/modify_feeling/<%= @the_feeling.id %>"  method="post" >
+    <div>
+      <label for="name_box">
+        Name
+      </label>
+
+      <input type="text" id="name_box" name="query_name" value="<%= @the_feeling.name %>">
+    </div>
+
+    <button type="submit">
+      Update feeling
+    </button>
+  </form>
+</article>
+
+<hr>

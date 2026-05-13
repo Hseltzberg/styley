@@ -1,0 +1,43 @@
+<h1>
+  List of all feelings
+</h1>
+
+<hr>
+
+<article>
+  <header>
+    <h2>
+      Add a new feeling
+    </h2>
+  </header>
+
+  <form action="/insert_feeling" method="post">
+    <div>
+      <label for="name_box">
+        Name
+      </label>
+
+      <input type="text" id="name_box" name="query_name">
+    </div>
+
+    <button type="submit">
+      Create feeling
+    </button>
+  </form>
+</article>
+
+<hr>
+
+<article>
+  <ul>
+    <% @list_of_feelings.each do |a_feeling| %>
+      <li>
+        <a href="/feelings/<%= a_feeling.id %>">
+          Feeling #<%= a_feeling.id %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</article>
+
+<hr>
