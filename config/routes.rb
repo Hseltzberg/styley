@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # CREATE
   post("/insert_outfit", { :controller => "outfits", :action => "create" })
 
+  get("/outfits/new", { :controller => "outfits", :action => "new_form" })
+
   # READ
   get("/outfits", { :controller => "outfits", :action => "index" })
 
@@ -21,8 +23,4 @@ Rails.application.routes.draw do
   devise_for :users
   get("/", :controller => "pages", :action => "home")
 
-  # get("/outfits", :controller => "outfits", :action => "index")
-  # get("/outfits/new", :controller => "outfits", :action => "new_form")
-  # post("/insert_outfit", :controller => "outfits", :action => "create")
-  # # get("/outfits/:outfit_id"), :controller => "outfits", "action" => "show"
 end

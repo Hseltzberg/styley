@@ -1,2 +1,23 @@
 <h1><%= current_user.username%>'s closet </h1>
 <p>pics of <%= current_user.username%>'s outfits displayed in a really cool way</p>
+<p>
+  <a href="/outfits/new">Add a new outfit</a>
+</p>
+
+<hr>
+
+<% @list_of_outfits.each do |an_outfit| %>
+  <div>
+    <p>Outfit ID: <%= an_outfit.id %></p>
+
+    <p>Photo URL: <%= an_outfit.outfit_photo %></p>
+
+    <img src="<%= an_outfit.outfit_photo %>" style="width: 200px;">
+
+    <p>
+      <a href="/outfits/<%= an_outfit.id %>">View outfit</a>
+    </p>
+  </div>
+
+  <hr>
+<% end %>
