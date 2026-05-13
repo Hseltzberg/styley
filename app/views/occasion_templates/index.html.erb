@@ -1,0 +1,43 @@
+<h1>
+  List of all occasions
+</h1>
+
+<hr>
+
+<article>
+  <header>
+    <h2>
+      Add a new occasion
+    </h2>
+  </header>
+
+  <form action="/insert_occasion" method="post">
+    <div>
+      <label for="name_box">
+        Name
+      </label>
+
+      <input type="text" id="name_box" name="query_name">
+    </div>
+
+    <button type="submit">
+      Create occasion
+    </button>
+  </form>
+</article>
+
+<hr>
+
+<article>
+  <ul>
+    <% @list_of_occasions.each do |an_occasion| %>
+      <li>
+        <a href="/occasions/<%= an_occasion.id %>">
+          Occasion #<%= an_occasion.id %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</article>
+
+<hr>

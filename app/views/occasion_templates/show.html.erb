@@ -1,0 +1,66 @@
+<h1>
+  Occasion #<%= @the_occasion.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/occasions">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_occasion/<%= @the_occasion.id %>">
+      Delete occasion
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Name
+    </dt>
+    <dd>
+      <%= @the_occasion.name %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_occasion.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_occasion.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit occasion
+    </h2>
+  </header>
+
+  <form action="/modify_occasion/<%= @the_occasion.id %>"  method="post" >
+    <div>
+      <label for="name_box">
+        Name
+      </label>
+
+      <input type="text" id="name_box" name="query_name" value="<%= @the_occasion.name %>">
+    </div>
+
+    <button type="submit">
+      Update occasion
+    </button>
+  </form>
+</article>
+
+<hr>

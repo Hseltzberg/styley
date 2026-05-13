@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Occasion resource:
+
+  # CREATE
+  post("/insert_occasion", { :controller => "occasions", :action => "create" })
+
+  # READ
+  get("/occasions", { :controller => "occasions", :action => "index" })
+
+  get("/occasions/:path_id", { :controller => "occasions", :action => "show" })
+
+  # UPDATE
+
+  post("/modify_occasion/:path_id", { :controller => "occasions", :action => "update" })
+
+  # DELETE
+  get("/delete_occasion/:path_id", { :controller => "occasions", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Season resource:
 
   # CREATE
