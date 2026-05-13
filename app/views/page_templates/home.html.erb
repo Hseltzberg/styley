@@ -1,11 +1,19 @@
 <h1>welcome 2 styley</h1>
 
+<p>Organize your outfits by season, vibe, and occasion.</p>
+
 <% if current_user.present? %>
   <p>Signed in as <%= current_user.email %></p>
+  <div>
 
-  <p><a href="/users/edit">Edit profile</a></p>
-  <p><a href="/users/sign_out">Sign out</a></p>
 <% else %>
-  <p><a href="/users/sign_up">Sign up</a></p>
-  <p><a href="/users/sign_in">Sign in</a></p>
+  <p>Sign in or sign up to start building your closet.</p>
 <% end %>
+
+<!--  <p>
+    <a href="/outfits">My Closet</a>
+  </p>
+
+ <!-- <p>
+    <a href="/insert_outfit_form">Upload Outfit</a>
+  </p>-->-->
