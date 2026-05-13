@@ -20,6 +20,8 @@ gem "appdev_support"                  # Learning helpers (nicer error messages, 
 gem "cgi" # Required for Ruby 4.0+ (removed from stdlib)
 gem "tsort" # Required for Ruby 4.0+ (moving out of default gems)
 gem "devise"
+gem "faker"
+
 group :development, :test do
   gem "debug", platforms: %i[mri windows], require: "debug/prelude" # Ruby debugger
   gem "rspec-rails", "~> 8.0" # Testing framework

@@ -1,0 +1,81 @@
+<h1>
+  Outfit season #<%= @the_outfit_season.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/outfit_seasons">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_outfit_season/<%= @the_outfit_season.id %>">
+      Delete outfit season
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Outfit
+    </dt>
+    <dd>
+      <%= @the_outfit_season.outfit_id %>
+    </dd>
+
+    <dt>
+      Season
+    </dt>
+    <dd>
+      <%= @the_outfit_season.season_id %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_outfit_season.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_outfit_season.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit outfit season
+    </h2>
+  </header>
+
+  <form action="/modify_outfit_season/<%= @the_outfit_season.id %>"  method="post" >
+    <div>
+      <label for="outfit_id_box">
+        Outfit
+      </label>
+
+      <input type="text" id="outfit_id_box" name="query_outfit_id" value="<%= @the_outfit_season.outfit_id %>">
+    </div>
+
+    <div>
+      <label for="season_id_box">
+        Season
+      </label>
+
+      <input type="text" id="season_id_box" name="query_season_id" value="<%= @the_outfit_season.season_id %>">
+    </div>
+
+    <button type="submit">
+      Update outfit season
+    </button>
+  </form>
+</article>
+
+<hr>

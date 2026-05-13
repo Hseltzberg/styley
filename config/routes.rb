@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Outfit season resource:
+
+  # CREATE
+  post("/insert_outfit_season", { :controller => "outfit_seasons", :action => "create" })
+
+  # READ
+  get("/outfit_seasons", { :controller => "outfit_seasons", :action => "index" })
+
+  get("/outfit_seasons/:path_id", { :controller => "outfit_seasons", :action => "show" })
+
+  # UPDATE
+
+  post("/modify_outfit_season/:path_id", { :controller => "outfit_seasons", :action => "update" })
+
+  # DELETE
+  get("/delete_outfit_season/:path_id", { :controller => "outfit_seasons", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Place resource:
 
   # CREATE
