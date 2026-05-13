@@ -8,4 +8,6 @@
 #  updated_at :datetime         not null
 #
 class Occasion < ApplicationRecord
+  has_many  :places, dependent: :destroy
+  has_many :outfits, through: :places, source: :outfit
 end

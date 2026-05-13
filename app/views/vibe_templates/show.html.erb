@@ -1,0 +1,81 @@
+<h1>
+  Vibe #<%= @the_vibe.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/vibes">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_vibe/<%= @the_vibe.id %>">
+      Delete vibe
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Outfit
+    </dt>
+    <dd>
+      <%= @the_vibe.outfit_id %>
+    </dd>
+
+    <dt>
+      Feeling
+    </dt>
+    <dd>
+      <%= @the_vibe.feeling_id %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_vibe.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_vibe.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit vibe
+    </h2>
+  </header>
+
+  <form action="/modify_vibe/<%= @the_vibe.id %>"  method="post" >
+    <div>
+      <label for="outfit_id_box">
+        Outfit
+      </label>
+
+      <input type="text" id="outfit_id_box" name="query_outfit_id" value="<%= @the_vibe.outfit_id %>">
+    </div>
+
+    <div>
+      <label for="feeling_id_box">
+        Feeling
+      </label>
+
+      <input type="text" id="feeling_id_box" name="query_feeling_id" value="<%= @the_vibe.feeling_id %>">
+    </div>
+
+    <button type="submit">
+      Update vibe
+    </button>
+  </form>
+</article>
+
+<hr>

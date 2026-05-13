@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Vibe resource:
+
+  # CREATE
+  post("/insert_vibe", { :controller => "vibes", :action => "create" })
+
+  # READ
+  get("/vibes", { :controller => "vibes", :action => "index" })
+
+  get("/vibes/:path_id", { :controller => "vibes", :action => "show" })
+
+  # UPDATE
+
+  post("/modify_vibe/:path_id", { :controller => "vibes", :action => "update" })
+
+  # DELETE
+  get("/delete_vibe/:path_id", { :controller => "vibes", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Occasion resource:
 
   # CREATE
