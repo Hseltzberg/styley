@@ -1,4 +1,23 @@
 Rails.application.routes.draw do
+  # Routes for the Season resource:
+
+  # CREATE
+  post("/insert_season", { :controller => "seasons", :action => "create" })
+
+  # READ
+  get("/seasons", { :controller => "seasons", :action => "index" })
+
+  get("/seasons/:path_id", { :controller => "seasons", :action => "show" })
+
+  # UPDATE
+
+  post("/modify_season/:path_id", { :controller => "seasons", :action => "update" })
+
+  # DELETE
+  get("/delete_season/:path_id", { :controller => "seasons", :action => "destroy" })
+
+  #------------------------------
+
   # Routes for the Feeling resource:
 
   # CREATE

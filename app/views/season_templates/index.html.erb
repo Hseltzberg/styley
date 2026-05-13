@@ -1,0 +1,43 @@
+<h1>
+  List of all seasons
+</h1>
+
+<hr>
+
+<article>
+  <header>
+    <h2>
+      Add a new season
+    </h2>
+  </header>
+
+  <form action="/insert_season" method="post">
+    <div>
+      <label for="name_box">
+        Name
+      </label>
+
+      <input type="text" id="name_box" name="query_name">
+    </div>
+
+    <button type="submit">
+      Create season
+    </button>
+  </form>
+</article>
+
+<hr>
+
+<article>
+  <ul>
+    <% @list_of_seasons.each do |a_season| %>
+      <li>
+        <a href="/seasons/<%= a_season.id %>">
+          Season #<%= a_season.id %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</article>
+
+<hr>

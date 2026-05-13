@@ -1,0 +1,66 @@
+<h1>
+  Season #<%= @the_season.id %> details
+</h1>
+
+<article>
+  <div>
+    <a href="/seasons">
+      Go back
+    </a>
+  </div>
+
+  <div>
+    <a href="/delete_season/<%= @the_season.id %>">
+      Delete season
+    </a>
+  </div>
+  <dl>
+    <dt>
+      Name
+    </dt>
+    <dd>
+      <%= @the_season.name %>
+    </dd>
+
+    <dt>
+      Created at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_season.created_at) %> ago
+    </dd>
+
+    <dt>
+      Updated at
+    </dt>
+    <dd>
+      <%= time_ago_in_words(@the_season.updated_at) %> ago
+    </dd>
+  </dl>
+</article>
+
+<hr>
+
+
+<article>
+  <header>
+    <h2>
+      Edit season
+    </h2>
+  </header>
+
+  <form action="/modify_season/<%= @the_season.id %>"  method="post" >
+    <div>
+      <label for="name_box">
+        Name
+      </label>
+
+      <input type="text" id="name_box" name="query_name" value="<%= @the_season.name %>">
+    </div>
+
+    <button type="submit">
+      Update season
+    </button>
+  </form>
+</article>
+
+<hr>
