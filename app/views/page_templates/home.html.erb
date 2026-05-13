@@ -4,7 +4,8 @@
 
 <% if current_user.present? %>
   <p>Signed in as <%= current_user.email %></p>
-  <div>
+  <div><a href="/outfits">My Closet</a></div>
+  <div><a href="/insert_outfit_form">Upload Outfit</a></div>
 
 <% else %>
   <p>Sign in or sign up to start building your closet.</p>
