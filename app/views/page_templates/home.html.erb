@@ -1,0 +1,11 @@
+<h1>welcome 2 styley</h1>
+
+<% if current_user.present? %>
+  <p>Signed in as <%= current_user.email %></p>
+
+  <p><a href="/users/edit">Edit profile</a></p>
+  <p><a href="/users/sign_out">Sign out</a></p>
+<% else %>
+  <p><a href="/users/sign_up">Sign up</a></p>
+  <p><a href="/users/sign_in">Sign in</a></p>
+<% end %>
