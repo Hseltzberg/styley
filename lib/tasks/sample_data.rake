@@ -6,6 +6,8 @@ task({ sample_data: :environment }) do
   # destroy join tables first
   Outfit.destroy_all
   Feeling.destroy_all
+  Season.destroy_all
+  Occasion.destroy_all
 
 emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
 
@@ -45,6 +47,24 @@ emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
 
   feelings = Feeling.all
 
+  occasions = ["work", "dinner party", "brunch", "big presentation", "date night", "vacation"]
+
+  occasions.each do |an_occasion|
+    occasion = Occasion.new
+    occasion.name = an_occasion
+
+    occasion.save
+  end
+
+  seasons = ["fall", "spring", "summer", "winter"]
+
+  seasons.each do |a_season|
+    season = Season.new
+    season.name = a_season
+
+    season.save
+  end
+
   6.times do
     
     vibe = Vibe.new
@@ -64,5 +84,9 @@ emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
   p "Added #{Feeling.count} feelings"
 
   p "Added #{Vibe.count} vibes"
+
+  p "Added #{Occasion.count} occasions"
+
+  p "Added #{Season.count} seasons"
 
 end
