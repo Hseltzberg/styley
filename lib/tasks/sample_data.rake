@@ -1,9 +1,17 @@
 desc "Fill the database tables with some sample data"
 task({ sample_data: :environment }) do
-  require "faker"
-  5.times do
+
+  User.destroy_all
+  Vibe.destroy_all
+  # destroy join tables first
+  Outfit.destroy_all
+  Feeling.destroy_all
+
+emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
+
+  emails.each do |an_email|
     user = User.new
-    user.email = Faker::Internet.unique.email
+    user.email = an_email
     user.username = Faker::Internet.unique.username
     user.password = "appdev"
     user.save
@@ -25,8 +33,36 @@ task({ sample_data: :environment }) do
   end
 
   outfits = Outfit.all
-  
+
+  feelings = ["confident", "elegant", "comfortable", "capable", "calm", "energetic"]
+
+  feelings.each do |a_feeling|
+    feeling = Feeling.new
+    feeling.name = a_feeling
+
+    feeling.save
+  end
+
+  feelings = Feeling.all
+
+  6.times do
+    
+    vibe = Vibe.new
+
+    vibe.feeling_id = feelings.sample.id
+    vibe.outfit_id = outfits.sample.id
+
+    vibe.save
+
+  end
+
+
   p "Added #{Outfit.count} outfits"
 
   p "Added #{User.count} users"
+
+  p "Added #{Feeling.count} feelings"
+
+  p "Added #{Vibe.count} vibes"
+
 end
