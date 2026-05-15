@@ -115,22 +115,21 @@ Rails.application.routes.draw do
 
   # Routes for the Outfit resource:
 
-  # CREATE
-  post("/insert_outfit", { :controller => "outfits", :action => "create" })
+# CREATE
+post("/insert_outfit", { :controller => "outfits", :action => "create" })
+get("/outfits/new", { :controller => "outfits", :action => "new_form" })
 
-  get("/outfits/new", { :controller => "outfits", :action => "new_form" })
+# READ
+get("/outfits", { :controller => "outfits", :action => "index" })
+get("/outfits/:path_id", { :controller => "outfits", :action => "show" })
 
-  # READ
-  get("/outfits", { :controller => "outfits", :action => "index" })
+# UPDATE
+get("/outfits/:path_id/edit", { :controller => "outfits", :action => "edit_form" })
+post("/modify_outfit/:path_id", { :controller => "outfits", :action => "update" })
 
-  get("/outfits/:path_id", { :controller => "outfits", :action => "show" })
+# DELETE
+post("/delete_outfit/:path_id", { :controller => "outfits", :action => "destroy" })
 
-  # UPDATE
-
-  post("/modify_outfit/:path_id", { :controller => "outfits", :action => "update" })
-
-  # DELETE
-  get("/delete_outfit/:path_id", { :controller => "outfits", :action => "destroy" })
 
   #------------------------------
 

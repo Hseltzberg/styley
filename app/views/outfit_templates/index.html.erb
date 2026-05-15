@@ -8,11 +8,11 @@
 
 <% @list_of_outfits.each do |an_outfit| %>
   <div>
-    <p>Outfit ID: <%= an_outfit.id %></p>
+<!--    <p>Outfit ID: <%#= an_outfit.id %></p>-->
 
-    <p>Photo URL: <%= an_outfit.outfit_photo %></p>
+    <!--<p>Photo URL: <%#= an_outfit.outfit_photo %></p>-->
 
-    <img src="<%= an_outfit.outfit_photo %>" style="width: 200px;">
+    <img src="<%= an_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
 
     <p>
       <a href="/outfits/<%= an_outfit.id %>">View outfit</a>

@@ -1,8 +1,64 @@
-<h1>Edit outfit</h1>
+<h2>Edit</h2>
 
 <form action="/modify_outfit/<%= @the_outfit.id %>" method="post">
   <label for="photo_box">Outfit photo URL</label>
-  <input id="photo_box" type="text" name="query_outfit_photo" value="<%= @the_outfit.outfit_photo %>">
+  <input id="photo_box" type="text" name="query_outfit_photo" placeholder="Paste image URL here">
 
-  <button>Update outfit</button>
+  <p>
+    I feel
+    <input id="feeling_box_1" type="text" name="query_new_feeling_1" placeholder="playful">
+    ,
+    <input id="feeling_box_2" type="text" name="query_new_feeling_2" placeholder="confident">
+    , and
+    <input id="feeling_box_3" type="text" name="query_new_feeling_3" placeholder="calm">
+    when I wear this.
+  </p>
+
+  <p>
+    Perfect for
+    <input id="occasion_box" type="text" name="query_outfit_occasion" placeholder="date night">
+    in the
+    <input id="season_box" type="text" name="query_outfit_season" placeholder="spring">.
+  </p>
+
+  <button>Create outfit</button>
 </form>
+
+<h1>Currently</h2>
+
+<img src="<%= @the_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
+
+ <p>
+   <%= @the_outfit.outfit_photo %>
+ </p>
+
+<p>
+  Feelings:
+</p>
+
+<ul>
+  <% @the_outfit.feelings.each do |a_feeling| %>
+    <li><%= a_feeling.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  Occasions:
+</p>
+
+<ul>
+  <% @the_outfit.occasions.each do |an_occasion| %>
+    <li><%= an_occasion.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  Seasons:
+</p>
+
+<ul>
+  <% @the_outfit.seasons.each do |a_season| %>
+    <li><%= a_season.name %></li>
+  <% end %>
+</ul>
+ 
