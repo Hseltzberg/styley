@@ -7,7 +7,6 @@
   <p>
     I feel
     <input id="feeling_box_1" type="text" name="query_new_feeling_1" value="<%= @the_outfit.feelings.at(0).name %>">
-%>">
     ,
     <input id="feeling_box_2" type="text" name="query_new_feeling_2" value="<%= @the_outfit.feelings.at(1).name %>">
     , and
@@ -17,9 +16,9 @@
 
   <p>
     Perfect for
-    <input id="occasion_box" type="text" name="query_outfit_occasion" @the_outfit.occasions.at(0).name ">
+    <input id="occasion_box" type="text" name="query_outfit_occasion" value="<%= @the_outfit.occasions.at(0).name %>">
     in the
-    <input id="season_box" type="text" name="query_outfit_season" placeholder="spring">.
+    <input id="season_box" type="text" name="query_outfit_season" value="<%= @the_outfit.seasons.each %>">.
   </p>
 
   <button>Create outfit</button>

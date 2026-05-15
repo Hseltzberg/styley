@@ -13,22 +13,39 @@
     <% end %>
   </select>
 
+  or <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="<%= @list_of_feelings.sample&.name || "playful" %>">
+
+
+  <p>
+    I feel
+  <select name="query_feeling_id_2" id="feeling_id_2">
+    <option value="">Choose a feeling</option>
+    <% @list_of_feelings.each do |a_feeling| %>
+      <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
+    <% end %>
+  </select>
+
   or
+  <input id="new_feeling_2" type="text" name="query_new_feeling_2" placeholder="<%= @list_of_feelings.sample&.name || "confident" %>">
 
-  <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="playful">
+    <p>
+    I feel
+  <select name="query_feeling_id_1" id="feeling_id_1">
+    <option value="">Choose a feeling</option>
+    <% @list_of_feelings.each do |a_feeling| %>
+      <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
+    <% end %>
+  </select>
+
+
+  <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="<%= @list_of_feelings.sample&.name || "energized" %>">
 </p>
-
-    <input id="feeling_box_2" type="text" name="query_new_feeling_2" placeholder="confident">
-    , and
-    <input id="feeling_box_3" type="text" name="query_new_feeling_3" placeholder="calm">
-    when I wear this.
-  </p>
 
   <p>
     Perfect for
-    <input id="occasion_box" type="text" name="query_outfit_occasion" placeholder="date night">
+    <input id="occasion_box" type="text" name="query_outfit_occasion" placeholder="<%= @list_of_occasions.sample&.name || "date night" %>">
     in the
-    <input id="season_box" type="text" name="query_outfit_season" placeholder="spring">.
+    <input id="season_box" type="text" name="query_outfit_season" placeholder="<%= @list_of_seasons.sample&.name || "spring" %>">
   </p>
 
   <button>Create outfit</button>

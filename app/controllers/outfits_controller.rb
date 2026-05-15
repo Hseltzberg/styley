@@ -16,6 +16,7 @@ class OutfitsController < ApplicationController
   def new_form
     @list_of_feelings = Feeling.where({}).order({ :name => :asc })
     @list_of_occasions = Occasion.where({}).order({ :name => :asc })
+    @list_of_seasons = Season.where({}).order({ :name => :asc })
 
     render({ :template => "outfit_templates/new_form" })
   end
