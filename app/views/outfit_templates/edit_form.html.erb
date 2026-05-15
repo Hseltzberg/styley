@@ -15,7 +15,8 @@
   <input id="photo_box" type="text" name="query_outfit_photo" value="<%= @the_outfit.outfit_photo %>">
 
   <p>
-    Feeling 1
+    I feel
+    <div>
     <select name="query_feeling_id_1" id="feeling_id_1">
       <option value="">Choose a feeling</option>
       <% @list_of_feelings.each do |a_feeling| %>
@@ -31,7 +32,6 @@
     </p>
 
     <p>
-      Feeling 2
       <select name="query_feeling_id_2" id="feeling_id_2">
         <option value="">Choose a feeling</option>
         <% @list_of_feelings.each do |a_feeling| %>
@@ -47,7 +47,6 @@
       </p>
 
       <p>
-        Feeling 3
         <select name="query_feeling_id_3" id="feeling_id_3">
           <option value="">Choose a feeling</option>
           <% @list_of_feelings.each do |a_feeling| %>
@@ -61,9 +60,9 @@
 
           <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
         </p>
+        </div>
 
-        <p>
-          Occasion 1
+        <p> Perfect for </p>
           <select name="query_occasion_id_1" id="occasion_id_1">
             <option value="">Choose an occasion</option>
             <% @list_of_occasions.each do |an_occasion| %>
@@ -79,7 +78,6 @@
           </p>
 
           <p>
-            Occasion 2
             <select name="query_occasion_id_2" id="occasion_id_2">
               <option value="">Choose an occasion</option>
               <% @list_of_occasions.each do |an_occasion| %>
@@ -94,7 +92,6 @@
             </p>
 
             <p>
-              Occasion 3
               <select name="query_occasion_id_3" id="occasion_id_3">
                 <option value="">Choose an occasion</option>
                 <% @list_of_occasions.each do |an_occasion| %>
@@ -109,7 +106,7 @@
                 <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
               </p>
 
-              <p>Seasons</p>
+              In the
 
               <label for="winter_box">Winter</label>
               <input id="winter_box" type="checkbox" name="query_season_winter" value="winter" <%= "checked" if current_season_names.include?("winter") %>>
