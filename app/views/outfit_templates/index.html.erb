@@ -4,6 +4,30 @@
   <a href="/outfits/new">Add a new outfit</a>
 </p>
 
+<div>
+  <h2>Filter closet</h2>
+
+  <form action="/outfits" method="get">
+    <p>Season</p>
+
+    <label for="fall_box">Fall</label>
+    <input id="fall_box" type="checkbox" name="query_season_fall" value="fall">
+
+    <label for="winter_box">Winter</label>
+    <input id="winter_box" type="checkbox" name="query_season_winter" value="winter">
+
+    <label for="spring_box">Spring</label>
+    <input id="spring_box" type="checkbox" name="query_season_spring" value="spring">
+
+    <label for="summer_box">Summer</label>
+    <input id="summer_box" type="checkbox" name="query_season_summer" value="summer">
+
+    <p>
+      <button>Apply filters</button>
+    </p>
+  </form>
+</div>
+
 <hr>
 
 <% @list_of_outfits.each do |an_outfit| %>
