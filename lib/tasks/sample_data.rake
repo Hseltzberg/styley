@@ -71,35 +71,26 @@ emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
 
   seasons = Season.all
 
-  6.times do
-    
-    vibe = Vibe.new
+outfits.each do |an_outfit|
+  vibe = Vibe.new
+  vibe.outfit_id = an_outfit.id
+  vibe.feeling_id = feelings.sample.id
+  vibe.save
+end
 
-    vibe.feeling_id = feelings.sample.id
-    vibe.outfit_id = outfits.sample.id
+outfits.each do |an_outfit|
+  place = Place.new
+  place.outfit_id = an_outfit.id
+  place.occasion_id = occasions.sample.id
+  place.save
+end
 
-    vibe.save
-
-  end
-
-  6.times do
-    place = Place.new
-
-    place.occasion_id = occasions.sample.id
-    place.outfit_id = outfits.sample.id
-
-    place.save
-
-  end
-
-  6.times do
-    outfit_season = OutfitSeason.new
-
-    outfit_season.outfit_id = outfits.sample.id
-    outfit_season.season_id = seasons.sample.id
-
-    outfit_season.save
-  end
+outfits.each do |an_outfit|
+  outfit_season = OutfitSeason.new
+  outfit_season.outfit_id = an_outfit.id
+  outfit_season.season_id = seasons.sample.id
+  outfit_season.save
+end
 
 
 

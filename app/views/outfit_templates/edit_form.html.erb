@@ -1,0 +1,8 @@
+<h1>Edit outfit</h1>
+
+<form action="/modify_outfit/<%= @the_outfit.id %>" method="post">
+  <label for="photo_box">Outfit photo URL</label>
+  <input id="photo_box" type="text" name="query_outfit_photo" value="<%= @the_outfit.outfit_photo %>">
+
+  <button>Update outfit</button>
+</form>

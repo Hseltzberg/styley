@@ -2,7 +2,24 @@
 
 <form action="/insert_outfit" method="post">
   <label for="photo_box">Outfit photo URL</label>
-  <input id="photo_box" type="text" name="query_outfit_photo">
+  <input id="photo_box" type="text" name="query_outfit_photo" placeholder="Paste image URL here">
+
+  <p>
+    I feel
+    <input id="feeling_box_1" type="text" name="query_new_feeling_1" placeholder="playful">
+    ,
+    <input id="feeling_box_2" type="text" name="query_new_feeling_2" placeholder="confident">
+    , and
+    <input id="feeling_box_3" type="text" name="query_new_feeling_3" placeholder="calm">
+    when I wear this.
+  </p>
+
+  <p>
+    Perfect for
+    <input id="occasion_box" type="text" name="query_outfit_occasion" placeholder="date night">
+    in the
+    <input id="season_box" type="text" name="query_outfit_season" placeholder="spring">.
+  </p>
 
   <button>Create outfit</button>
 </form>

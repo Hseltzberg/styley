@@ -1,5 +1,47 @@
-<h1>past outfit image</h1>
-<!--outfit.vibe
-outfit.season
-outfit.occasion
--->
+<h1>Outfit details</h1>
+
+<img src="<%= @the_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
+
+ <p>
+   <%= @the_outfit.outfit_photo %>
+ </p>
+
+<p>
+  Feelings:
+</p>
+
+<ul>
+  <% @the_outfit.feelings.each do |a_feeling| %>
+    <li><%= a_feeling.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  Occasions:
+</p>
+
+<ul>
+  <% @the_outfit.occasions.each do |an_occasion| %>
+    <li><%= an_occasion.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  Seasons:
+</p>
+
+<ul>
+  <% @the_outfit.seasons.each do |a_season| %>
+    <li><%= a_season.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  <a href="/outfits/<%= @the_outfit.id %>/edit">
+    Edit this outfit
+  </a>
+</p>
+
+<form action="/delete_outfit/<%= @the_outfit.id %>" method="post">
+  <button>Delete this outfit</button>
+</form>
