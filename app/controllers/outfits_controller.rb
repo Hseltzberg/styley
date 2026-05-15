@@ -1,5 +1,5 @@
 class OutfitsController < ApplicationController
-  def index
+   def index
     matching_outfits = Outfit.where({ :user_id => current_user.id })
     @list_of_outfits = matching_outfits.order({ :created_at => :desc })
 
@@ -14,6 +14,9 @@ class OutfitsController < ApplicationController
   end
 
   def new_form
+    @list_of_feelings = Feeling.where({}).order({ :name => :asc })
+    @list_of_occasions = Occasion.where({}).order({ :name => :asc })
+
     render({ :template => "outfit_templates/new_form" })
   end
 
@@ -91,9 +94,12 @@ class OutfitsController < ApplicationController
 
     redirect_to("/outfits")
   end
-   def edit_form
+
+  def edit_form
     matching_outfits = Outfit.where({ :id => params.fetch("path_id") })
     @the_outfit = matching_outfits.at(0)
+    @list_of_feelings = Feeling.where({}).order({ :name => :asc })
+    @list_of_occasions = Occasion.where({}).order({ :name => :asc })
 
     render({ :template => "outfit_templates/edit_form" })
   end

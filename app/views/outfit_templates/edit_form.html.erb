@@ -2,21 +2,22 @@
 
 <form action="/modify_outfit/<%= @the_outfit.id %>" method="post">
   <label for="photo_box">Outfit photo URL</label>
-  <input id="photo_box" type="text" name="query_outfit_photo" placeholder="Paste image URL here">
+  <input id="photo_box" type="text" name="query_outfit_photo" value="<%= @the_outfit.outfit_photo %>">
 
   <p>
     I feel
-    <input id="feeling_box_1" type="text" name="query_new_feeling_1" placeholder="playful">
+    <input id="feeling_box_1" type="text" name="query_new_feeling_1" value="<%= @the_outfit.feelings.at(0).name %>">
+%>">
     ,
-    <input id="feeling_box_2" type="text" name="query_new_feeling_2" placeholder="confident">
+    <input id="feeling_box_2" type="text" name="query_new_feeling_2" value="<%= @the_outfit.feelings.at(1).name %>">
     , and
-    <input id="feeling_box_3" type="text" name="query_new_feeling_3" placeholder="calm">
+    <input id="feeling_box_3" type="text" name="query_new_feeling_3" value="<%= @the_outfit.feelings.at(2).name %>">
     when I wear this.
   </p>
 
   <p>
     Perfect for
-    <input id="occasion_box" type="text" name="query_outfit_occasion" placeholder="date night">
+    <input id="occasion_box" type="text" name="query_outfit_occasion" @the_outfit.occasions.at(0).name ">
     in the
     <input id="season_box" type="text" name="query_outfit_season" placeholder="spring">.
   </p>

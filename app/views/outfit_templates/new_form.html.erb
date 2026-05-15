@@ -6,8 +6,18 @@
 
   <p>
     I feel
-    <input id="feeling_box_1" type="text" name="query_new_feeling_1" placeholder="playful">
-    ,
+  <select name="query_feeling_id_1" id="feeling_id_1">
+    <option value="">Choose a feeling</option>
+    <% @list_of_feelings.each do |a_feeling| %>
+      <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
+    <% end %>
+  </select>
+
+  or
+
+  <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="playful">
+</p>
+
     <input id="feeling_box_2" type="text" name="query_new_feeling_2" placeholder="confident">
     , and
     <input id="feeling_box_3" type="text" name="query_new_feeling_3" placeholder="calm">
