@@ -1,5 +1,5 @@
 class OutfitsController < ApplicationController
-   def index
+  def index
     matching_outfits = Outfit.where({ :user_id => current_user.id })
     @list_of_outfits = matching_outfits.order({ :created_at => :desc })
 
@@ -99,6 +99,7 @@ class OutfitsController < ApplicationController
   def edit_form
     matching_outfits = Outfit.where({ :id => params.fetch("path_id") })
     @the_outfit = matching_outfits.at(0)
+
     @list_of_feelings = Feeling.where({}).order({ :name => :asc })
     @list_of_occasions = Occasion.where({}).order({ :name => :asc })
     @list_of_seasons = Season.where({}).order({ :name => :asc })
