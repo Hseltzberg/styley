@@ -1,11 +1,13 @@
 <h1>New Fit</h1>
 
 <form action="/insert_outfit" method="post">
-  <label for="photo_box">Outfit photo URL</label>
+  <label for="photo_box"> 📸 Outfit photo URL  </label>
   <input id="photo_box" type="text" name="query_outfit_photo" placeholder="Paste image URL here">
 
+<h2> When I wear this... </h2>
+
   <p>
-    I feel
+    <strong> I feel </strong> ✨
     <div>
     <select name="query_feeling_id_1" id="feeling_id_1">
       <option value="">Choose a feeling</option>
@@ -14,7 +16,7 @@
       <% end %>
     </select>
 
-    or <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="<%= @list_of_feelings.sample&.name || "playful" %>">
+    or <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="Create a new feeling">
 
     <p>
       <select name="query_feeling_id_2" id="feeling_id_2">
@@ -25,7 +27,7 @@
       </select>
 
       or
-      <input id="new_feeling_2" type="text" name="query_new_feeling_2" placeholder="<%= @list_of_feelings.sample&.name || "confident" %>">
+      <input id="new_feeling_2" type="text" name="query_new_feeling_2" placeholder="Create a new feeling">
 
       <p>
         <select name="query_feeling_id_1" id="feeling_id_1">
@@ -35,12 +37,12 @@
           <% end %>
         </select>
 
-        <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="<%= @list_of_feelings.sample&.name || "energized" %>">
+        <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
       </p>
       </div>
 
       <p>
-        Perfect for
+        <strong> Perfect for 🗓️</strong>
         <div>
         <select name="query_occasion_id_1" id="occasion_id_1">
           <option value="">Choose an occasion</option>
@@ -51,7 +53,7 @@
 
         or
 
-        <input id="new_occasion_1" type="text" name="query_new_occasion_1" placeholder="<%= @list_of_occasions.sample&.name || "date night" %>">
+        <input id="new_occasion_1" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
       </p>
 
       <p>
@@ -64,7 +66,7 @@
 
         or
 
-        <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="<%= @list_of_occasions.sample&.name || "brunch" %>">
+        <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
       </p>
 
       <p>
@@ -77,13 +79,14 @@
 
         or
 
-        <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="<%= @list_of_occasions.sample&.name || "work" %>">
+        <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
       </p>
       </div>
-      
+
       <p>
 
-        in the
+        <p><strong> in the 🌤️</strong></p>
+    
         <label for="winter_box">Winter</label>
         <input id="winter_box" type="checkbox" name="query_season_winter" value="winter">
 
