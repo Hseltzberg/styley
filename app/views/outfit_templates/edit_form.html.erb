@@ -4,21 +4,62 @@
   <label for="photo_box">Outfit photo URL</label>
   <input id="photo_box" type="text" name="query_outfit_photo" value="<%= @the_outfit.outfit_photo %>">
 
-  <p>
-    I feel
-    <input id="feeling_box_1" type="text" name="query_new_feeling_1" value="<%= @the_outfit.feelings.at(0).name %>">
-    ,
-    <input id="feeling_box_2" type="text" name="query_new_feeling_2" value="<%= @the_outfit.feelings.at(1).name %>">
-    , and
-    <input id="feeling_box_3" type="text" name="query_new_feeling_3" value="<%= @the_outfit.feelings.at(2).name %>">
-    when I wear this.
-  </p>
+<% current_feeling_1 = @the_outfit.feelings.at(0) %>
+<% current_feeling_2 = @the_outfit.feelings.at(1) %>
+<% current_feeling_3 = @the_outfit.feelings.at(2) %>
+
+<p>
+ I feel
+  <select name="query_feeling_id_1" id="feeling_id_1">
+    <option value="">Choose a feeling</option>
+    <% @list_of_feelings.each do |a_feeling| %>
+      <option value="<%= a_feeling.id %>" <%= "selected" if current_feeling_1 != nil && a_feeling.id == current_feeling_1.id %>>
+        <%= a_feeling.name %>
+      </option>
+    <% end %>
+  </select>
+
+  or
+
+  <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="<%= current_feeling_1.name if current_feeling_1 != nil %>">
+</p>
+
+<p>
+  <select name="query_feeling_id_2" id="feeling_id_2">
+    <option value="">Choose a feeling</option>
+    <% @list_of_feelings.each do |a_feeling| %>
+      <option value="<%= a_feeling.id %>" <%= "selected" if current_feeling_2 != nil && a_feeling.id == current_feeling_2.id %>>
+        <%= a_feeling.name %>
+      </option>
+    <% end %>
+  </select>
+
+  or
+
+  <input id="new_feeling_2" type="text" name="query_new_feeling_2" placeholder="<%= current_feeling_2.name if current_feeling_2 != nil %>">
+</p>
+
+<p>
+
+  <select name="query_feeling_id_3" id="feeling_id_3">
+    <option value="">Choose a feeling</option>
+    <% @list_of_feelings.each do |a_feeling| %>
+      <option value="<%= a_feeling.id %>" <%= "selected" if current_feeling_3 != nil && a_feeling.id == current_feeling_3.id %>>
+        <%= a_feeling.name %>
+      </option>
+    <% end %>
+  </select>
+
+  or
+
+  <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="<%= current_feeling_3.name if current_feeling_3 != nil %>">
+</p>
 
   <p>
     Perfect for
-    <input id="occasion_box" type="text" name="query_outfit_occasion" value="<%= @the_outfit.occasions.at(0).name %>">
+    <input id="occasion_box" type="text" name="query_outfit_occasion" placeholder="<%= @list_of_occasions.sample&.name || "date night" %>">
     in the
-    <input id="season_box" type="text" name="query_outfit_season" value="<%= @the_outfit.seasons.each %>">.
+    <input id="season_box" type="text" name="query_outfit_season" placeholder="<%= @list_of_seasons.sample&.name || "spring" %>">
   </p>
 
   <button>Create outfit</button>
