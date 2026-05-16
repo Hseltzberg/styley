@@ -81,10 +81,10 @@
       </p>
     <% end %>
 
-    <p>
-      <button>Apply filters</button>
-    </p>
-
+<p>
+  <button name="query_mode" value="filter">Apply filters</button>
+  <button name="query_mode" value="surprise">Surprise me</button>
+</p>
     <p>
       <a href="/outfits">Clear filters</a>
     </p>
@@ -102,6 +102,9 @@
       <span class="filter_chip"><%= a_feeling_name %></span>
     <% end %>
 
+    <% @selected_occasion_names.each do |an_occasion_name| %>
+      <span class="filter_chip"><%= an_occasion_name %></span>
+    <% end %>
     <p>
       <a href="/outfits">Clear all filters</a>
     </p>

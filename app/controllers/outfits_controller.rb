@@ -80,6 +80,15 @@ class OutfitsController < ApplicationController
 
     @list_of_outfits = matching_outfits.order({ :created_at => :desc })
 
+    if params.fetch("query_mode", "") == "surprise"
+      random_outfit = @list_of_outfits.to_a.sample
+
+      if random_outfit != nil
+        redirect_to("/outfits/#{random_outfit.id}")
+        return
+      end
+    end
+
     render({ :template => "outfit_templates/index" })
   end
 
