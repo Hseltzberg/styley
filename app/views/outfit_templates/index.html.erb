@@ -127,6 +127,12 @@
     <div>
       <img src="<%= an_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
 
+      <% if an_outfit.note_headline != "" && an_outfit.note_headline != nil %>
+        <p>
+          <strong><%= an_outfit.note_headline %></strong>
+        </p>
+      <% end %>
+
       <p>
         <a href="/outfits/<%= an_outfit.id %>">View outfit</a>
       </p>
@@ -134,23 +140,4 @@
 
     <hr>
   <% end %>
-<% end %>
-
-<hr>
-
-<% @list_of_outfits.each do |an_outfit| %>
-  <div>
-    <img src="<%= an_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
-    <% if an_outfit.note_headline != "" && an_outfit.note_headline != nil %>
-      <p>
-        <strong><%= an_outfit.note_headline %></strong>
-      </p>
-    <% end %>
-
-    <p>
-      <a href="/outfits/<%= an_outfit.id %>">View outfit</a>
-    </p>
-  </div>
-
-  <hr>
 <% end %>

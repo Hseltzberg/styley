@@ -88,7 +88,14 @@ class OutfitsController < ApplicationController
         return
       end
     end
-
+    
+    pp @list_of_outfits.map do |an_outfit|
+  {
+    :id => an_outfit.id,
+    :headline => an_outfit.note_headline,
+    :user_id => an_outfit.user_id
+  }
+end
     render({ :template => "outfit_templates/index" })
   end
 
@@ -108,12 +115,16 @@ class OutfitsController < ApplicationController
   end
 
   def create
+  pp "CREATE HIT"
+
     the_outfit = Outfit.new
     the_outfit.user_id = current_user.id
     the_outfit.outfit_photo = params.fetch("query_outfit_photo")
     the_outfit.note_headline = params.fetch("query_note_headline", "")
     the_outfit.note_details = params.fetch("query_note_details", "")
     the_outfit.save
+    pp the_outfit.id
+
 
     new_feeling_name_1 = params.fetch("query_new_feeling_1", "").strip
     selected_feeling_id_1 = params.fetch("query_feeling_id_1", "")
