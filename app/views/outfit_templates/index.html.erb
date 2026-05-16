@@ -6,7 +6,10 @@
   <a href="/outfits/new">Add a new outfit</a>
 </p>
 
-<div>
+<button id="filter_toggle" type="button">Show Filters</button>
+
+<div id="filter_box" style="display: none;">
+
   <h2>Filter closet</h2>
 
   <% if @selected_season_names.count > 0 || @selected_feeling_names.count > 0 %>
@@ -90,6 +93,34 @@
     </p>
   </form>
 </div>
+
+<script>
+  var toggleButton = document.getElementById("filter_toggle")
+  var filterBox = document.getElementById("filter_box")
+
+  function updateFilterSpacing() {
+    if (filterBox.style.display === "none") {
+      toggleButton.style.marginBottom = "20px"
+    } else {
+      toggleButton.style.marginBottom = "0px"
+    }
+  }
+
+  updateFilterSpacing()
+
+  toggleButton.addEventListener("click", function () {
+    if (filterBox.style.display === "none") {
+      filterBox.style.display = "block"
+      toggleButton.textContent = "Hide Filters"
+    } else {
+      filterBox.style.display = "none"
+      toggleButton.textContent = "Show Filters"
+    }
+
+    updateFilterSpacing()
+  })
+</script>
+
 <% if @selected_season_names.count > 0 || @selected_feeling_names.count > 0 %>
   <div class="active_filters_box">
     <p><strong>Your current vibe:</strong></p>
