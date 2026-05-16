@@ -1,0 +1,36 @@
+.pin-board {
+  column-count: 3;
+  column-gap: 20px;
+  margin-top: 30px;
+}
+
+.pin-card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  break-inside: avoid;
+}
+
+.pin-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.pin-card.small .pin-image {
+  height: 220px;
+  object-fit: cover;
+}
+
+.pin-card.medium .pin-image {
+  height: 320px;
+  object-fit: cover;
+}
+
+.pin-card.tall .pin-image {
+  height: 440px;
+  object-fit: cover;
+}

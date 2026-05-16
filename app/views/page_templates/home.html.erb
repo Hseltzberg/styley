@@ -1,17 +1,27 @@
 <% if current_user.present? %>
   <h1>✨hey <strong><%= current_user.username.presence || current_user.email %></strong>, let's get dressed ✨</h1>
+  <h2><a href="/outfits">outfits</a></h2>
+  <h2><a href="/outfits/new>"></a></h2>
 
-  <div><a href="/outfits">my closet ☞</a></div>
-  <div><a href="/outfits/new">add new fit</a></div>
+<div class="pin-board">
+    <% @list_of_public_outfits.each do |an_outfit| %>
+      <% matching_users = User.where({ :id => an_outfit.user_id }) %>
+      <% the_user = matching_users.at(0) %>
 
-  <% @list_of_public_outfits.each do |an_outfit| %>
-    <% matching_users = User.where({ :id => an_outfit.user_id }) %>
-    <% the_user = matching_users.at(0) %>
+      <div class="pin-card"<%= an_outfit.card_size %>">
+      
+        <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
 
-    <p><strong><%= the_user.username %></strong></p>
-    <p><%= an_outfit.note_headline %></p>
-    <img src="<%= an_outfit.outfit_photo %>">
-  <% end %>
+        <div class="pin-content">
+          <p class="pin-user">@<%= the_user.username %></p>
+          <p class="pin-headline"><%= an_outfit.note_headline %></p>
+          <p>
+            <a href="/outfits/<%= an_outfit.id %>">View outfit</a>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
 <% else %>
   <h1> ⭐️👗 welcome to Styley 👗⭐️ </h1>
