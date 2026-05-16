@@ -2,11 +2,13 @@
 #
 # Table name: outfits
 #
-#  id           :bigint           not null, primary key
-#  outfit_photo :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  user_id      :integer
+#  id            :bigint           not null, primary key
+#  note_details  :text
+#  note_headline :string
+#  outfit_photo  :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :integer
 #
 class Outfit < ApplicationRecord
   belongs_to(:user, counter_cache: :outfit_uploads_count)
