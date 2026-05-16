@@ -8,16 +8,16 @@
       <% matching_users = User.where({ :id => an_outfit.user_id }) %>
       <% the_user = matching_users.at(0) %>
 
-      <div class="pin-card"<%= an_outfit.card_size %>">
-      
+      <div class="pin-card <%= an_outfit.card_size %>">
+
         <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
 
         <div class="pin-content">
-          <p class="pin-user">@<%= the_user.username %></p>
+          <h3 class="pin-user">@<%= the_user.username %></h3>
           <p class="pin-headline"><%= an_outfit.note_headline %></p>
-          <p>
-            <a href="/outfits/<%= an_outfit.id %>">View outfit</a>
-          </p>
+<!--          <p>
+            <a href="/outfits/<%#= an_outfit.id %>">View outfit</a>
+          </p>-->
         </div>
       </div>
     <% end %>
