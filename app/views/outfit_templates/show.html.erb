@@ -1,11 +1,14 @@
-<h1>Outfit details</h1>
+<p>
+  <a href="/outfits">☜ Back to my closet</a>
+</p>
 
+<h1>Outfit details</h1>
 
 <img src="<%= @the_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
 <h2><%= @the_outfit.note_headline %></h2>
 
 <p>
- 📝note to self: <%= @the_outfit.note_details %>
+  📝note to self: <%= @the_outfit.note_details %>
 </p>
 
 <p>
@@ -37,7 +40,6 @@
     <li><%= a_season.name %></li>
   <% end %>
 </ul>
-
 
 <p>
   <a href="/outfits/<%= @the_outfit.id %>/edit">

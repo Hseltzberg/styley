@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  get("/about_us", { :controller => "pages", :action => "about" })
   # Routes for the Outfit season resource:
 
   # CREATE
@@ -115,25 +117,23 @@ Rails.application.routes.draw do
 
   # Routes for the Outfit resource:
 
-# CREATE
-post("/insert_outfit", { :controller => "outfits", :action => "create" })
-get("/outfits/new", { :controller => "outfits", :action => "new_form" })
+  # CREATE
+  post("/insert_outfit", { :controller => "outfits", :action => "create" })
+  get("/outfits/new", { :controller => "outfits", :action => "new_form" })
 
-# READ
-get("/outfits", { :controller => "outfits", :action => "index" })
-get("/outfits/:path_id", { :controller => "outfits", :action => "show" })
+  # READ
+  get("/outfits", { :controller => "outfits", :action => "index" })
+  get("/outfits/:path_id", { :controller => "outfits", :action => "show" })
 
-# UPDATE
-get("/outfits/:path_id/edit", { :controller => "outfits", :action => "edit_form" })
-post("/modify_outfit/:path_id", { :controller => "outfits", :action => "update" })
+  # UPDATE
+  get("/outfits/:path_id/edit", { :controller => "outfits", :action => "edit_form" })
+  post("/modify_outfit/:path_id", { :controller => "outfits", :action => "update" })
 
-# DELETE
-post("/delete_outfit/:path_id", { :controller => "outfits", :action => "destroy" })
-
+  # DELETE
+  post("/delete_outfit/:path_id", { :controller => "outfits", :action => "destroy" })
 
   #------------------------------
 
   devise_for :users
   get("/", :controller => "pages", :action => "home")
-
 end

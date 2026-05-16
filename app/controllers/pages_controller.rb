@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     render({ :template => "page_templates/home" })
   end
+
+  def about
+    render({ :template => "page_templates/about"})
+  end
 end

@@ -1,21 +1,12 @@
-<h1>welcome 2 styley</h1>
-
-<p>Organize your outfits by season, vibe, and occasion.</p>
-
 <% if current_user.present? %>
-  <p>Hey <strong><%= current_user.username.presence || current_user.email %></strong>, let's get dressed 👗</p>
+  <h1>✨hey <strong><%= current_user.username.presence || current_user.email %></strong>, let's get dressed ✨</h1>
  </p>
-  <div><a href="/outfits">My Closet</a></div>
-  <div><a href="/outfits/new">Upload Outfit</a></div>
+  <div><a href="/outfits">my closet ☞</a></div>
+  <div><a href="/outfits/new">add new fit</a></div>
 
 <% else %>
-  <p>Sign in or sign up to start building your closet.</p>
+  <h1> ⭐️👗 welcome to Styley 👗⭐️ </h1>
+  <h2> you are probably here because you don't know what to wear— or at leaast you *think* you don't know. let's have some fun. 🥳 </h2>
+  <p> new here? <a href="/users/sign_up"> sign up</a> to start building your closet.
+  <p> back for more? <a href="/users/sign_in">sign in</a> to pick up where you left off</p>
 <% end %>
-
-<!--  <p>
-    <a href="/outfits">My Closet</a>
-  </p>
-
- <!-- <p>
-    <a href="/insert_outfit_form">Upload Outfit</a>
-  </p>-->-->
