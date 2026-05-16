@@ -81,10 +81,10 @@
       </p>
     <% end %>
 
-<p>
-  <button name="query_mode" value="filter">Apply filters</button>
-  <button name="query_mode" value="surprise">Surprise me</button>
-</p>
+    <p>
+      <button name="query_mode" value="filter">Apply filters</button>
+      <button name="query_mode" value="surprise">Surprise me</button>
+    </p>
     <p>
       <a href="/outfits">Clear filters</a>
     </p>
@@ -141,6 +141,11 @@
 <% @list_of_outfits.each do |an_outfit| %>
   <div>
     <img src="<%= an_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
+    <% if an_outfit.note_headline != "" && an_outfit.note_headline != nil %>
+      <p>
+        <strong><%= an_outfit.note_headline %></strong>
+      </p>
+    <% end %>
 
     <p>
       <a href="/outfits/<%= an_outfit.id %>">View outfit</a>
