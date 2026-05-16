@@ -88,14 +88,14 @@ class OutfitsController < ApplicationController
         return
       end
     end
-    
+
     pp @list_of_outfits.map do |an_outfit|
-  {
-    :id => an_outfit.id,
-    :headline => an_outfit.note_headline,
-    :user_id => an_outfit.user_id
-  }
-end
+      {
+        :id => an_outfit.id,
+        :headline => an_outfit.note_headline,
+        :user_id => an_outfit.user_id,
+      }
+    end
     render({ :template => "outfit_templates/index" })
   end
 
@@ -115,16 +115,22 @@ end
   end
 
   def create
-  pp "CREATE HIT"
+    pp "CREATE HIT"
 
     the_outfit = Outfit.new
     the_outfit.user_id = current_user.id
     the_outfit.outfit_photo = params.fetch("query_outfit_photo")
     the_outfit.note_headline = params.fetch("query_note_headline", "")
     the_outfit.note_details = params.fetch("query_note_details", "")
+    if params.fetch("query_is_public", "false") == "true"
+      the_outfit.is_public = true
+    else
+      the_outfit.is_public = false
+    end
+
+    the_outfit.save
     the_outfit.save
     pp the_outfit.id
-
 
     new_feeling_name_1 = params.fetch("query_new_feeling_1", "").strip
     selected_feeling_id_1 = params.fetch("query_feeling_id_1", "")
@@ -331,6 +337,11 @@ end
     the_outfit.outfit_photo = params.fetch("query_outfit_photo")
     the_outfit.note_headline = params.fetch("query_note_headline", "")
     the_outfit.note_details = params.fetch("query_note_details", "")
+    if params.fetch("query_is_public", "false") == "true"
+      the_outfit.is_public = true
+    else
+      the_outfit.is_public = false
+    end
     the_outfit.save
 
     matching_outfit_seasons = OutfitSeason.where({ :outfit_id => the_outfit.id })

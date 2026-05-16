@@ -42,6 +42,18 @@
 </ul>
 
 <p>
+  Visibility:
+</p>
+
+<ul>
+  <% if @the_outfit.is_public %>
+   <li> public</li>
+  <% else %>
+    <li> private</li>
+  <% end %>
+</ul>
+
+<p>
   <a href="/outfits/<%= @the_outfit.id %>/edit">
     Edit this outfit
   </a>
