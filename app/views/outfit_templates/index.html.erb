@@ -1,5 +1,7 @@
-<h1><%= current_user.username%>'s closet </h1>
-<p>pics of <%= current_user.username%>'s outfits displayed in a really cool way</p>
+<h1><%= current_user.username %>'s closet</h1>
+
+<p>pics of <%= current_user.username %>'s outfits displayed in a really cool way</p>
+
 <p>
   <a href="/outfits/new">Add a new outfit</a>
 </p>
@@ -11,19 +13,70 @@
     <p>Season</p>
 
     <label for="fall_box">Fall</label>
-    <input id="fall_box" type="checkbox" name="query_season_fall" value="fall">
+    <input id="fall_box" type="checkbox" name="query_season_fall" value="fall" <%= "checked" if @selected_season_names.include?("fall") %>>
 
     <label for="winter_box">Winter</label>
-    <input id="winter_box" type="checkbox" name="query_season_winter" value="winter">
+    <input id="winter_box" type="checkbox" name="query_season_winter" value="winter" <%= "checked" if @selected_season_names.include?("winter") %>>
 
     <label for="spring_box">Spring</label>
-    <input id="spring_box" type="checkbox" name="query_season_spring" value="spring">
+    <input id="spring_box" type="checkbox" name="query_season_spring" value="spring" <%= "checked" if @selected_season_names.include?("spring") %>>
 
     <label for="summer_box">Summer</label>
-    <input id="summer_box" type="checkbox" name="query_season_summer" value="summer">
+    <input id="summer_box" type="checkbox" name="query_season_summer" value="summer" <%= "checked" if @selected_season_names.include?("summer") %>>
+
+    <% if @selected_season_names.count > 0 %>
+      <p>
+        Currently viewing seasons:
+        <%= @selected_season_names.join(", ") %>
+      </p>
+    <% else %>
+      <p>
+        Currently viewing seasons: all seasons
+      </p>
+    <% end %>
+
+    <p>Feelings</p>
+
+    <% @list_of_feelings.each do |a_feeling| %>
+      <label for="feeling_<%= a_feeling.id %>_box"><%= a_feeling.name %></label>
+      <input id="feeling_<%= a_feeling.id %>_box" type="checkbox" name="query_feeling_<%= a_feeling.id %>" value="<%= a_feeling.name %>" <%= "checked" if @selected_feeling_names.include?(a_feeling.name) %>>
+    <% end %>
+
+    <% if @selected_feeling_names.count > 0 %>
+      <p>
+        Currently viewing feelings:
+        <%= @selected_feeling_names.join(", ") %>
+      </p>
+    <% else %>
+      <p>
+        Currently viewing feelings: all feelings
+      </p>
+    <% end %>
+
+    <p>Occasions</p>
+
+    <% @list_of_occasions.each do |an_occasion| %>
+      <label for="occasion_<%= an_occasion.id %>_box"><%= an_occasion.name %></label>
+      <input id="occasion_<%= an_occasion.id %>_box" type="checkbox" name="query_occasion_<%= an_occasion.id %>" value="<%= an_occasion.name %>" <%= "checked" if @selected_occasion_names.include?(an_occasion.name) %>>
+    <% end %>
+
+    <% if @selected_occasion_names.count > 0 %>
+      <p>
+        Currently viewing occasion:
+        <%= @selected_occasion_names.join(", ") %>
+      </p>
+    <% else %>
+      <p>
+        Currently viewing occasion: all occasions
+      </p>
+    <% end %>
 
     <p>
       <button>Apply filters</button>
+    </p>
+
+    <p>
+      <a href="/outfits">Clear filters</a>
     </p>
   </form>
 </div>
@@ -32,10 +85,6 @@
 
 <% @list_of_outfits.each do |an_outfit| %>
   <div>
-<!--    <p>Outfit ID: <%#= an_outfit.id %></p>-->
-
-    <!--<p>Photo URL: <%#= an_outfit.outfit_photo %></p>-->
-
     <img src="<%= an_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
 
     <p>
