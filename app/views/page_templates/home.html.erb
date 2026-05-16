@@ -1,7 +1,7 @@
 <% if current_user.present? %>
   <h1>✨hey <strong><%= current_user.username.presence || current_user.email %></strong>, let's get dressed ✨</h1>
-  <h2><a href="/outfits">outfits</a></h2>
-  <h2><a href="/outfits/new>"></a></h2>
+  <h2><a href="/outfits">my closet</a></h2>
+  <h2><a href="/outfits/new">new fit</a></h2>
 
 <div class="pin-board">
     <% @list_of_public_outfits.each do |an_outfit| %>

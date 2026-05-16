@@ -157,20 +157,21 @@
   </div>
 <% else %>
 
-<div class="pin-board">
-  <% @list_of_outfits.each do |an_outfit| %>
-    <% matching_users = User.where({ :id => an_outfit.user_id }) %>
-    <% the_user = matching_users.at(0) %>
+  <div class="pin-board">
+    <% @list_of_outfits.each do |an_outfit| %>
+      <% matching_users = User.where({ :id => an_outfit.user_id }) %>
+      <% the_user = matching_users.at(0) %>
 
-    <div class="pin-card <%= an_outfit.card_size %>">
-      <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
+      <div class="pin-card <%= an_outfit.card_size %>">
+        <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
 
-      <div class="pin-content">
-        <h4 class="pin-user">@<%= the_user.username %></h4>
-        <p class="pin-headline"><%= an_outfit.note_headline %></p>
+        <div class="pin-content">
+          <h3 class="pin-headline"><%= an_outfit.note_headline %></h3>
+          <p class="pin-headline">
+            <a href="/outfits/<%= an_outfit.id %>">view outfit</a>
+          </p>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
 
-<% end %>
+  <% end %>
