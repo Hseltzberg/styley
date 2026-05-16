@@ -1,0 +1,26 @@
+.active_filters_box {
+  background-color: #fff4fb;
+  border: 1px solid #f3cfe4;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.filter_chip {
+  display: inline-block;
+  background-color: #ffd9ec;
+  color: #6b2d4f;
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.empty_state_box {
+  background-color: #fffaf0;
+  border: 1px dashed #f0c36d;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+}

@@ -90,6 +90,48 @@
     </p>
   </form>
 </div>
+<% if @selected_season_names.count > 0 || @selected_feeling_names.count > 0 %>
+  <div class="active_filters_box">
+    <p><strong>Your current vibe:</strong></p>
+
+    <% @selected_season_names.each do |a_season_name| %>
+      <span class="filter_chip"><%= a_season_name %></span>
+    <% end %>
+
+    <% @selected_feeling_names.each do |a_feeling_name| %>
+      <span class="filter_chip"><%= a_feeling_name %></span>
+    <% end %>
+
+    <p>
+      <a href="/outfits">Clear all filters</a>
+    </p>
+  </div>
+<% end %>
+
+<% if @list_of_outfits.count == 0 %>
+  <div class="empty_state_box">
+    <p><strong>No fits matched this vibe yet.</strong></p>
+    <p>Try changing a filter, or add a new outfit for future-you.</p>
+    <p>
+      <a href="/outfits">Clear filters</a>
+    </p>
+    <p>
+      <a href="/outfits/new">Add a new outfit</a>
+    </p>
+  </div>
+<% else %>
+  <% @list_of_outfits.each do |an_outfit| %>
+    <div>
+      <img src="<%= an_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
+
+      <p>
+        <a href="/outfits/<%= an_outfit.id %>">View outfit</a>
+      </p>
+    </div>
+
+    <hr>
+  <% end %>
+<% end %>
 
 <hr>
 
