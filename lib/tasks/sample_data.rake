@@ -51,6 +51,7 @@ task({ sample_data: :environment }) do
     outfit.user_id = users.sample.id
     outfit.note_headline = note_headlines.sample
     outfit.note_details = note_details_list.sample
+    outfit.is_public = [true, false].sample
     outfit.save
   end
 

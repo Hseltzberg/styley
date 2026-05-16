@@ -3,6 +3,7 @@
 # Table name: outfits
 #
 #  id            :bigint           not null, primary key
+#  is_public     :boolean          default(FALSE), not null
 #  note_details  :text
 #  note_headline :string
 #  outfit_photo  :string

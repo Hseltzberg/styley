@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_16_043220) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_16_183313) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_16_043220) do
     t.datetime "updated_at", null: false
     t.string "note_headline"
     t.text "note_details"
+    t.boolean "is_public", default: false, null: false
   end
 
   create_table "places", force: :cascade do |t|
