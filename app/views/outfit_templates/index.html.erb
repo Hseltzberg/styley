@@ -9,6 +9,16 @@
 <div>
   <h2>Filter closet</h2>
 
+  <% if @selected_season_names.count > 0 || @selected_feeling_names.count > 0 %>
+    <p>
+      <% if @list_of_outfits.count == 1 %>
+        We found <strong>1</strong> look for this vibe
+      <% else %>
+        We found <strong><%= @list_of_outfits.count %></strong> looks for this vibe
+      <% end %>
+    </p>
+  <% end %>
+
   <form action="/outfits" method="get">
     <p>Season</p>
 
