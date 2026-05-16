@@ -1,6 +1,5 @@
 desc "Fill the database tables with some sample data"
 task({ sample_data: :environment }) do
-
   User.destroy_all
   Vibe.destroy_all
   Place.destroy_all
@@ -11,7 +10,7 @@ task({ sample_data: :environment }) do
   Season.destroy_all
   Occasion.destroy_all
 
-emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
+  emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
 
   emails.each do |an_email|
     user = User.new
@@ -28,11 +27,30 @@ emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
     "https://picsum.photos/300?random=2",
     "https://picsum.photos/300?random=3",
   ]
+  note_headlines = [
+    "Blue heels only",
+    "Good for errands",
+    "Power outfit",
+    "Cute but not all-day",
+    "Easy win",
+    "Comfy and polished",
+  ]
+
+  note_details_list = [
+    "Looks best with the blue heels and simple jewelry.",
+    "Great for walking around and getting things done.",
+    "My go-to when I want to feel extra confident.",
+    "Very cute, but not ideal for sitting all day.",
+    "Easy outfit when I do not want to think too hard.",
+    "Comfortable enough for a long day but still feels styled.",
+  ]
 
   10.times do
     outfit = Outfit.new
     outfit.outfit_photo = outfit_photos.sample
     outfit.user_id = users.sample.id
+    outfit.note_headline = note_headlines.sample
+    outfit.note_details = note_details_list.sample
     outfit.save
   end
 
@@ -71,30 +89,26 @@ emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
 
   seasons = Season.all
 
-outfits.each do |an_outfit|
-  vibe = Vibe.new
-  vibe.outfit_id = an_outfit.id
-  vibe.feeling_id = feelings.sample.id
-  vibe.save
-end
+  outfits.each do |an_outfit|
+    vibe = Vibe.new
+    vibe.outfit_id = an_outfit.id
+    vibe.feeling_id = feelings.sample.id
+    vibe.save
+  end
 
-outfits.each do |an_outfit|
-  place = Place.new
-  place.outfit_id = an_outfit.id
-  place.occasion_id = occasions.sample.id
-  place.save
-end
+  outfits.each do |an_outfit|
+    place = Place.new
+    place.outfit_id = an_outfit.id
+    place.occasion_id = occasions.sample.id
+    place.save
+  end
 
-outfits.each do |an_outfit|
-  outfit_season = OutfitSeason.new
-  outfit_season.outfit_id = an_outfit.id
-  outfit_season.season_id = seasons.sample.id
-  outfit_season.save
-end
-
-
-
-
+  outfits.each do |an_outfit|
+    outfit_season = OutfitSeason.new
+    outfit_season.outfit_id = an_outfit.id
+    outfit_season.season_id = seasons.sample.id
+    outfit_season.save
+  end
 
   p "Added #{Outfit.count} outfits"
 
@@ -111,5 +125,4 @@ end
   p "Added #{Place.count} places"
 
   p "Added #{OutfitSeason.count} outfit_seasons"
-
 end
