@@ -3,7 +3,9 @@ class PagesController < ApplicationController
 
   def home
     if current_user.present?
-      @list_of_public_outfits = Outfit.where({ :is_public => true }).where.not({ :user_id => current_user.id })
+    @list_of_public_outfits = Outfit.where({ :is_public => true })
+    # .where.not({ :user_id => current_user.id })
+
     else
       @list_of_public_outfits = []
     end
