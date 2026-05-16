@@ -111,6 +111,8 @@ class OutfitsController < ApplicationController
     the_outfit = Outfit.new
     the_outfit.user_id = current_user.id
     the_outfit.outfit_photo = params.fetch("query_outfit_photo")
+    the_outfit.note_headline = params.fetch("query_note_headline", "")
+    the_outfit.note_details = params.fetch("query_note_details", "")
     the_outfit.save
 
     new_feeling_name_1 = params.fetch("query_new_feeling_1", "").strip
@@ -316,6 +318,8 @@ class OutfitsController < ApplicationController
     the_outfit = matching_outfits.at(0)
 
     the_outfit.outfit_photo = params.fetch("query_outfit_photo")
+    the_outfit.note_headline = params.fetch("query_note_headline", "")
+    the_outfit.note_details = params.fetch("query_note_details", "")
     the_outfit.save
 
     matching_outfit_seasons = OutfitSeason.where({ :outfit_id => the_outfit.id })
