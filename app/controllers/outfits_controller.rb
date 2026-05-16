@@ -102,71 +102,189 @@ class OutfitsController < ApplicationController
     the_outfit = Outfit.new
     the_outfit.user_id = current_user.id
     the_outfit.outfit_photo = params.fetch("query_outfit_photo")
-
     the_outfit.save
 
     new_feeling_name_1 = params.fetch("query_new_feeling_1", "").strip
+    selected_feeling_id_1 = params.fetch("query_feeling_id_1", "")
 
     if new_feeling_name_1 != ""
-      feeling_1 = Feeling.new
-      feeling_1.name = new_feeling_name_1
-      feeling_1.save
+      matching_feelings = Feeling.where({ :name => new_feeling_name_1 })
+      feeling_1 = matching_feelings.at(0)
+
+      if feeling_1 == nil
+        feeling_1 = Feeling.new
+        feeling_1.name = new_feeling_name_1
+        feeling_1.save
+      end
 
       vibe_1 = Vibe.new
       vibe_1.outfit_id = the_outfit.id
       vibe_1.feeling_id = feeling_1.id
       vibe_1.save
+    elsif selected_feeling_id_1 != ""
+      vibe_1 = Vibe.new
+      vibe_1.outfit_id = the_outfit.id
+      vibe_1.feeling_id = selected_feeling_id_1
+      vibe_1.save
     end
 
     new_feeling_name_2 = params.fetch("query_new_feeling_2", "").strip
+    selected_feeling_id_2 = params.fetch("query_feeling_id_2", "")
 
     if new_feeling_name_2 != ""
-      feeling_2 = Feeling.new
-      feeling_2.name = new_feeling_name_2
-      feeling_2.save
+      matching_feelings = Feeling.where({ :name => new_feeling_name_2 })
+      feeling_2 = matching_feelings.at(0)
+
+      if feeling_2 == nil
+        feeling_2 = Feeling.new
+        feeling_2.name = new_feeling_name_2
+        feeling_2.save
+      end
 
       vibe_2 = Vibe.new
       vibe_2.outfit_id = the_outfit.id
       vibe_2.feeling_id = feeling_2.id
       vibe_2.save
+    elsif selected_feeling_id_2 != ""
+      vibe_2 = Vibe.new
+      vibe_2.outfit_id = the_outfit.id
+      vibe_2.feeling_id = selected_feeling_id_2
+      vibe_2.save
     end
 
     new_feeling_name_3 = params.fetch("query_new_feeling_3", "").strip
+    selected_feeling_id_3 = params.fetch("query_feeling_id_3", "")
 
     if new_feeling_name_3 != ""
-      feeling_3 = Feeling.new
-      feeling_3.name = new_feeling_name_3
-      feeling_3.save
+      matching_feelings = Feeling.where({ :name => new_feeling_name_3 })
+      feeling_3 = matching_feelings.at(0)
+
+      if feeling_3 == nil
+        feeling_3 = Feeling.new
+        feeling_3.name = new_feeling_name_3
+        feeling_3.save
+      end
 
       vibe_3 = Vibe.new
       vibe_3.outfit_id = the_outfit.id
       vibe_3.feeling_id = feeling_3.id
       vibe_3.save
+    elsif selected_feeling_id_3 != ""
+      vibe_3 = Vibe.new
+      vibe_3.outfit_id = the_outfit.id
+      vibe_3.feeling_id = selected_feeling_id_3
+      vibe_3.save
     end
 
-    new_occasion_name = params.fetch("query_outfit_occasion", "").strip
+    new_occasion_name_1 = params.fetch("query_new_occasion_1", "").strip
+    selected_occasion_id_1 = params.fetch("query_occasion_id_1", "")
 
-    if new_occasion_name != ""
-      occasion = Occasion.new
-      occasion.name = new_occasion_name
-      occasion.save
+    if new_occasion_name_1 != ""
+      matching_occasions = Occasion.where({ :name => new_occasion_name_1 })
+      occasion_1 = matching_occasions.at(0)
 
-      place = Place.new
-      place.outfit_id = the_outfit.id
-      place.occasion_id = occasion.id
-      place.save
+      if occasion_1 == nil
+        occasion_1 = Occasion.new
+        occasion_1.name = new_occasion_name_1
+        occasion_1.save
+      end
+
+      place_1 = Place.new
+      place_1.outfit_id = the_outfit.id
+      place_1.occasion_id = occasion_1.id
+      place_1.save
+    elsif selected_occasion_id_1 != ""
+      place_1 = Place.new
+      place_1.outfit_id = the_outfit.id
+      place_1.occasion_id = selected_occasion_id_1
+      place_1.save
     end
 
-    new_season_name = params.fetch("query_outfit_season", "").strip
+    new_occasion_name_2 = params.fetch("query_new_occasion_2", "").strip
+    selected_occasion_id_2 = params.fetch("query_occasion_id_2", "")
 
-    if new_season_name != ""
-      season = Season.new
-      season.name = new_season_name
-      season.save
+    if new_occasion_name_2 != ""
+      matching_occasions = Occasion.where({ :name => new_occasion_name_2 })
+      occasion_2 = matching_occasions.at(0)
+
+      if occasion_2 == nil
+        occasion_2 = Occasion.new
+        occasion_2.name = new_occasion_name_2
+        occasion_2.save
+      end
+
+      place_2 = Place.new
+      place_2.outfit_id = the_outfit.id
+      place_2.occasion_id = occasion_2.id
+      place_2.save
+    elsif selected_occasion_id_2 != ""
+      place_2 = Place.new
+      place_2.outfit_id = the_outfit.id
+      place_2.occasion_id = selected_occasion_id_2
+      place_2.save
+    end
+
+    new_occasion_name_3 = params.fetch("query_new_occasion_3", "").strip
+    selected_occasion_id_3 = params.fetch("query_occasion_id_3", "")
+
+    if new_occasion_name_3 != ""
+      matching_occasions = Occasion.where({ :name => new_occasion_name_3 })
+      occasion_3 = matching_occasions.at(0)
+
+      if occasion_3 == nil
+        occasion_3 = Occasion.new
+        occasion_3.name = new_occasion_name_3
+        occasion_3.save
+      end
+
+      place_3 = Place.new
+      place_3.outfit_id = the_outfit.id
+      place_3.occasion_id = occasion_3.id
+      place_3.save
+    elsif selected_occasion_id_3 != ""
+      place_3 = Place.new
+      place_3.outfit_id = the_outfit.id
+      place_3.occasion_id = selected_occasion_id_3
+      place_3.save
+    end
+
+    if params.fetch("query_season_winter", "") != ""
+      matching_seasons = Season.where({ :name => "winter" })
+      season_winter = matching_seasons.at(0)
 
       outfit_season = OutfitSeason.new
       outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = season.id
+      outfit_season.season_id = season_winter.id
+      outfit_season.save
+    end
+
+    if params.fetch("query_season_spring", "") != ""
+      matching_seasons = Season.where({ :name => "spring" })
+      season_spring = matching_seasons.at(0)
+
+      outfit_season = OutfitSeason.new
+      outfit_season.outfit_id = the_outfit.id
+      outfit_season.season_id = season_spring.id
+      outfit_season.save
+    end
+
+    if params.fetch("query_season_summer", "") != ""
+      matching_seasons = Season.where({ :name => "summer" })
+      season_summer = matching_seasons.at(0)
+
+      outfit_season = OutfitSeason.new
+      outfit_season.outfit_id = the_outfit.id
+      outfit_season.season_id = season_summer.id
+      outfit_season.save
+    end
+
+    if params.fetch("query_season_fall", "") != ""
+      matching_seasons = Season.where({ :name => "fall" })
+      season_fall = matching_seasons.at(0)
+
+      outfit_season = OutfitSeason.new
+      outfit_season.outfit_id = the_outfit.id
+      outfit_season.season_id = season_fall.id
       outfit_season.save
     end
 
