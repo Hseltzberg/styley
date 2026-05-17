@@ -3,19 +3,20 @@
   <h2><a href="/outfits">my closet</a></h2>
   <h2><a href="/outfits/new">new fit</a></h2>
 
-<div class="pin-board">
+  <div class="pin-board">
     <% @list_of_public_outfits.each do |an_outfit| %>
       <% matching_users = User.where({ :id => an_outfit.user_id }) %>
       <% the_user = matching_users.at(0) %>
 
-      <div class="pin-card <%= an_outfit.card_size %>">
+      <div class="pin-card"<%= an_outfit.card_size %>">
 
         <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
 
         <div class="pin-content">
           <h3 class="pin-user">@<%= the_user.username %></h3>
-          <p class="pin-headline"><%= an_outfit.note_headline %></p>
-<!--          <p>
+          <!--          <p class="pin-headline"><%#= an_outfit.note_headline %></p>-->
+          <p class="pin-headline" style="color: red;"><%= an_outfit.note_headline %></p>
+                    <p>
             <a href="/outfits/<%#= an_outfit.id %>">View outfit</a>
           </p>-->
         </div>
@@ -28,5 +29,5 @@
   <h2> you are probably here because you don't know what to wear— or at leaast you *think* you don't know. let's have some fun. 🥳 </h2>
   <p>new here? <a href="/users/sign_up">sign up</a> to start building your closet.</p>
 
-    <p> back for more? <a href="/users/sign_in">sign in</a> to pick up where you left off</p>
+  <p> back for more? <a href="/users/sign_in">sign in</a> to pick up where you left off</p>
 <% end %>
