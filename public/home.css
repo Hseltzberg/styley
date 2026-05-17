@@ -1,3 +1,4 @@
+
 .pin-board {
   column-count: 3;
   column-gap: 20px;
@@ -33,4 +34,9 @@
 .pin-card.tall .pin-image {
   height: 440px;
   object-fit: cover;
+}
+
+
+.navbar navbar-expand-lg bg-primary {
+  color:palevioletred;
 }
