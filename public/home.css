@@ -107,7 +107,8 @@ select,{
 .form-select,
 .form-control,
 textarea,
-input {
+input,
+.btn.btn-lg.btn-primary {
   background-color: transparent;
   border-color: hotpink;
   color: hotpink;
