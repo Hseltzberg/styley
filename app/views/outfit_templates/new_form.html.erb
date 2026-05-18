@@ -68,54 +68,55 @@
           </p>
         </fieldset>
 
-        <p><strong>Perfect for 🗓️</strong></p>
+        <fieldset>
+          <legend><strong>Perfect for 🗓️</strong></legend>
 
-        <p>
-          <div class="d-flex align-items-center gap-2">
-            <select name="query_occasion_id_1" id="occasion_id_1" class="form-select">
+          <p>
+            <div class="d-flex align-items-center gap-2">
+              <select name="query_occasion_id_1" id="occasion_id_1" class="form-select">
+                <option value="">Choose an occasion</option>
+                <% @list_of_occasions.each do |an_occasion| %>
+                  <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
+                <% end %>
+              </select>
+
+              <span> or</span>
+
+              <input id="new_occasion_1" class="form-control" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
+            </div>
+          </p>
+
+          <p>
+            <select name="query_occasion_id_2" id="occasion_id_2">
               <option value="">Choose an occasion</option>
               <% @list_of_occasions.each do |an_occasion| %>
                 <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
               <% end %>
             </select>
 
-            <span> or</span>
+            or
 
-            <input id="new_occasion_1" class="form-control" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
-          </div>
-        </p>
+            <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
+          </p>
 
-        <p>
-          <select name="query_occasion_id_2" id="occasion_id_2">
-            <option value="">Choose an occasion</option>
-            <% @list_of_occasions.each do |an_occasion| %>
-              <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-            <% end %>
-          </select>
+          <p>
+            <select name="query_occasion_id_3" id="occasion_id_3">
+              <option value="">Choose an occasion</option>
+              <% @list_of_occasions.each do |an_occasion| %>
+                <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
+              <% end %>
+            </select>
 
-          or
+            or
 
-          <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
-        </p>
+            <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
+          </p>
 
-        <p>
-          <select name="query_occasion_id_3" id="occasion_id_3">
-            <option value="">Choose an occasion</option>
-            <% @list_of_occasions.each do |an_occasion| %>
-              <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-            <% end %>
-          </select>
-
-          or
-
-          <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
-        </p>
-
-        <p><strong>In the 🌤️</strong></p>
+        </fieldset>
 
         <fieldset>
 
-          <legend class="mt-4">Season</legend>
+          <legend class="mt-4"><strong>In the 🌤️</strong></legend>
           <div class="d-flex flex-wrap justify-content-around w-100"r gap-3">
             <div class="form-check form-switch">
               <input name="query_season_winter" class="form-check-input" type="checkbox" id="winter_box" value="winter">
@@ -140,24 +141,31 @@
 
         </fieldset>
 
-        <p>
-          <label for="details_box">Note to self</label>
-          <textarea id="details_box" name="query_note_details" placeholder="Looks best with the blue heels, but not great for walking all day."></textarea>
-        </p>
+        <fieldset>
+          <div>
+            <label for="details_box" class="form-label mt-4">Note 2 self 📝</label>
+            <textarea class="form-control w-400" id="details_box" name="query_note_details" placeholder="Looks best with the blue heels, but not great for walking all day." rows="3"></textarea>
+          </div>
 
-        <p>Who can see this outfit?</p>
+        </fieldset>
 
-        <p><label for="public_choice">Styley community</label>
-          <input id="public_choice" type="radio" name="query_is_public" value="true">
+        <div>
 
-          <label for="private_choice">Just me</label>
-          <input id="private_choice" type="radio" name="query_is_public" value="false" checked>
-        </p>
+          <fieldset>
+            <p>Who can see this outfit?</p>
 
-        <div class="d-grid gap-2">
-          <button class="btn btn-lg btn-primary w-100" type="button">Create outfit</button>
-        </div>
+            <p><label for="public_choice">Styley community</label>
+              <input id="public_choice" type="radio" name="query_is_public" value="true">
 
-      </fieldset>
-    </form>
-  </div>
+              <label for="private_choice">Just me</label>
+              <input id="private_choice" type="radio" name="query_is_public" value="false" checked>
+            </p>
+          </fieldset>
+      
+          <p><div class="d-grid gap-2"></p>
+            <button class="btn btn-lg btn-primary w-100" type="button">Create outfit</button>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
