@@ -9,11 +9,6 @@
           <input class="form-control" type="text" id="photo_box" placeholder="insert photo url" name="query_outfit_photo">
         </div>
 
-        <!--<p>
-  <label for="photo_box">📸 Outfit photo URL</label>
-  <input id="photo_box" type="text" name="query_outfit_photo" placeholder="Paste image URL here">
-</p>
--->
         <p>
           <h2>When I wear this...</h2>
         </p>
@@ -48,32 +43,36 @@
         </div>
         <p></p>
 
-        <div class="d-flex align-items-center gap-2">
-          <select name="query_feeling_id_3" id="feeling_id_3" class="form-select">
-            <option value="">Choose a feeling</option>
-            <% @list_of_feelings.each do |a_feeling| %>
-              <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
-            <% end %>
-          </select>
+        <p>
+          <div class="d-flex align-items-center gap-2">
+            <select name="query_feeling_id_3" id="feeling_id_3" class="form-select">
+              <option value="">Choose a feeling</option>
+              <% @list_of_feelings.each do |a_feeling| %>
+                <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
+              <% end %>
+            </select>
 
-          <span> or</span>
+            <span> or</span>
 
-          <input id="new_feeling_3" class="form-control" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
-        </div>
+            <input id="new_feeling_3" class="form-control" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
+          </div>
+        </p>
 
         <p><strong>Perfect for 🗓️</strong></p>
 
         <p>
-          <select name="query_occasion_id_1" id="occasion_id_1">
-            <option value="">Choose an occasion</option>
-            <% @list_of_occasions.each do |an_occasion| %>
-              <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-            <% end %>
-          </select>
+          <div class="d-flex align-items-center gap-2">
+            <select name="query_occasion_id_1" id="occasion_id_1" class="form-select">
+              <option value="">Choose an occasion</option>
+              <% @list_of_occasions.each do |an_occasion| %>
+                <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
+              <% end %>
+            </select>
 
-          or
+            <span> or</span>
 
-          <input id="new_occasion_1" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
+            <input id="new_occasion_1" class="form-control" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
+          </div>
         </p>
 
         <p>
@@ -104,23 +103,32 @@
 
         <p><strong>In the 🌤️</strong></p>
 
-        <p>
-          <label for="winter_box">Winter</label>
-          <input id="winter_box" type="checkbox" name="query_season_winter" value="winter">
+        <fieldset>
 
-          <label for="spring_box">Spring</label>
-          <input id="spring_box" type="checkbox" name="query_season_spring" value="spring">
+          <legend class="mt-4">Season</legend>
+          <div class="d-flex flex-wrap justify-content-around w-100"r gap-3">
+            <div class="form-check form-switch">
+              <input name="query_season_winter" class="form-check-input" type="checkbox" id="winter_box" value="winter">
+              <label class="form-check-label" for="winter_box">Winter</label>
+            </div>
 
-          <label for="summer_box">Summer</label>
-          <input id="summer_box" type="checkbox" name="query_season_summer" value="summer">
+            <div class="form-check form-switch">
+              <input id="spring_box" class="form-check-input" type="checkbox" name="query_season_spring" value="spring">
+              <label class="form-check-label" for="spring_box">Spring</label>
+            </div>
 
-          <label for="fall_box">Fall</label>
-          <input id="fall_box" type="checkbox" name="query_season_fall" value="fall">
-        </p>
-        <p>
-          <label for="headline_box">Note headline</label>
-          <input id="headline_box" type="text" name="query_note_headline" placeholder="Blue heels only">
-        </p>
+            <div class="form-check form-switch">
+              <input class="form-check-input" id="summer_box" type="checkbox" name="query_season_summer" value="summer">
+              <label class="form-check-label" for="summer_box">Summer</label>
+            </div>
+
+            <div class="form-check form-switch">
+              <input class="form-check-input" id="fall_box" type="checkbox" name="query_season_fall" value="fall">
+              <label class="form-check-label" for="fall_box">Fall</label>
+            </div>
+          </div>
+
+        </fieldset>
 
         <p>
           <label for="details_box">Note to self</label>
