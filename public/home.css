@@ -47,12 +47,25 @@
   object-fit: cover;
 }
 
+.about-hero {
+  text-align: center;
+  padding: 80px 20px;
+}
 
-body {
+/* body {
   background-color: lavender;
   background: linear-gradient(135deg, lavender,#f8d7e8, lemonchiffon, pink, whitesmoke)
 
+} */
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-image: linear-gradient(135deg, lavender, pink, whitesmoke);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
 .site-nav {
   background-color: #f8d7e8 !important;
 }
