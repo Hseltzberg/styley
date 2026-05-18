@@ -2,132 +2,153 @@
   <form action="/insert_outfit" method="post">
     <fieldset>
       <legend>New Fit</legend>
-      <div style="max-width: 400px;">
-        <label for="photo_box" class="form-label mt-4">Outfit photo</label>
-        <input class="form-control" type="text" id="photo_box" placeholder="insert photo url" name="query_outfit_photo">
-      </div>
+      <!--<div style="max-width: 400px;">-->
+      <div class = "form-inner">
+        <div class = "photo-field-wrap">
+          <label for="photo_box" class="form-label mt-4">Outfit photo</label>
+          <input class="form-control" type="text" id="photo_box" placeholder="insert photo url" name="query_outfit_photo">
+        </div>
 
-      <!--<p>
+        <!--<p>
   <label for="photo_box">📸 Outfit photo URL</label>
   <input id="photo_box" type="text" name="query_outfit_photo" placeholder="Paste image URL here">
 </p>
 -->
-      <p><h2>When I wear this...</h2></p>
-      <p><strong>I feel ✨</strong></p>
+        <p>
+          <h2>When I wear this...</h2>
+        </p>
+        <p><strong>I feel ✨</strong></p>
 
-      <p>
-        <select name="query_feeling_id_1" id="feeling_id_1">
-          <option value="">Choose a feeling</option>
-          <% @list_of_feelings.each do |a_feeling| %>
-            <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
-          <% end %>
-        </select>
+        <!--<p>
+          <select name="query_feeling_id_1" id="feeling_id_1">
+            <option value="">Choose a feeling</option>
+            <%# @list_of_feelings.each do |a_feeling| %>-->
+        <!--              <option value="<%#= a_feeling.id %>"><%#= a_feeling.name %></option>-->
+        <%# end %>
+        <!--          </select>
 
-        or
+          or
 
-        <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="Create a new feeling">
-      </p>
+          <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="Create a new feeling">
+        </p>-->
 
-      <p>
-        <select name="query_feeling_id_2" id="feeling_id_2">
-          <option value="">Choose a feeling</option>
-          <% @list_of_feelings.each do |a_feeling| %>
-            <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
-          <% end %>
-        </select>
+        <div class="d-flex align-items-center gap-2">
+          <select name="query_feeling_id_1" id="feeling_id_1" class="form-select">
+            <option value="">Choose a feeling</option>
+            <% @list_of_feelings.each do |a_feeling| %>
+              <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
+            <% end %>
+          </select>
 
-        or
+          <span>or</span>
 
-        <input id="new_feeling_2" type="text" name="query_new_feeling_2" placeholder="Create a new feeling">
-      </p>
+          <input id="new_feeling_1" class="form-control" type="text" name="query_new_feeling_1" placeholder="Create a new feeling">
+        </div>
+        <p></p>
 
-      <p>
-        <select name="query_feeling_id_3" id="feeling_id_3">
-          <option value="">Choose a feeling</option>
-          <% @list_of_feelings.each do |a_feeling| %>
-            <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
-          <% end %>
-        </select>
+        <div class="d-flex align-items-center gap-2">
+          <select name="query_feeling_id_2" id="feeling_id_2" class="form-select">
+            <option value="">Choose a feeling</option>
+            <% @list_of_feelings.each do |a_feeling| %>
+              <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
+            <% end %>
+          </select>
 
-        or
+          <span>or</span>
 
-        <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
-      </p>
+          <input id="new_feeling_2" class ="form-control" type="text" name="query_new_feeling_2" placeholder="Create a new feeling">
+        </div>
 
-      <p><strong>Perfect for 🗓️</strong></p>
+        <p>
+          <select name="query_feeling_id_3" id="feeling_id_3">
+            <option value="">Choose a feeling</option>
+            <% @list_of_feelings.each do |a_feeling| %>
+              <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
+            <% end %>
+          </select>
 
-      <p>
-        <select name="query_occasion_id_1" id="occasion_id_1">
-          <option value="">Choose an occasion</option>
-          <% @list_of_occasions.each do |an_occasion| %>
-            <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-          <% end %>
-        </select>
+          or
 
-        or
+          <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
+        </p>
 
-        <input id="new_occasion_1" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
-      </p>
+        <p><strong>Perfect for 🗓️</strong></p>
 
-      <p>
-        <select name="query_occasion_id_2" id="occasion_id_2">
-          <option value="">Choose an occasion</option>
-          <% @list_of_occasions.each do |an_occasion| %>
-            <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-          <% end %>
-        </select>
+        <p>
+          <select name="query_occasion_id_1" id="occasion_id_1">
+            <option value="">Choose an occasion</option>
+            <% @list_of_occasions.each do |an_occasion| %>
+              <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
+            <% end %>
+          </select>
 
-        or
+          or
 
-        <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
-      </p>
+          <input id="new_occasion_1" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
+        </p>
 
-      <p>
-        <select name="query_occasion_id_3" id="occasion_id_3">
-          <option value="">Choose an occasion</option>
-          <% @list_of_occasions.each do |an_occasion| %>
-            <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-          <% end %>
-        </select>
+        <p>
+          <select name="query_occasion_id_2" id="occasion_id_2">
+            <option value="">Choose an occasion</option>
+            <% @list_of_occasions.each do |an_occasion| %>
+              <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
+            <% end %>
+          </select>
 
-        or
+          or
 
-        <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
-      </p>
+          <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
+        </p>
 
-      <p><strong>In the 🌤️</strong></p>
+        <p>
+          <select name="query_occasion_id_3" id="occasion_id_3">
+            <option value="">Choose an occasion</option>
+            <% @list_of_occasions.each do |an_occasion| %>
+              <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
+            <% end %>
+          </select>
 
-      <p>
-        <label for="winter_box">Winter</label>
-        <input id="winter_box" type="checkbox" name="query_season_winter" value="winter">
+          or
 
-        <label for="spring_box">Spring</label>
-        <input id="spring_box" type="checkbox" name="query_season_spring" value="spring">
+          <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
+        </p>
 
-        <label for="summer_box">Summer</label>
-        <input id="summer_box" type="checkbox" name="query_season_summer" value="summer">
+        <p><strong>In the 🌤️</strong></p>
 
-        <label for="fall_box">Fall</label>
-        <input id="fall_box" type="checkbox" name="query_season_fall" value="fall">
-      </p>
-      <p>
-        <label for="headline_box">Note headline</label>
-        <input id="headline_box" type="text" name="query_note_headline" placeholder="Blue heels only">
-      </p>
+        <p>
+          <label for="winter_box">Winter</label>
+          <input id="winter_box" type="checkbox" name="query_season_winter" value="winter">
 
-      <p>
-        <label for="details_box">Note to self</label>
-        <textarea id="details_box" name="query_note_details" placeholder="Looks best with the blue heels, but not great for walking all day."></textarea>
-      </p>
+          <label for="spring_box">Spring</label>
+          <input id="spring_box" type="checkbox" name="query_season_spring" value="spring">
 
-      <p>Who can see this outfit?</p>
+          <label for="summer_box">Summer</label>
+          <input id="summer_box" type="checkbox" name="query_season_summer" value="summer">
 
-      <label for="public_choice">Styley community</label>
-      <input id="public_choice" type="radio" name="query_is_public" value="true">
+          <label for="fall_box">Fall</label>
+          <input id="fall_box" type="checkbox" name="query_season_fall" value="fall">
+        </p>
+        <p>
+          <label for="headline_box">Note headline</label>
+          <input id="headline_box" type="text" name="query_note_headline" placeholder="Blue heels only">
+        </p>
 
-      <label for="private_choice">Just me</label>
-      <input id="private_choice" type="radio" name="query_is_public" value="false" checked>
-      <button>Create outfit</button>
+        <p>
+          <label for="details_box">Note to self</label>
+          <textarea id="details_box" name="query_note_details" placeholder="Looks best with the blue heels, but not great for walking all day."></textarea>
+        </p>
+
+        <p>Who can see this outfit?</p>
+
+        <p><label for="public_choice">Styley community</label>
+          <input id="public_choice" type="radio" name="query_is_public" value="true">
+
+          <label for="private_choice">Just me</label>
+          <input id="private_choice" type="radio" name="query_is_public" value="false" checked>
+        </p>
+
+        <button>Create outfit</button>
+      </div>
     </fieldset>
   </form>
 </div>

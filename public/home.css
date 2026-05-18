@@ -72,9 +72,6 @@ body {
   padding: 24px;
 }
 
-.photo-field-wrap {
-  max-width: 400px;
-}
 
 fieldset {
   padding: 24px;
@@ -82,12 +79,26 @@ fieldset {
   background-color: white;
   color: black;
 }
-legend {
-  text-align: center;
+legend,
+form-label mt-4,
+photo-field-wrap {
+text-align: center;
 }
 
 button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+fieldset p {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input,
+select,
+textarea {
+  max-width: 400px;
 }
