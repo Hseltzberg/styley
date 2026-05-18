@@ -87,29 +87,32 @@
           </p>
 
           <p>
-            <select name="query_occasion_id_2" id="occasion_id_2">
+            <div class="d-flex align-items-center gap-2">
+            <select name="query_occasion_id_2" id="occasion_id_2" class="form-select">
               <option value="">Choose an occasion</option>
               <% @list_of_occasions.each do |an_occasion| %>
                 <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
               <% end %>
             </select>
 
-            or
+            <span>or</span>
 
-            <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
+            <input id="new_occasion_2" class="form-control" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
+            </div>
           </p>
 
           <p>
-            <select name="query_occasion_id_3" id="occasion_id_3">
+            <div class="d-flex align-items-center gap-2">
+            <select name="query_occasion_id_3" id="occasion_id_3" class="form-select">
               <option value="">Choose an occasion</option>
               <% @list_of_occasions.each do |an_occasion| %>
                 <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
               <% end %>
             </select>
 
-            or
+            <span>or</span>
 
-            <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
+            <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion" class="form-control">
           </p>
 
         </fieldset>
