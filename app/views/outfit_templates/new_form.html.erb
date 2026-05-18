@@ -152,17 +152,25 @@
         <div>
 
           <fieldset>
-            <p>Who can see this outfit?</p>
+            <legend class="mt-4">Who can see this outfit?</legend>
 
-            <p><label for="public_choice">Styley community</label>
-              <input id="public_choice" type="radio" name="query_is_public" value="true">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="query_is_public" id="public_choice" value="true">
+              <label class="form-check-label" for="public_choice">
+                Styley community
+              </label>
+            </div>
 
-              <label for="private_choice">Just me</label>
-              <input id="private_choice" type="radio" name="query_is_public" value="false" checked>
-            </p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="query_is_public" id="private_choice" value="false" checked>
+              <label class="form-check-label" for="private_choice">
+                Just me
+              </label>
+            </div>
           </fieldset>
-      
-          <p><div class="d-grid gap-2"></p>
+
+          <p>
+            <div class="d-grid gap-2"></p>
             <button class="btn btn-lg btn-primary w-100" type="button">Create outfit</button>
           </div>
 
