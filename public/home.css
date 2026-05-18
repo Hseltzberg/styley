@@ -50,6 +50,8 @@
 
 body {
   background-color: lavender;
+  background: linear-gradient(135deg, lavender,#f8d7e8, lemonchiffon, pink, whitesmoke)
+
 }
 .site-nav {
   background-color: #f8d7e8 !important;
@@ -75,11 +77,12 @@ body {
 
 fieldset {
   padding: 24px;
-  border-radius: 16px;
-  border: 1px solid #f8d7e8;
-  background-color: whitesmoke;
+  /* border-radius: 16px;
+  border: 1px solid #f8d7e8; */
+  background-color: transparent
   color: black;
 }
+
 legend,
 form-label mt-4,
 photo-field-wrap {
@@ -114,12 +117,12 @@ input,
 .form-check-label
  {
   background-color: transparent;
-  border-color: hotpink;
-  color: hotpink;
+  border-color:  #982380; 
+  color:  #982380 ;
 }
 
 .form-control::placeholder {
-  color: hotpink;
+  color:  #982380; 
   opacity: 0.7;
 }
 

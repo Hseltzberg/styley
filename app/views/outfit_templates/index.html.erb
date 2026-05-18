@@ -24,19 +24,29 @@
     <% end %>
 
     <form action="/outfits" method="get">
-      <p>Season</p>
+      <span>Season</span>
 
-      <label for="fall_box">Fall</label>
-      <input id="fall_box" type="checkbox" name="query_season_fall" value="fall" <%= "checked" if @selected_season_names.include?("fall") %>>
+      <div class="d-flex gap-3">
+        <div class="form-check form-switch">
+          <input class="form-check-input" id="fall_box" type="checkbox" name="query_season_fall" value="fall" <%= "checked" if @selected_season_names.include?("fall") %>>
+          <label class="form-check-label" for="fall_box">Fall</label>
+        </div>
 
-      <label for="winter_box">Winter</label>
-      <input id="winter_box" type="checkbox" name="query_season_winter" value="winter" <%= "checked" if @selected_season_names.include?("winter") %>>
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="winter_box">Winter</label>
+          <input class="form-check-input" id="winter_box" type="checkbox" name="query_season_winter" value="winter" <%= "checked" if @selected_season_names.include?("winter") %>>
+        </div>
 
-      <label for="spring_box">Spring</label>
-      <input id="spring_box" type="checkbox" name="query_season_spring" value="spring" <%= "checked" if @selected_season_names.include?("spring") %>>
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="spring_box">Spring</label>
+          <input class="form-check-input" id="spring_box" type="checkbox" name="query_season_spring" value="spring" <%= "checked" if @selected_season_names.include?("spring") %>>
+        </div>
 
-      <label for="summer_box">Summer</label>
-      <input id="summer_box" type="checkbox" name="query_season_summer" value="summer" <%= "checked" if @selected_season_names.include?("summer") %>>
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="summer_box">Summer</label>
+          <input class="form-check-input" id="summer_box" type="checkbox" name="query_season_summer" value="summer" <%= "checked" if @selected_season_names.include?("summer") %>>
+        </div>
+      </div>
 
       <% if @selected_season_names.count > 0 %>
         <p>
