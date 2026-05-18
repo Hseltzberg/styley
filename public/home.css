@@ -64,3 +64,30 @@ body {
   color: #2b1027 !important;
   font-weight: 700;
 }
+
+.outfit-form-wrap {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 24px;
+}
+
+.photo-field-wrap {
+  max-width: 400px;
+}
+
+fieldset {
+  padding: 24px;
+  border-radius: 16px;
+  background-color: white;
+  color: black;
+}
+legend {
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
