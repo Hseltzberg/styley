@@ -76,7 +76,8 @@ body {
 fieldset {
   padding: 24px;
   border-radius: 16px;
-  background-color: white;
+  /* background-color: white; */
+  /* opacity: .75; */
   color: black;
 }
 legend,
@@ -101,4 +102,10 @@ input,
 select,
 textarea {
   max-width: 400px;
+}
+
+.form-select {
+  background-color: transparent;
+  border-color: hotpink;
+  color: hotpink;
 }

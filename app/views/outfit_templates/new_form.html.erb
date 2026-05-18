@@ -17,20 +17,8 @@
         <p>
           <h2>When I wear this...</h2>
         </p>
-        <p><strong>I feel ✨</strong></p>
-
-        <!--<p>
-          <select name="query_feeling_id_1" id="feeling_id_1">
-            <option value="">Choose a feeling</option>
-            <%# @list_of_feelings.each do |a_feeling| %>-->
-        <!--              <option value="<%#= a_feeling.id %>"><%#= a_feeling.name %></option>-->
-        <%# end %>
-        <!--          </select>
-
-          or
-
-          <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="Create a new feeling">
-        </p>-->
+        <strong>I feel ✨</strong>
+        <p></p>
 
         <div class="d-flex align-items-center gap-2">
           <select name="query_feeling_id_1" id="feeling_id_1" class="form-select">
@@ -58,19 +46,20 @@
 
           <input id="new_feeling_2" class ="form-control" type="text" name="query_new_feeling_2" placeholder="Create a new feeling">
         </div>
+        <p></p>
 
-        <p>
-          <select name="query_feeling_id_3" id="feeling_id_3">
+        <div class="d-flex align-items-center gap-2">
+          <select name="query_feeling_id_3" id="feeling_id_3" class="form-select">
             <option value="">Choose a feeling</option>
             <% @list_of_feelings.each do |a_feeling| %>
               <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
             <% end %>
           </select>
 
-          or
+          <span> or</span>
 
-          <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
-        </p>
+          <input id="new_feeling_3" class="form-control" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
+        </div>
 
         <p><strong>Perfect for 🗓️</strong></p>
 
