@@ -27,6 +27,11 @@
   height: auto;
   display: block;
 }
+
+
+.pin-headline {
+  color:rgb(102, 0, 255)
+}
 .pin-card.small .pin-image {
   height: 220px;
   object-fit: cover;
@@ -43,10 +48,19 @@
 }
 
 
-.navbar navbar-expand-lg bg-primary {
-  color:palevioletred;
+body {
+  background-color: lavender;
+}
+.site-nav {
+  background-color: #f8d7e8 !important;
 }
 
-body {
-  background-color: hotpink;
+.site-nav .navbar-brand,
+.site-nav .nav-link {
+  color: #4a2142 !important;
+}
+
+.site-nav .nav-link.active {
+  color: #2b1027 !important;
+  font-weight: 700;
 }
