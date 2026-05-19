@@ -32,7 +32,7 @@
   <% end %>
 
   <form action="/outfits" method="get">
-    <span>Season</span>
+    <span><strong>Season</strong></span>
 
     <div class="d-flex gap-3">
       <div class="form-check form-switch">
@@ -67,10 +67,10 @@
       </p>
     <% end %>
 
-    <p>Feelings</p>
+    <p><strong>Feelings</strong></p>
 
     <% @list_of_feelings.each do |a_feeling| %>
-      <label for="feeling_<%= a_feeling.id %>_box"><%= a_feeling.name %></label>
+      <label class="form-check-label" for="feeling_<%= a_feeling.id %>_box"><%= a_feeling.name %></label>
       <input id="feeling_<%= a_feeling.id %>_box" type="checkbox" name="query_feeling_<%= a_feeling.id %>" value="<%= a_feeling.name %>" <%= "checked" if @selected_feeling_names.include?(a_feeling.name) %>>
     <% end %>
 
@@ -85,29 +85,31 @@
       </p>
     <% end %>
 
-    <p>Occasions</p>
+<p><strong>Occasions</strong></p>
 
-    <% @list_of_occasions.each do |an_occasion| %>
-      <label for="occasion_<%= an_occasion.id %>_box"><%= an_occasion.name %></label>
-      <input id="occasion_<%= an_occasion.id %>_box" type="checkbox" name="query_occasion_<%= an_occasion.id %>" value="<%= an_occasion.name %>" <%= "checked" if @selected_occasion_names.include?(an_occasion.name) %>>
-    <% end %>
+<% @list_of_occasions.each do |an_occasion| %>
+  <label class="form-check-label" for="occasion_<%= an_occasion.id %>_box"><%= an_occasion.name %></label>
+  <input id="occasion_<%= an_occasion.id %>_box" type="checkbox" name="query_occasion_<%= an_occasion.id %>" value="<%= an_occasion.name %>" <%= "checked" if @selected_occasion_names.include?(an_occasion.name) %>>
+<% end %>
 
-    <% if @selected_occasion_names.count > 0 %>
-      <p>
-        Currently viewing occasion:
-        <%= @selected_occasion_names.join(", ") %>
-      </p>
-    <% else %>
-      <p>
-        Currently viewing occasion: all occasions
-      </p>
-    <% end %>
+<p></p>
 
-    <p>
-      <button type="submit" class="btn btn-outline-primary" name="query_mode" value="filter">Apply filters</button>
-      <button type="submit" class="btn btn-outline-primary" name="query_mode" value="surprise">Surprise me</button>
-    </p>
-  </form>
+<% if @selected_occasion_names.count > 0 %>
+  <p>
+    Currently viewing occasion:
+    <%= @selected_occasion_names.join(", ") %>
+  </p>
+<% else %>
+  <p>
+    Currently viewing occasion: all occasions
+  </p>
+<% end %>
+
+<p>
+  <button type="submit" class="btn btn-outline-primary" name="query_mode" value="filter">Apply filters</button>
+  <button type="submit" class="btn btn-outline-primary" name="query_mode" value="surprise">Surprise me</button>
+</p>
+</form>
 </div>
 <%# end %>
 
