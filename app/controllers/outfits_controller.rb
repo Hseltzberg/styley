@@ -42,13 +42,14 @@ class OutfitsController < ApplicationController
       end
     end
 
-    if @selected_feeling_names.count > 0
-      matching_feelings = Feeling.where({ :name => @selected_feeling_names })
-      selected_feeling_ids = matching_feelings.map do |a_feeling|
-        a_feeling.id
-      end
+    @selected_feeling_ids = params.fetch("feelings")
+    if @selected_feeling_ids.count > 0
+      # matching_feelings = Feeling.where({ :name => @selected_feeling_names })
+      # @selected_feeling_ids = matching_feelings.map do |a_feeling|
+      #   a_feeling.id
+      # end
 
-      matching_vibes = Vibe.where({ :feeling_id => selected_feeling_ids })
+      matching_vibes = Vibe.where({ :feeling_id => @selected_feeling_ids })
       selected_outfit_ids = matching_vibes.map do |a_vibe|
         a_vibe.outfit_id
       end

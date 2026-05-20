@@ -68,99 +68,111 @@
     <% end %>
 
     <p><strong>Feelings</strong></p>
+    <!---->
+    <%# @list_of_feelings.each do |a_feeling| %>
+      <!--      <label class="form-check-label" for="feeling_<%##= a_feeling.id %>_box"><%#= a_feeling.name %></label>
+      <input id="feeling_<%##= a_feeling.id %>_box" type="checkbox" name="query_feeling_<%#= a_feeling.id %>" value="<%#= a_feeling.name %>" <%#= "checked" if @selected_feeling_names.include?(a_feeling.name) %>>
+    <%# end %>-->
 
-    <% @list_of_feelings.each do |a_feeling| %>
-      <label class="form-check-label" for="feeling_<%= a_feeling.id %>_box"><%= a_feeling.name %></label>
-      <input id="feeling_<%= a_feeling.id %>_box" type="checkbox" name="query_feeling_<%= a_feeling.id %>" value="<%= a_feeling.name %>" <%= "checked" if @selected_feeling_names.include?(a_feeling.name) %>>
-    <% end %>
+      <select id="tom-select-it" class="js-example-basic-multiple d-block w-100" name="feelings[]" multiple="multiple">
+        <% @list_of_feelings.each do |a_feeling| %>
+          <option value="<%= a_feeling.id%>" <%= "selected" if params.fetch("feelings").include?(a_feeling.id.to_s) %>><%= a_feeling.name %></option>
+        <% end %>
+      </select>
 
-    <% if @selected_feeling_names.count > 0 %>
+      <script>
+        var settings = {};
+        new TomSelect('#tom-select-it',settings);
+      </script>
+
+      <% if @selected_feeling_ids.count > 0 %>
+        <p>
+          Currently viewing feelings:
+          <%#= @selected_feeling_names.join(", ") %>
+          <%= Feeling.where(id: @selected_feeling_ids).pluck(:name).join(", ") %>
+        </p>
+      <% else %>
+        <p>
+          Currently viewing feelings: all feelings
+        </p>
+      <% end %>
+
+      <p><strong>Occasions</strong></p>
+
+      <% @list_of_occasions.each do |an_occasion| %>
+        <label class="form-check-label" for="occasion_<%= an_occasion.id %>_box"><%= an_occasion.name %></label>
+        <input id="occasion_<%= an_occasion.id %>_box" type="checkbox" name="query_occasion_<%= an_occasion.id %>" value="<%= an_occasion.name %>" <%= "checked" if @selected_occasion_names.include?(an_occasion.name) %>>
+      <% end %>
+
+      <p></p>
+
+      <% if @selected_occasion_names.count > 0 %>
+        <p>
+          Currently viewing occasion:
+          <%= @selected_occasion_names.join(", ") %>
+        </p>
+      <% else %>
+        <p>
+          Currently viewing occasion: all occasions
+        </p>
+      <% end %>
+
       <p>
-        Currently viewing feelings:
-        <%= @selected_feeling_names.join(", ") %>
+        <button type="submit" class="btn btn-outline-primary" name="query_mode" value="filter">Apply filters</button>
+        <button type="submit" class="btn btn-outline-primary" name="query_mode" value="surprise">Surprise me</button>
       </p>
-    <% else %>
-      <p>
-        Currently viewing feelings: all feelings
-      </p>
-    <% end %>
-
-<p><strong>Occasions</strong></p>
-
-<% @list_of_occasions.each do |an_occasion| %>
-  <label class="form-check-label" for="occasion_<%= an_occasion.id %>_box"><%= an_occasion.name %></label>
-  <input id="occasion_<%= an_occasion.id %>_box" type="checkbox" name="query_occasion_<%= an_occasion.id %>" value="<%= an_occasion.name %>" <%= "checked" if @selected_occasion_names.include?(an_occasion.name) %>>
-<% end %>
-
-<p></p>
-
-<% if @selected_occasion_names.count > 0 %>
-  <p>
-    Currently viewing occasion:
-    <%= @selected_occasion_names.join(", ") %>
-  </p>
-<% else %>
-  <p>
-    Currently viewing occasion: all occasions
-  </p>
-<% end %>
-
-<p>
-  <button type="submit" class="btn btn-outline-primary" name="query_mode" value="filter">Apply filters</button>
-  <button type="submit" class="btn btn-outline-primary" name="query_mode" value="surprise">Surprise me</button>
-</p>
-</form>
-</div>
-<%# end %>
-
-<% if @list_of_outfits.count == 0 %>
-  <div class="empty_state_box">
-    <p><strong>No fits matched this vibe yet.</strong></p>
-    <p>Try changing a filter, or add a new outfit for future-you.</p>
-    <p>
-      <a href="/outfits">Clear all filters</a>
-    </p>
-    <p>
-      <a href="/outfits/new">Add a new outfit</a>
-    </p>
+    </form>
   </div>
-<% else %>
-  <% if @selected_season_names.count > 0 || @selected_feeling_names.count > 0 || @selected_occasion_names.count > 0 %>
-    <div class="active_filters_box">
-      <p><strong>Your current vibe:</strong></p>
+  <%# end %>
 
-      <% @selected_season_names.each do |a_season_name| %>
-        <span class="filter_chip"><%= a_season_name %></span>
-      <% end %>
-
-      <% @selected_feeling_names.each do |a_feeling_name| %>
-        <span class="filter_chip"><%= a_feeling_name %></span>
-      <% end %>
-
-      <% @selected_occasion_names.each do |an_occasion_name| %>
-        <span class="filter_chip"><%= an_occasion_name %></span>
-      <% end %>
+  <% if @list_of_outfits.count == 0 %>
+    <div class="empty_state_box">
+      <p><strong>No fits matched this vibe yet.</strong></p>
+      <p>Try changing a filter, or add a new outfit for future-you.</p>
       <p>
-        <a href="/outfits">Clear filters</a>
+        <a href="/outfits">Clear all filters</a>
+      </p>
+      <p>
+        <a href="/outfits/new">Add a new outfit</a>
       </p>
     </div>
-  <% end %>
+  <% else %>
+    <% if @selected_season_names.count > 0 || @selected_feeling_names.count > 0 || @selected_occasion_names.count > 0 %>
+      <div class="active_filters_box">
+        <p><strong>Your current vibe:</strong></p>
 
-  <div class="pin-board">
-    <% @list_of_outfits.each do |an_outfit| %>
-      <% matching_users = User.where({ :id => an_outfit.user_id }) %>
-      <% the_user = matching_users.at(0) %>
+        <% @selected_season_names.each do |a_season_name| %>
+          <span class="filter_chip"><%= a_season_name %></span>
+        <% end %>
 
-      <div class="pin-card <%= an_outfit.card_size %>">
-        <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
+        <% @selected_feeling_names.each do |a_feeling_name| %>
+          <span class="filter_chip"><%= a_feeling_name %></span>
+        <% end %>
 
-        <div class="pin-content">
-          <h3 class="pin-headline"><%= an_outfit.note_headline %></h3>
-          <p class="pin-headline">
-            <a href="/outfits/<%= an_outfit.id %>">view outfit</a>
-          </p>
-        </div>
+        <% @selected_occasion_names.each do |an_occasion_name| %>
+          <span class="filter_chip"><%= an_occasion_name %></span>
+        <% end %>
+        <p>
+          <a href="/outfits">Clear filters</a>
+        </p>
       </div>
     <% end %>
 
-  <% end %>
+    <div class="pin-board">
+      <% @list_of_outfits.each do |an_outfit| %>
+        <% matching_users = User.where({ :id => an_outfit.user_id }) %>
+        <% the_user = matching_users.at(0) %>
+
+        <div class="pin-card <%= an_outfit.card_size %>">
+          <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
+
+          <div class="pin-content">
+            <h3 class="pin-headline"><%= an_outfit.note_headline %></h3>
+            <p class="pin-headline">
+              <a href="/outfits/<%= an_outfit.id %>">view outfit</a>
+            </p>
+          </div>
+        </div>
+      <% end %>
+
+    <% end %>
