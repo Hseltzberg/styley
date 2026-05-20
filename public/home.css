@@ -3,29 +3,29 @@
    Bootstrap color overrides
    ============================================= */
 :root {
-  --bs-primary: #3d5a47;
-  --bs-primary-rgb: 61, 90, 71;
-  --bs-link-color: #3d5a47;
-  --bs-link-hover-color: #1e2d26;
+  --bs-primary: #8b1a4a;
+  --bs-primary-rgb: 139, 26, 74;
+  --bs-link-color: #8b1a4a;
+  --bs-link-hover-color: #3d0a28;
 }
 
 .btn-primary {
-  --bs-btn-bg: #3d5a47;
-  --bs-btn-border-color: #3d5a47;
-  --bs-btn-hover-bg: #1e2d26;
-  --bs-btn-hover-border-color: #1e2d26;
-  --bs-btn-active-bg: #1e2d26;
-  --bs-btn-active-border-color: #1e2d26;
-  --bs-btn-focus-shadow-rgb: 61, 90, 71;
+  --bs-btn-bg: #8b1a4a;
+  --bs-btn-border-color: #8b1a4a;
+  --bs-btn-hover-bg: #3d0a28;
+  --bs-btn-hover-border-color: #3d0a28;
+  --bs-btn-active-bg: #3d0a28;
+  --bs-btn-active-border-color: #3d0a28;
+  --bs-btn-focus-shadow-rgb: 139, 26, 74;
 }
 
 .btn-outline-primary {
-  --bs-btn-color: #3d5a47;
-  --bs-btn-border-color: #3d5a47;
-  --bs-btn-hover-bg: #3d5a47;
-  --bs-btn-hover-border-color: #3d5a47;
-  --bs-btn-active-bg: #1e2d26;
-  --bs-btn-active-border-color: #1e2d26;
+  --bs-btn-color: #8b1a4a;
+  --bs-btn-border-color: #8b1a4a;
+  --bs-btn-hover-bg: #8b1a4a;
+  --bs-btn-hover-border-color: #8b1a4a;
+  --bs-btn-active-bg: #3d0a28;
+  --bs-btn-active-border-color: #3d0a28;
 }
 
 /* =============================================
@@ -35,7 +35,7 @@ body {
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   margin: 0;
-  background-color: #faf6f3;
+  background-color: #fdf9f5;
   background-image: none;
 }
 
@@ -47,22 +47,22 @@ h1, h2, h3, h4, h5, h6 {
    Navigation
    ============================================= */
 .site-nav {
-  background-color: #e8e3dc !important;
+  background-color: #ede7df !important;
 }
 
 .site-nav .navbar-brand {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-size: 1.5rem;
-  color: #3d5a47 !important;
+  color: #8b1a4a !important;
 }
 
 .site-nav .nav-link {
-  color: #3d5a47 !important;
+  color: #8b1a4a !important;
 }
 
 .site-nav .nav-link.active {
-  color: #1e2d26 !important;
+  color: #3d0a28 !important;
   font-weight: 700;
 }
 
@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pin-user {
-  color: #3d5a47;
+  color: #8b1a4a;
 }
 
 .pin-card {
@@ -89,13 +89,13 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   break-inside: avoid;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(61, 90, 71, 0.15);
+  box-shadow: 0 2px 8px rgba(139, 26, 74, 0.15);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .pin-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(61, 90, 71, 0.25);
+  box-shadow: 0 12px 28px rgba(139, 26, 74, 0.25);
 }
 
 .pin-image {
@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .pin-headline {
-  color: #3d5a47;
+  color: #8b1a4a;
 }
 
 .pin-card.small .pin-image {
@@ -168,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #3d5a47;
+  background-color: #8b1a4a;
   color: white;
   display: flex;
   align-items: center;
@@ -176,14 +176,14 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1.6rem;
   line-height: 1;
   text-decoration: none;
-  box-shadow: 0 4px 16px rgba(61, 90, 71, 0.45);
+  box-shadow: 0 4px 16px rgba(139, 26, 74, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   z-index: 1000;
 }
 
 .fab:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 22px rgba(61, 90, 71, 0.55);
+  box-shadow: 0 6px 22px rgba(139, 26, 74, 0.55);
   color: white;
 }
 
@@ -194,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: linear-gradient(135deg, #e8e3dc, #f5eeea, #faf6f3);
+  background: linear-gradient(135deg, #ede7df, #f5eee8, #fdf9f5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -218,7 +218,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: #3d5a47;
+  background-color: #8b1a4a;
   animation: inspo-bounce 1.2s ease-in-out infinite;
 }
 
@@ -233,7 +233,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .inspo-loading-message {
   font-size: 1.2rem;
-  color: #3d5a47;
+  color: #8b1a4a;
   font-style: italic;
   letter-spacing: 0.02em;
   transition: opacity 0.3s ease;
@@ -255,19 +255,19 @@ h1, h2, h3, h4, h5, h6 {
 .inspiration-title {
   font-size: 2rem;
   font-weight: 700;
-  color: #1e2d26;
+  color: #3d0a28;
   margin-bottom: 6px;
 }
 
 .inspiration-style-echo {
-  color: #3d5a47;
+  color: #8b1a4a;
   font-size: 0.9rem;
   opacity: 0.8;
 }
 
 .inspiration-form {
   background: rgba(255, 255, 255, 0.5);
-  border: 1px solid #e0d5cc;
+  border: 1px solid #e8ddd8;
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 36px;
@@ -305,13 +305,13 @@ h1, h2, h3, h4, h5, h6 {
   background: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(61, 90, 71, 0.1);
+  box-shadow: 0 2px 12px rgba(139, 26, 74, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .inspo-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(61, 90, 71, 0.18);
+  box-shadow: 0 8px 24px rgba(139, 26, 74, 0.18);
 }
 
 .inspo-palette-bar {
@@ -331,7 +331,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #c4897a;
+  color: #c9956a;
   opacity: 0.85;
   margin-bottom: 6px;
   font-style: italic;
@@ -340,7 +340,7 @@ h1, h2, h3, h4, h5, h6 {
 .inspo-concept-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1e2d26;
+  color: #3d0a28;
   margin-bottom: 10px;
   line-height: 1.2;
 }
@@ -363,9 +363,9 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
   padding: 4px 10px;
   border-radius: 999px;
-  background-color: #f5eeea;
-  border: 1px solid #e0d5cc;
-  color: #3d5a47;
+  background-color: #f5eee8;
+  border: 1px solid #e8ddd8;
+  color: #8b1a4a;
   font-size: 0.78rem;
 }
 
@@ -373,13 +373,13 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.8rem;
   color: #777;
   font-style: italic;
-  border-top: 1px solid #e0d5cc;
+  border-top: 1px solid #e8ddd8;
   padding-top: 12px;
   margin-bottom: 0;
 }
 
 .inspo-pin-btn {
-  background-color: #3d5a47;
+  background-color: #8b1a4a;
   color: white;
   border: none;
   border-radius: 999px;
@@ -390,7 +390,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .inspo-pin-btn:hover {
-  background-color: #1e2d26;
+  background-color: #3d0a28;
   color: white;
 }
 
@@ -406,13 +406,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .inspo-unpin-btn:hover {
-  color: #c4897a;
-  border-color: #c4897a;
+  color: #c9956a;
+  border-color: #c9956a;
 }
 
 .inspo-empty {
-  background: #f5eeea;
-  border: 1px dashed #e0d5cc;
+  background: #f5eee8;
+  border: 1px dashed #e8ddd8;
   border-radius: 16px;
   padding: 24px;
   text-align: center;
@@ -470,21 +470,21 @@ input,
 .form-check-input,
 .form-check-label {
   background-color: transparent;
-  border-color: #3d5a47;
-  color: #3d5a47;
+  border-color: #8b1a4a;
+  color: #8b1a4a;
 }
 
 .form-control::placeholder {
-  color: #3d5a47;
+  color: #8b1a4a;
   opacity: 0.7;
 }
 
 .form-check-input:checked {
-  background-color: #c4897a;
-  border-color: #c4897a;
+  background-color: #c9956a;
+  border-color: #c9956a;
 }
 
 .form-check-input:focus {
-  border-color: #c4897a;
-  box-shadow: 0 0 0 0.25rem rgba(196, 137, 122, 0.25);
+  border-color: #c9956a;
+  box-shadow: 0 0 0 0.25rem rgba(201, 149, 106, 0.25);
 }

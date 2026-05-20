@@ -3,23 +3,23 @@
 <div style="max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px;">
 
   <div style="margin-bottom: 36px;">
-    <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #1e2d26; margin-bottom: 4px;">
+    <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #3d0a28; margin-bottom: 4px;">
       Hey, <em><%= current_user.username.presence || current_user.email.split("@").first %></em>
     </h1>
-    <p style="color: #3d5a47; font-size: 1rem; opacity: 0.8;">Let's figure out what you're wearing.</p>
+    <p style="color: #8b1a4a; font-size: 1rem; opacity: 0.8;">Let's figure out what you're wearing.</p>
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 48px;">
     <a href="/outfits" style="text-decoration: none;">
-      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,90,71,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(61,90,71,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(61,90,71,0.1)'">
+      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(139,26,74,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(139,26,74,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(139,26,74,0.1)'">
         <div style="font-size: 2rem; margin-bottom: 10px;">👗</div>
-        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1e2d26; font-weight: 600;">My Closet</div>
-        <div style="color: #3d5a47; font-size: 0.85rem; margin-top: 4px;"><%= current_user.outfit_uploads.count %> outfits saved</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #3d0a28; font-weight: 600;">My Closet</div>
+        <div style="color: #8b1a4a; font-size: 0.85rem; margin-top: 4px;"><%= current_user.outfit_uploads.count %> outfits saved</div>
       </div>
     </a>
 
     <a href="/outfits/new" style="text-decoration: none;">
-      <div style="background: #3d5a47; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,90,71,0.2); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
+      <div style="background: #8b1a4a; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(139,26,74,0.2); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform=''">
         <div style="font-size: 2rem; margin-bottom: 10px;">✚</div>
         <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: white; font-weight: 600;">Add Outfit</div>
         <div style="color: rgba(255,255,255,0.75); font-size: 0.85rem; margin-top: 4px;">Log a new look</div>
@@ -27,26 +27,26 @@
     </a>
 
     <a href="/inspiration" style="text-decoration: none;">
-      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,90,71,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(61,90,71,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(61,90,71,0.1)'">
+      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(139,26,74,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(139,26,74,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(139,26,74,0.1)'">
         <div style="font-size: 2rem; margin-bottom: 10px;">✨</div>
-        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1e2d26; font-weight: 600;">Get Inspired</div>
-        <div style="color: #3d5a47; font-size: 0.85rem; margin-top: 4px;">AI editorial picks</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #3d0a28; font-weight: 600;">Get Inspired</div>
+        <div style="color: #8b1a4a; font-size: 0.85rem; margin-top: 4px;">AI editorial picks</div>
       </div>
     </a>
 
     <a href="/mood-board" style="text-decoration: none;">
-      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,90,71,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(61,90,71,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(61,90,71,0.1)'">
+      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(139,26,74,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(139,26,74,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(139,26,74,0.1)'">
         <div style="font-size: 2rem; margin-bottom: 10px;">📌</div>
-        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #1e2d26; font-weight: 600;">Mood Board</div>
-        <div style="color: #3d5a47; font-size: 0.85rem; margin-top: 4px;"><%= current_user.inspiration_pins.count %> pinned looks</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #3d0a28; font-weight: 600;">Mood Board</div>
+        <div style="color: #8b1a4a; font-size: 0.85rem; margin-top: 4px;"><%= current_user.inspiration_pins.count %> pinned looks</div>
       </div>
     </a>
   </div>
 
   <% if @list_of_public_outfits.any? %>
     <div style="margin-bottom: 16px; display: flex; align-items: baseline; gap: 12px;">
-      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #1e2d26; margin: 0;">Community Closet</h2>
-      <span style="color: #3d5a47; font-size: 0.85rem; opacity: 0.7;">What the Styley community is wearing</span>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #3d0a28; margin: 0;">Community Closet</h2>
+      <span style="color: #8b1a4a; font-size: 0.85rem; opacity: 0.7;">What the Styley community is wearing</span>
     </div>
 
     <div class="pin-board">
@@ -70,10 +70,10 @@
 <% else %>
 
 <div style="max-width: 700px; margin: 80px auto; padding: 0 20px; text-align: center;">
-  <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #1e2d26; font-style: italic; margin-bottom: 16px;">
+  <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #3d0a28; font-style: italic; margin-bottom: 16px;">
     Dress with intention.
   </h1>
-  <p style="font-size: 1.15rem; color: #3d5a47; line-height: 1.7; max-width: 520px; margin: 0 auto 36px;">
+  <p style="font-size: 1.15rem; color: #8b1a4a; line-height: 1.7; max-width: 520px; margin: 0 auto 36px;">
     Styley helps you curate your closet mindfully — log outfits, find your style, and get editorial-quality inspiration matched to your mood.
   </p>
   <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
@@ -82,7 +82,7 @@
   </div>
 
   <% if @list_of_public_outfits.any? %>
-    <p style="color: #3d5a47; font-size: 0.85rem; margin-top: 48px; opacity: 0.6;">Community looks</p>
+    <p style="color: #8b1a4a; font-size: 0.85rem; margin-top: 48px; opacity: 0.6;">Community looks</p>
     <div class="pin-board" style="margin-top: 12px;">
       <% @list_of_public_outfits.first(6).each do |an_outfit| %>
         <div class="pin-card <%= an_outfit.card_size %>">
