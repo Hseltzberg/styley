@@ -27,6 +27,17 @@
         </div>
 
         <div class="mb-3">
+          <label for="style_description_field" class="form-label">Your style influences</label>
+          <small class="d-block text-muted mb-1">Who or what inspires you? We'll use this to find inspiration that matches your taste.</small>
+          <%= f.text_area(:style_description, {
+            :class => "form-control",
+            :id => "style_description_field",
+            :rows => 3,
+            :placeholder => "e.g. Diane Keaton in the 70s, French minimalism, thrift store finds, old money but make it fun"
+          }) %>
+        </div>
+
+        <div class="mb-3">
           <label for="current_password_field" class="form-label">Current password</label>
           <%= f.password_field(:current_password, { :autocomplete => "current-password", :class => "form-control", :id => "current_password_field" }) %>
         </div>

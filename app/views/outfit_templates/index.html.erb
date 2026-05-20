@@ -118,14 +118,11 @@
         <% matching_users = User.where({ :id => an_outfit.user_id }) %>
         <% the_user = matching_users.at(0) %>
 
-        <div class="pin-card <%= an_outfit.card_size %>">
+        <div class="pin-card <%= an_outfit.card_size %>" onclick="location.href='/outfits/<%= an_outfit.id %>'">
           <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
-
-          <div class="pin-content">
+          <div class="pin-overlay">
             <h3 class="pin-headline"><%= an_outfit.note_headline %></h3>
-            <p class="pin-headline">
-              <a href="/outfits/<%= an_outfit.id %>">view outfit</a>
-            </p>
+            <a class="pin-view-link" href="/outfits/<%= an_outfit.id %>">view outfit</a>
           </div>
         </div>
       <% end %>

@@ -3,6 +3,7 @@
 # Table name: outfits
 #
 #  id            :bigint           not null, primary key
+#  card_size     :string           default("medium"), not null
 #  is_public     :boolean          default(FALSE), not null
 #  note_details  :text
 #  note_headline :string

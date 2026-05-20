@@ -31,6 +31,17 @@
           <%= f.password_field(:password_confirmation, { :autocomplete => "new-password", :class => "form-control", :id => "password_confirmation_field" }) %>
         </div>
 
+        <div class="mb-3">
+          <label for="style_description_field" class="form-label">What's your style all about?</label>
+          <small class="d-block text-muted mb-1">Who or what inspires you? Think people, eras, aesthetics, vibes. This helps us find inspiration that actually matches your taste.</small>
+          <%= f.text_area(:style_description, {
+            :class => "form-control",
+            :id => "style_description_field",
+            :rows => 3,
+            :placeholder => "e.g. Diane Keaton in the 70s, French minimalism, thrift store finds, old money but make it fun"
+          }) %>
+        </div>
+
         <div class="d-grid">
           <%= f.submit("Sign up", { :class => "btn btn-dark" }) %>
         </div>

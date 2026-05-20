@@ -93,6 +93,10 @@
 
   <%= yield %>
 
+  <% if current_user.present? %>
+    <a href="/outfits/new" class="fab" title="New outfit">+</a>
+  <% end %>
+
   <script>
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();

@@ -10,13 +10,22 @@ task({ sample_data: :environment }) do
   Season.destroy_all
   Occasion.destroy_all
 
-  emails = ["alice@example.com", "bob@example.com", "carol@example.com"]
+  style_descriptions = [
+    "Diane Keaton in the 70s meets French minimalism — neutral palettes, great tailoring, a little eccentric",
+    "Coastal grandmother vibes, linen everything, vintage finds, effortless and unfussy",
+    "Dark academia with a soft twist — lots of plaid, corduroy, and books as accessories",
+  ]
 
-  emails.each do |an_email|
+  [
+    { email: "alice@example.com", style: style_descriptions[0] },
+    { email: "bob@example.com",   style: style_descriptions[1] },
+    { email: "carol@example.com", style: style_descriptions[2] },
+  ].each do |attrs|
     user = User.new
-    user.email = an_email
+    user.email = attrs[:email]
     user.username = Faker::Internet.unique.username
     user.password = "appdev"
+    user.style_description = attrs[:style]
     user.save
   end
 
@@ -52,6 +61,7 @@ task({ sample_data: :environment }) do
     outfit.note_headline = note_headlines.sample
     outfit.note_details = note_details_list.sample
     outfit.is_public = [true, false].sample
+    outfit.card_size = ["small", "medium", "tall"].sample
     outfit.save
   end
 

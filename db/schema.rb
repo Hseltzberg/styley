@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_16_183313) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_20_181644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -41,6 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_16_183313) do
     t.string "note_headline"
     t.text "note_details"
     t.boolean "is_public", default: false, null: false
+    t.string "card_size", default: "medium", null: false
   end
 
   create_table "places", force: :cascade do |t|
@@ -208,6 +209,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_16_183313) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "username"
+    t.text "style_description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
