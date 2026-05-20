@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_20_181644) do
+ActiveRecord::Schema[8.0].define(version: 2026_05_20_195422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "feelings", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "inspiration_pins", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.string "editorial_reference"
+    t.text "description"
+    t.string "why_timeless"
+    t.string "color_palette"
+    t.string "key_pieces"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

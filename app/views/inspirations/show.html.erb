@@ -1,3 +1,12 @@
+<div id="inspo-loading" class="inspo-loading-overlay" style="display:none;">
+  <div class="inspo-loading-inner">
+    <div class="inspo-loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+    <p id="inspo-loading-message" class="inspo-loading-message">Consulting the archives...</p>
+  </div>
+</div>
+
 <div class="inspiration-page">
 
   <div class="inspiration-header">
@@ -51,6 +60,42 @@
     </div>
   </form>
 
+  <script>
+    (function() {
+      var messages = [
+        "Consulting the archives...",
+        "Ignoring the micro-trends...",
+        "Channeling your inner editor...",
+        "Scanning the runway...",
+        "Asking the tastemakers...",
+        "Finding your editorial moment...",
+        "Flipping through the lookbooks...",
+        "Curating with intention...",
+        "Rejecting fast fashion...",
+        "Checking what Philo would do..."
+      ];
+
+      var form = document.getElementById("filter_form");
+      if (form) {
+        form.addEventListener("submit", function() {
+          var overlay = document.getElementById("inspo-loading");
+          var messageEl = document.getElementById("inspo-loading-message");
+          overlay.style.display = "flex";
+
+          var i = 0;
+          setInterval(function() {
+            i = (i + 1) % messages.length;
+            messageEl.style.opacity = "0";
+            setTimeout(function() {
+              messageEl.textContent = messages[i];
+              messageEl.style.opacity = "1";
+            }, 300);
+          }, 2200);
+        });
+      }
+    })();
+  </script>
+
   <% if @inspirations.any? %>
     <div class="inspo-results">
       <% @inspirations.each do |inspo| %>
@@ -73,6 +118,17 @@
             </div>
 
             <p class="inspo-timeless-note"><%= inspo["why_timeless"] %></p>
+
+            <form action="/pin-inspiration" method="post" class="mt-3">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <input type="hidden" name="title"               value="<%= inspo["title"] %>">
+              <input type="hidden" name="editorial_reference" value="<%= inspo["editorial_reference"] %>">
+              <input type="hidden" name="description"         value="<%= inspo["description"] %>">
+              <input type="hidden" name="why_timeless"        value="<%= inspo["why_timeless"] %>">
+              <input type="hidden" name="color_palette"       value="<%= inspo["color_palette"].to_json %>">
+              <input type="hidden" name="key_pieces"          value="<%= inspo["key_pieces"].to_json %>">
+              <button type="submit" class="btn btn-sm inspo-pin-btn">Pin to mood board</button>
+            </form>
           </div>
         </div>
       <% end %>

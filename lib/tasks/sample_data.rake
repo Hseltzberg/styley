@@ -1,5 +1,6 @@
 desc "Fill the database tables with some sample data"
 task({ sample_data: :environment }) do
+  InspirationPin.destroy_all
   User.destroy_all
   Vibe.destroy_all
   Place.destroy_all
@@ -136,4 +137,31 @@ task({ sample_data: :environment }) do
   p "Added #{Place.count} places"
 
   p "Added #{OutfitSeason.count} outfit_seasons"
+
+  users = User.all
+
+  [
+    {
+      title: "Quiet Luxury Weekend",
+      editorial_reference: "The Row F/W 2019 lookbook",
+      description: "Ivory cashmere turtleneck tucked into wide-leg camel trousers, finished with simple leather loafers. Nothing loud, everything considered.",
+      why_timeless: "Neutral palette and precise tailoring transcend seasons and decades.",
+      color_palette: ["#e8dcc8", "#c4a882", "#f5f0e8"].to_json,
+      key_pieces: ["cashmere turtleneck", "wide-leg trousers", "leather loafers"].to_json
+    },
+    {
+      title: "Parisian Off-Duty",
+      editorial_reference: "Helmut Lang S/S 1998 runway",
+      description: "Slim dark denim, a crisp white poplin shirt slightly untucked, and a structured black blazer thrown over the shoulders. Effortless but precise.",
+      why_timeless: "The white shirt and dark denim combination has anchored wardrobes for fifty years.",
+      color_palette: ["#1a1a2e", "#ffffff", "#2d2d2d"].to_json,
+      key_pieces: ["white poplin shirt", "dark slim denim", "structured blazer"].to_json
+    }
+  ].each do |pin_attrs|
+    pin = InspirationPin.new(pin_attrs)
+    pin.user_id = users.sample.id
+    pin.save
+  end
+
+  p "Added #{InspirationPin.count} inspiration pins"
 end

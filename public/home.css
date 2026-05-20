@@ -73,6 +73,56 @@
   color: rgb(102, 0, 255);
 }
 
+/* Inspiration loading overlay */
+.inspo-loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, lightblue, lavender, whitesmoke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.inspo-loading-inner {
+  text-align: center;
+  padding: 40px;
+}
+
+.inspo-loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.inspo-loading-dots span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #982380;
+  animation: inspo-bounce 1.2s ease-in-out infinite;
+}
+
+.inspo-loading-dots span:nth-child(1) { animation-delay: 0s; }
+.inspo-loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.inspo-loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes inspo-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1.2); opacity: 1; }
+}
+
+.inspo-loading-message {
+  font-size: 1.2rem;
+  color: #982380;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  transition: opacity 0.3s ease;
+}
+
 /* Inspiration page */
 .inspiration-page {
   max-width: 900px;
@@ -205,6 +255,38 @@
   border-top: 1px solid #f3cfe4;
   padding-top: 12px;
   margin-bottom: 0;
+}
+
+.inspo-pin-btn {
+  background-color: #982380;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  width: 100%;
+  transition: background-color 0.15s;
+}
+
+.inspo-pin-btn:hover {
+  background-color: #7a1a68;
+  color: white;
+}
+
+.inspo-unpin-btn {
+  background-color: transparent;
+  color: #999;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  width: 100%;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.inspo-unpin-btn:hover {
+  color: #c0392b;
+  border-color: #c0392b;
 }
 
 .inspo-empty {
