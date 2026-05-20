@@ -46,9 +46,7 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="/">Home</a>
-              <span class="visually-hidden">(current)</span>
-            </a>
+              <a class="nav-link active" href="/">Home <span class="visually-hidden">(current)</span></a>
           </li>
 
           <% if current_user.present? %>
@@ -80,14 +78,16 @@
   </nav>
 
   <% if notice.present? %>
-    <div style="color: green;">
+    <div class="alert alert-success alert-dismissible fade show mx-3 mt-2" role="alert">
       <%= notice %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
 
   <% if alert.present? %>
-    <div style="color: red;">
+    <div class="alert alert-danger alert-dismissible fade show mx-3 mt-2" role="alert">
       <%= alert %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   <% end %>
 

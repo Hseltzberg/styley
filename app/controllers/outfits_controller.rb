@@ -34,15 +34,8 @@ class OutfitsController < ApplicationController
       matching_outfits = matching_outfits.where({ :id => selected_outfit_ids })
     end
     @list_of_feelings = Feeling.where({}).order({ :name => :asc })
-    @selected_feeling_names = []
-
-    @list_of_feelings.each do |a_feeling|
-      if params.fetch("query_feeling_#{a_feeling.id}", "") != ""
-        @selected_feeling_names.push(a_feeling.name)
-      end
-    end
-
-    @selected_feeling_ids = params.fetch("feelings")
+    @selected_feeling_ids = params.fetch("feelings", [])
+    @selected_feeling_names = Feeling.where(id: @selected_feeling_ids).pluck(:name)
     if @selected_feeling_ids.count > 0
       # matching_feelings = Feeling.where({ :name => @selected_feeling_names })
       # @selected_feeling_ids = matching_feelings.map do |a_feeling|

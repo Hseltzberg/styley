@@ -59,6 +59,6 @@
   </a>
 </p>
 
-<form action="/delete_outfit/<%= @the_outfit.id %>" method="post">
-  <button>Delete this outfit</button>
+<form action="/delete_outfit/<%= @the_outfit.id %>" method="post" onsubmit="return confirm('Delete this outfit? This cannot be undone.')">
+  <button class="btn btn-outline-danger btn-sm">Delete this outfit</button>
 </form>

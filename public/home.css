@@ -17,9 +17,9 @@
   background: whitesmoke;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: purple;
+  box-shadow: 0 2px 8px rgba(152, 35, 128, 0.15);
   break-inside: avoid;
-  color:pink'
+  color: #333;
 }
 
 .pin-image {
@@ -92,7 +92,7 @@ fieldset {
   padding: 24px;
   /* border-radius: 16px;
   border: 1px solid #f8d7e8; */
-  background-color: transparent
+  background-color: transparent;
   color: black;
 }
 
@@ -116,7 +116,7 @@ button {
 }
 
 input,
-select,{
+select {
   max-width: 400px;
 }
 

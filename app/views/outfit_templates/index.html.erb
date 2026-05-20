@@ -76,7 +76,7 @@
 
       <select id="tom-select-it" class="js-example-basic-multiple d-block w-100" name="feelings[]" multiple="multiple">
         <% @list_of_feelings.each do |a_feeling| %>
-          <option value="<%= a_feeling.id%>" <%= "selected" if params.fetch("feelings").include?(a_feeling.id.to_s) %>><%= a_feeling.name %></option>
+          <option value="<%= a_feeling.id%>" <%= "selected" if @selected_feeling_ids.include?(a_feeling.id.to_s) %>><%= a_feeling.name %></option>
         <% end %>
       </select>
 
@@ -85,11 +85,10 @@
         new TomSelect('#tom-select-it',settings);
       </script>
 
-      <% if @selected_feeling_ids.count > 0 %>
+      <% if @selected_feeling_names.count > 0 %>
         <p>
           Currently viewing feelings:
-          <%#= @selected_feeling_names.join(", ") %>
-          <%= Feeling.where(id: @selected_feeling_ids).pluck(:name).join(", ") %>
+          <%= @selected_feeling_names.join(", ") %>
         </p>
       <% else %>
         <p>
