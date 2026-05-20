@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h2 class="mb-4">Sign up</h2>
+      <h2 class="mb-4" style="font-family: 'Playfair Display', serif; color: #1e2d26;">Sign up</h2>
 
       <%= form_for(resource, { :as => resource_name, :url => registration_path(resource_name) }) do |f| %>
         <%= render("devise/shared/error_messages", { :resource => resource }) %>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="d-grid">
-          <%= f.submit("Sign up", { :class => "btn btn-dark" }) %>
+          <%= f.submit("Sign up", { :class => "btn btn-primary", :style => "border-radius: 999px; padding: 10px 32px; width: 100%;" }) %>
         </div>
       <% end %>
 

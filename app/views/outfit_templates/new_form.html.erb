@@ -1,188 +1,159 @@
 <div class="outfit-form-wrap">
-  <form action="/insert_outfit" method="post">
-    <fieldset>
-      <fieldset>
-        <legend>New Fit</legend>
-        <!--<div style="max-width: 400px;">-->
-      </fieldset>
 
-      <fieldset>
-        <legend class="mt-4">when I <strong> wear </strong>this</legend>
-        <div class = "form-inner">
-          <div class = "photo-field-wrap">
-            <label for="photo_box" class="form-label mt-4">Outfit photo</label>
-            <input class="form-control" type="text" id="photo_box" placeholder="insert photo url" name="query_outfit_photo">
-          </div>
-        </fieldset>
+  <div style="text-align: center; margin-bottom: 32px;">
+    <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #1e2d26; margin-bottom: 6px;">Add a New Outfit</h1>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 20px;">
+      <div id="step-indicator-1" style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #3d5a47; font-weight: 600;">
+        <span style="width: 28px; height: 28px; border-radius: 50%; background: #3d5a47; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">1</span>
+        The Look
+      </div>
+      <div style="width: 40px; height: 1px; background: #e0d5cc;"></div>
+      <div id="step-indicator-2" style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #aaa; font-weight: 600;">
+        <span id="step2-dot" style="width: 28px; height: 28px; border-radius: 50%; background: #e0d5cc; color: #aaa; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">2</span>
+        The Story
+      </div>
+    </div>
+  </div>
 
-        <!--        <p>
-          <h2>When I wear this...</h2>
-        </p>
-        <strong>I feel ✨</strong>
-        <p></p>-->
+  <form action="/insert_outfit" method="post" id="new-outfit-form">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-        <fieldset>
+    <!-- Step 1: Photo + Name -->
+    <div id="step-1">
+      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(61,90,71,0.08); margin-bottom: 20px;">
 
-          <legend class="mt-4">I<strong> feel </strong>✨</legend>
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 10px;">Outfit photo URL</label>
+          <input class="form-control" type="text" name="query_outfit_photo" placeholder="Paste a photo URL..." id="photo-input"
+                 style="border-radius: 12px; padding: 12px 16px; max-width: 100%;">
+        </div>
 
-          <div class="d-flex align-items-center gap-2">
-            <select name="query_feeling_id_1" id="feeling_id_1" class="form-select">
-              <option value="">Choose a feeling</option>
-              <% @list_of_feelings.each do |a_feeling| %>
-                <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
-              <% end %>
-            </select>
-
-            <span>or</span>
-
-            <input id="new_feeling_1" class="form-control" type="text" name="query_new_feeling_1" placeholder="Create a new feeling">
-          </div>
-          <p></p>
-
-          <div class="d-flex align-items-center gap-2">
-            <select name="query_feeling_id_2" id="feeling_id_2" class="form-select">
-              <option value="">Choose a feeling</option>
-              <% @list_of_feelings.each do |a_feeling| %>
-                <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
-              <% end %>
-            </select>
-
-            <span>or</span>
-
-            <input id="new_feeling_2" class ="form-control" type="text" name="query_new_feeling_2" placeholder="Create a new feeling">
-          </div>
-
-          <p>
-            <div class="d-flex align-items-center gap-2">
-              <select name="query_feeling_id_3" id="feeling_id_3" class="form-select">
-                <option value="">Choose a feeling</option>
-                <% @list_of_feelings.each do |a_feeling| %>
-                  <option value="<%= a_feeling.id %>"><%= a_feeling.name %></option>
-                <% end %>
-              </select>
-
-              <span> or</span>
-
-              <input id="new_feeling_3" class="form-control" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
-            </div>
-          </p>
-        </fieldset>
-
-        <fieldset>
-          <legend><strong>Perfect for 🗓️</strong></legend>
-
-          <p>
-            <div class="d-flex align-items-center gap-2">
-              <select name="query_occasion_id_1" id="occasion_id_1" class="form-select">
-                <option value="">Choose an occasion</option>
-                <% @list_of_occasions.each do |an_occasion| %>
-                  <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-                <% end %>
-              </select>
-
-              <span> or</span>
-
-              <input id="new_occasion_1" class="form-control" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
-            </div>
-          </p>
-
-          <p>
-            <div class="d-flex align-items-center gap-2">
-            <select name="query_occasion_id_2" id="occasion_id_2" class="form-select">
-              <option value="">Choose an occasion</option>
-              <% @list_of_occasions.each do |an_occasion| %>
-                <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-              <% end %>
-            </select>
-
-            <span>or</span>
-
-            <input id="new_occasion_2" class="form-control" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
-            </div>
-          </p>
-
-          <p>
-            <div class="d-flex align-items-center gap-2">
-            <select name="query_occasion_id_3" id="occasion_id_3" class="form-select">
-              <option value="">Choose an occasion</option>
-              <% @list_of_occasions.each do |an_occasion| %>
-                <option value="<%= an_occasion.id %>"><%= an_occasion.name %></option>
-              <% end %>
-            </select>
-
-            <span>or</span>
-
-            <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion" class="form-control">
-          </p>
-
-        </fieldset>
-
-        <fieldset>
-
-          <legend class="mt-4"><strong>In the 🌤️</strong></legend>
-          <div class="d-flex flex-wrap justify-content-around w-100"r gap-3">
-            <div class="form-check form-switch">
-              <input name="query_season_winter" class="form-check-input" type="checkbox" id="winter_box" value="winter">
-              <label class="form-check-label" for="winter_box">Winter</label>
-            </div>
-
-            <div class="form-check form-switch">
-              <input id="spring_box" class="form-check-input" type="checkbox" name="query_season_spring" value="spring">
-              <label class="form-check-label" for="spring_box">Spring</label>
-            </div>
-
-            <div class="form-check form-switch">
-              <input class="form-check-input" id="summer_box" type="checkbox" name="query_season_summer" value="summer">
-              <label class="form-check-label" for="summer_box">Summer</label>
-            </div>
-
-            <div class="form-check form-switch">
-              <input class="form-check-input" id="fall_box" type="checkbox" name="query_season_fall" value="fall">
-              <label class="form-check-label" for="fall_box">Fall</label>
-            </div>
-          </div>
-
-        </fieldset>
-
-        <fieldset>
-          <div>
-            <label for="headline_box" class="form-label mt-4">Give it a name</label>
-            <input class="form-control" type="text" id="headline_box" name="query_note_headline" placeholder="e.g. Cozy coffee run fit">
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div>
-            <label for="details_box" class="form-label mt-4">Note 2 self 📝</label>
-            <textarea class="form-control w-400" id="details_box" name="query_note_details" placeholder="Looks best with the blue heels, but not great for walking all day." rows="3"></textarea>
-          </div>
-
-        </fieldset>
+        <div id="photo-preview" style="display: none; margin-bottom: 24px;">
+          <img id="preview-img" src="" alt="Preview"
+               style="max-width: 100%; max-height: 320px; object-fit: cover; border-radius: 16px; border: 2px solid #e0d5cc;">
+        </div>
 
         <div>
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 10px;">Give it a name</label>
+          <input class="form-control" type="text" name="query_note_headline" placeholder="e.g. Power meeting look"
+                 style="border-radius: 12px; padding: 12px 16px; max-width: 100%;">
+        </div>
+      </div>
 
-          <fieldset>
-            <legend class="mt-4">Who can see this outfit?</legend>
-
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="query_is_public" id="public_choice" value="true">
-              <label class="form-check-label" for="public_choice">
-                Styley community
-              </label>
-            </div>
-
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="query_is_public" id="private_choice" value="false" checked>
-              <label class="form-check-label" for="private_choice">
-                Just me
-              </label>
-            </div>
-          </fieldset>
-
-          <div class="d-grid gap-2">
-            <button class="btn btn-lg btn-primary w-100" type="submit">Create outfit</button>
-          </div>
-
-        </fieldset>
-      </form>
+      <div style="text-align: right;">
+        <button type="button" onclick="goToStep2()" class="btn btn-primary"
+                style="border-radius: 999px; padding: 11px 32px; font-size: 0.95rem;">
+          Next: The Story →
+        </button>
+      </div>
     </div>
+
+    <!-- Step 2: Context -->
+    <div id="step-2" style="display: none;">
+      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(61,90,71,0.08); margin-bottom: 20px;">
+
+        <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 12px;">How does it make you feel?</p>
+          <div class="category-chips">
+            <% @list_of_feelings.each do |a_feeling| %>
+              <label class="category-chip">
+                <input type="checkbox" name="feelings[]" value="<%= a_feeling.id %>">
+                <%= a_feeling.name %>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 12px;">Perfect for</p>
+          <div class="category-chips">
+            <% @list_of_occasions.each do |an_occasion| %>
+              <label class="category-chip">
+                <input type="checkbox" name="occasions[]" value="<%= an_occasion.id %>">
+                <%= an_occasion.name %>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 12px;">Season</p>
+          <div class="category-chips">
+            <% ["winter", "spring", "summer", "fall"].each do |season| %>
+              <label class="category-chip">
+                <input type="checkbox" name="query_season_<%= season %>" value="<%= season %>">
+                <%= season.capitalize %>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 28px;">
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 10px;">Note to self</label>
+          <textarea class="form-control" name="query_note_details"
+                    placeholder="Looks best with the blue heels, but not great for walking all day."
+                    rows="3" style="border-radius: 12px; padding: 12px 16px; max-width: 100%; resize: vertical;"></textarea>
+        </div>
+
+        <div>
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 10px;">Who can see this?</p>
+          <div style="display: flex; gap: 20px;">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; color: #444;">
+              <input class="form-check-input" type="radio" name="query_is_public" value="false" checked style="margin: 0;">
+              Just me
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; color: #444;">
+              <input class="form-check-input" type="radio" name="query_is_public" value="true" style="margin: 0;">
+              Styley community
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" onclick="goToStep1()"
+                style="background: transparent; border: none; color: #3d5a47; font-size: 0.9rem; cursor: pointer; padding: 0; opacity: 0.7;">
+          ← Back
+        </button>
+        <button type="submit" class="btn btn-primary"
+                style="border-radius: 999px; padding: 11px 36px; font-size: 0.95rem;">
+          Save outfit
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  function goToStep2() {
+    document.getElementById("step-1").style.display = "none";
+    document.getElementById("step-2").style.display = "block";
+    var dot = document.getElementById("step2-dot");
+    dot.style.background = "#3d5a47";
+    dot.style.color = "white";
+    document.getElementById("step-indicator-2").style.color = "#3d5a47";
+  }
+
+  function goToStep1() {
+    document.getElementById("step-2").style.display = "none";
+    document.getElementById("step-1").style.display = "block";
+    var dot = document.getElementById("step2-dot");
+    dot.style.background = "#e0d5cc";
+    dot.style.color = "#aaa";
+    document.getElementById("step-indicator-2").style.color = "#aaa";
+  }
+
+  // Photo preview
+  document.getElementById("photo-input").addEventListener("input", function() {
+    var url = this.value.trim();
+    var preview = document.getElementById("photo-preview");
+    var img = document.getElementById("preview-img");
+    if (url) {
+      img.src = url;
+      preview.style.display = "block";
+    } else {
+      preview.style.display = "none";
+    }
+  });
+</script>

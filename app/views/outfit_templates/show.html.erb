@@ -1,64 +1,90 @@
-<p>
-  <a href="/outfits">☜ Back to my closet</a>
-</p>
+<div style="max-width: 800px; margin: 0 auto; padding: 32px 20px 80px;">
 
-<h1>Outfit details</h1>
-
-<img src="<%= @the_outfit.outfit_photo %>" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;">
-<h2><%= @the_outfit.note_headline %></h2>
-
-<p>
-  📝note to self: <%= @the_outfit.note_details %>
-</p>
-
-<p>
-  Feelings:
-</p>
-
-<ul>
-  <% @the_outfit.feelings.each do |a_feeling| %>
-    <li><%= a_feeling.name %></li>
-  <% end %>
-</ul>
-
-<p>
-  Occasions:
-</p>
-
-<ul>
-  <% @the_outfit.occasions.each do |an_occasion| %>
-    <li><%= an_occasion.name %></li>
-  <% end %>
-</ul>
-
-<p>
-  Seasons:
-</p>
-
-<ul>
-  <% @the_outfit.seasons.each do |a_season| %>
-    <li><%= a_season.name %></li>
-  <% end %>
-</ul>
-
-<p>
-  Visibility:
-</p>
-
-<ul>
-  <% if @the_outfit.is_public %>
-   <li> public</li>
-  <% else %>
-    <li> private</li>
-  <% end %>
-</ul>
-
-<p>
-  <a href="/outfits/<%= @the_outfit.id %>/edit">
-    Edit this outfit
+  <a href="/outfits" style="display: inline-flex; align-items: center; gap: 6px; color: #3d5a47; text-decoration: none; font-size: 0.9rem; margin-bottom: 28px; opacity: 0.8;">
+    ← Back to my closet
   </a>
-</p>
 
-<form action="/delete_outfit/<%= @the_outfit.id %>" method="post" onsubmit="return confirm('Delete this outfit? This cannot be undone.')">
-  <button class="btn btn-outline-danger btn-sm">Delete this outfit</button>
-</form>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+
+    <div>
+      <img src="<%= @the_outfit.outfit_photo %>"
+           style="width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 20px; box-shadow: 0 4px 24px rgba(61,90,71,0.15);"
+           alt="<%= @the_outfit.note_headline %>">
+    </div>
+
+    <div>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #1e2d26; margin-bottom: 8px; line-height: 1.25;">
+        <%= @the_outfit.note_headline %>
+      </h1>
+
+      <% if @the_outfit.note_details.present? %>
+        <p style="color: #555; font-size: 0.95rem; line-height: 1.6; border-left: 3px solid #c4897a; padding-left: 14px; margin: 20px 0;">
+          <%= @the_outfit.note_details %>
+        </p>
+      <% end %>
+
+      <div style="margin-bottom: 20px;">
+        <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 10px;">How it feels</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <% @the_outfit.feelings.each do |a_feeling| %>
+            <span style="padding: 5px 14px; border-radius: 999px; background: #f5eeea; border: 1px solid #e0d5cc; color: #3d5a47; font-size: 0.85rem;">
+              <%= a_feeling.name %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 10px;">Perfect for</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <% @the_outfit.occasions.each do |an_occasion| %>
+            <span style="padding: 5px 14px; border-radius: 999px; background: #f5eeea; border: 1px solid #e0d5cc; color: #3d5a47; font-size: 0.85rem;">
+              <%= an_occasion.name %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 28px;">
+        <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #3d5a47; font-weight: 600; margin-bottom: 10px;">Season</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <% @the_outfit.seasons.each do |a_season| %>
+            <span style="padding: 5px 14px; border-radius: 999px; background: #f5eeea; border: 1px solid #e0d5cc; color: #3d5a47; font-size: 0.85rem;">
+              <%= a_season.name.capitalize %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 28px; color: #888; font-size: 0.85rem;">
+        <% if @the_outfit.is_public %>
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #3d5a47; display: inline-block;"></span>
+          Visible to the community
+        <% else %>
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #c4897a; display: inline-block;"></span>
+          Private
+        <% end %>
+      </div>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="/outfits/<%= @the_outfit.id %>/edit"
+           style="display: inline-block; padding: 9px 22px; border-radius: 999px; background: #3d5a47; color: white; text-decoration: none; font-size: 0.9rem;">
+          Edit outfit
+        </a>
+
+        <form action="/delete_outfit/<%= @the_outfit.id %>" method="post"
+              onsubmit="return confirm('Delete this outfit? This cannot be undone.')"
+              style="margin: 0;">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <button type="submit"
+                  style="padding: 9px 22px; border-radius: 999px; border: 1px solid #e0d5cc; background: transparent; color: #999; font-size: 0.9rem; cursor: pointer; transition: color 0.15s, border-color 0.15s;"
+                  onmouseover="this.style.color='#c4897a';this.style.borderColor='#c4897a'"
+                  onmouseout="this.style.color='#999';this.style.borderColor='#e0d5cc'">
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
