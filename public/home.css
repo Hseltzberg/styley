@@ -73,6 +73,149 @@
   color: rgb(102, 0, 255);
 }
 
+/* Inspiration page */
+.inspiration-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+.inspiration-header {
+  margin-bottom: 28px;
+}
+
+.inspiration-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2b1027;
+  margin-bottom: 6px;
+}
+
+.inspiration-style-echo {
+  color: #982380;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.inspiration-form {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #f3cfe4;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 36px;
+  backdrop-filter: blur(4px);
+}
+
+.inspiration-context-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 16px;
+  align-items: end;
+}
+
+@media (max-width: 640px) {
+  .inspiration-context-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inspiration-select-group label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.inspo-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.inspo-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(152, 35, 128, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.inspo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(152, 35, 128, 0.18);
+}
+
+.inspo-palette-bar {
+  display: flex;
+  height: 8px;
+}
+
+.inspo-swatch {
+  flex: 1;
+}
+
+.inspo-body {
+  padding: 20px;
+}
+
+.inspo-reference {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #982380;
+  opacity: 0.75;
+  margin-bottom: 6px;
+  font-style: italic;
+}
+
+.inspo-concept-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2b1027;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.inspo-description {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.inspo-pieces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.inspo-piece-chip {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #fff4fb;
+  border: 1px solid #f3cfe4;
+  color: #982380;
+  font-size: 0.78rem;
+}
+
+.inspo-timeless-note {
+  font-size: 0.8rem;
+  color: #777;
+  font-style: italic;
+  border-top: 1px solid #f3cfe4;
+  padding-top: 12px;
+  margin-bottom: 0;
+}
+
+.inspo-empty {
+  background: #fffaf0;
+  border: 1px dashed #f0c36d;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  color: #666;
+}
+
 .fab {
   position: fixed;
   bottom: 28px;

@@ -136,4 +136,6 @@ Rails.application.routes.draw do
 
   devise_for :users
   get("/", :controller => "pages", :action => "home")
+  get("/inspiration", { :controller => "inspirations", :action => "show" })
+  post("/inspiration", { :controller => "inspirations", :action => "create" })
 end
