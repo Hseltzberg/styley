@@ -138,6 +138,7 @@ Rails.application.routes.draw do
   get("/", :controller => "pages", :action => "home")
   get("/inspiration", { :controller => "inspirations", :action => "show" })
   post("/inspiration", { :controller => "inspirations", :action => "create" })
+  post("/inspiration/regenerate", { :controller => "inspirations", :action => "regenerate" })
   get("/mood-board", { :controller => "inspiration_pins", :action => "index" })
   post("/pin-inspiration", { :controller => "inspiration_pins", :action => "create" })
   post("/unpin-inspiration/:path_id", { :controller => "inspiration_pins", :action => "destroy" })

@@ -13,13 +13,28 @@ class InspirationsController < ApplicationController
     @feeling = Feeling.find_by(id: params[:feeling_id])
     @occasion = Occasion.find_by(id: params[:occasion_id])
     @season = params[:season]
-    @inspirations = fetch_inspirations
+    @inspirations = fetch_inspirations(count: 3)
     render :show
+  end
+
+  def regenerate
+    @feeling = Feeling.find_by(id: params[:feeling_id])
+    @occasion = Occasion.find_by(id: params[:occasion_id])
+    @season = params[:season]
+    @index = params[:index].to_i
+    inspo = fetch_inspirations(count: 1).first || {}
+    render partial: "inspo_card", locals: {
+      inspo: inspo,
+      index: @index,
+      feeling_id: params[:feeling_id],
+      occasion_id: params[:occasion_id],
+      season: params[:season]
+    }
   end
 
   private
 
-  def fetch_inspirations
+  def fetch_inspirations(count: 3)
     return [] unless ENV["AICHAT_PROXY_KEY"].present? || ENV["OPENAI_API_KEY"].present?
 
     context = []
@@ -30,7 +45,7 @@ class InspirationsController < ApplicationController
 
     chat = AI::Chat.new
     chat.system(system_prompt)
-    chat.user(user_prompt(context))
+    chat.user(user_prompt(context, count: count))
 
     result = chat.generate!
     content = result[:content]
@@ -53,9 +68,9 @@ class InspirationsController < ApplicationController
     PROMPT
   end
 
-  def user_prompt(context)
+  def user_prompt(context, count: 3)
     <<~PROMPT.strip
-      Generate 3 outfit inspiration concepts for this person.
+      Generate #{count} outfit inspiration concept#{"s" if count != 1} for this person.
 
       #{context.join("\n")}
 

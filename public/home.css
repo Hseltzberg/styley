@@ -307,6 +307,39 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(139, 26, 74, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.inspo-regen-form {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.inspo-regen-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  color: #c9956a;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s;
+  padding: 0;
+}
+
+.inspo-card:hover .inspo-regen-btn {
+  opacity: 1;
+}
+
+.inspo-regen-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: #8b1a4a;
 }
 
 .inspo-card:hover {
