@@ -66,6 +66,25 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+.site-nav .dropdown-menu {
+  background-color: #ede7df;
+  border: 1px solid rgba(139, 26, 74, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(139, 26, 74, 0.1);
+  padding: 6px;
+}
+
+.site-nav .dropdown-item {
+  color: #8b1a4a;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.site-nav .dropdown-item:hover {
+  background-color: rgba(139, 26, 74, 0.08);
+  color: #3d0a28;
+}
+
 /* =============================================
    Pin Board (masonry grid)
    ============================================= */
