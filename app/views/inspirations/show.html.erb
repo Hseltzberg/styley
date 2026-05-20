@@ -107,17 +107,16 @@
           </div>
 
           <div class="inspo-body">
-            <p class="inspo-reference"><%= inspo["editorial_reference"] %></p>
+            <p class="inspo-reference">
+              <a href="https://www.google.com/search?q=<%= CGI.escape(inspo["editorial_reference"].to_s) %>&tbm=isch" target="_blank" rel="noopener noreferrer"><%= inspo["editorial_reference"] %></a>
+            </p>
             <h2 class="inspo-concept-title"><%= inspo["title"] %></h2>
-            <p class="inspo-description"><%= inspo["description"] %></p>
 
             <div class="inspo-pieces">
               <% (inspo["key_pieces"] || []).each do |piece| %>
                 <span class="inspo-piece-chip"><%= piece %></span>
               <% end %>
             </div>
-
-            <p class="inspo-timeless-note"><%= inspo["why_timeless"] %></p>
 
             <form action="/pin-inspiration" method="post" class="mt-3">
               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
