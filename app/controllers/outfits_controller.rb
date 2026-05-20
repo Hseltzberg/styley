@@ -50,21 +50,11 @@ class OutfitsController < ApplicationController
       matching_outfits = matching_outfits.where({ :id => selected_outfit_ids })
     end
     @list_of_occasions = Occasion.where({}).order({ :name => :asc })
-    @selected_occasion_names = []
+    @selected_occasion_ids = params.fetch("occasions", [])
+    @selected_occasion_names = Occasion.where(id: @selected_occasion_ids).pluck(:name)
 
-    @list_of_occasions.each do |an_occasion|
-      if params.fetch("query_occasion_#{an_occasion.id}", "") != ""
-        @selected_occasion_names.push(an_occasion.name)
-      end
-    end
-
-    if @selected_occasion_names.count > 0
-      matching_occasions = Occasion.where({ :name => @selected_occasion_names })
-      selected_occasion_ids = matching_occasions.map do |an_occasion|
-        an_occasion.id
-      end
-
-      matching_places = Place.where({ :occasion_id => selected_occasion_ids })
+    if @selected_occasion_ids.count > 0
+      matching_places = Place.where({ :occasion_id => @selected_occasion_ids })
       selected_outfit_ids = matching_places.map do |a_place|
         a_place.outfit_id
       end

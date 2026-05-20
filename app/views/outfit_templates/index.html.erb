@@ -7,122 +7,78 @@
 <% end %>
 
 <%# if @list_of_outfits.count > 1 %>
+<% any_filters_active = @selected_season_names.count > 0 || @selected_feeling_names.count > 0 || @selected_occasion_names.count > 0 %>
+
 <button
     class="btn btn-outline-primary"
     id="filter_toggle"
-    type="submit"
+    type="button"
     data-bs-toggle="collapse"
     data-bs-target="#filter_box"
-    aria-expanded="false"
+    aria-expanded="<%= any_filters_active %>"
     aria-controls="filter_box">
-  Show Filters
+  Filter
 </button>
 
-<div id="filter_box" class="collapse mt-3">
-  <h2>Filter closet</h2>
+<div id="filter_box" class="collapse mt-3 <%= 'show' if any_filters_active %>">
+  <form id="filter_form" action="/outfits" method="get">
 
-  <% if @selected_season_names.count > 0 || @selected_feeling_names.count > 0 %>
-    <p>
-      <% if @list_of_outfits.count == 1 %>
-        We found <strong>1</strong> look for this vibe
-      <% else %>
-        We found <strong><%= @list_of_outfits.count %></strong> looks for this vibe
-      <% end %>
-    </p>
-  <% end %>
-
-  <form action="/outfits" method="get">
-    <span><strong>Season</strong></span>
-
-    <div class="d-flex gap-3">
-      <div class="form-check form-switch">
-        <input class="form-check-input" id="fall_box" type="checkbox" name="query_season_fall" value="fall" <%= "checked" if @selected_season_names.include?("fall") %>>
-        <label class="form-check-label" for="fall_box">Fall</label>
-      </div>
-
-      <div class="form-check form-switch">
-        <input class="form-check-input" id="winter_box" type="checkbox" name="query_season_winter" value="winter" <%= "checked" if @selected_season_names.include?("winter") %>>
-        <label class="form-check-label" for="winter_box">Winter</label>
-      </div>
-
-      <div class="form-check form-switch">
-        <input class="form-check-input" id="spring_box" type="checkbox" name="query_season_spring" value="spring" <%= "checked" if @selected_season_names.include?("spring") %>>
-        <label class="form-check-label" for="spring_box">Spring</label>
-      </div>
-
-      <div class="form-check form-switch">
-        <input class="form-check-input" id="summer_box" type="checkbox" name="query_season_summer" value="summer" <%= "checked" if @selected_season_names.include?("summer") %>>
-        <label class="form-check-label" for="summer_box">Summer</label>
-      </div>
+    <p class="filter-section-label">Season</p>
+    <div class="category-chips">
+      <label class="category-chip">
+        <input type="checkbox" name="query_season_fall" value="fall" <%= "checked" if @selected_season_names.include?("fall") %>>
+        Fall
+      </label>
+      <label class="category-chip">
+        <input type="checkbox" name="query_season_winter" value="winter" <%= "checked" if @selected_season_names.include?("winter") %>>
+        Winter
+      </label>
+      <label class="category-chip">
+        <input type="checkbox" name="query_season_spring" value="spring" <%= "checked" if @selected_season_names.include?("spring") %>>
+        Spring
+      </label>
+      <label class="category-chip">
+        <input type="checkbox" name="query_season_summer" value="summer" <%= "checked" if @selected_season_names.include?("summer") %>>
+        Summer
+      </label>
     </div>
 
-    <% if @selected_season_names.count > 0 %>
-      <p>
-        Currently viewing seasons:
-        <%= @selected_season_names.join(", ") %>
-      </p>
-    <% else %>
-      <p>
-        Currently viewing seasons: all seasons
-      </p>
-    <% end %>
-
-    <p><strong>Feelings</strong></p>
-    <!---->
-    <%# @list_of_feelings.each do |a_feeling| %>
-      <!--      <label class="form-check-label" for="feeling_<%##= a_feeling.id %>_box"><%#= a_feeling.name %></label>
-      <input id="feeling_<%##= a_feeling.id %>_box" type="checkbox" name="query_feeling_<%#= a_feeling.id %>" value="<%#= a_feeling.name %>" <%#= "checked" if @selected_feeling_names.include?(a_feeling.name) %>>
-    <%# end %>-->
-
-      <select id="tom-select-it" class="js-example-basic-multiple d-block w-100" name="feelings[]" multiple="multiple">
-        <% @list_of_feelings.each do |a_feeling| %>
-          <option value="<%= a_feeling.id%>" <%= "selected" if @selected_feeling_ids.include?(a_feeling.id.to_s) %>><%= a_feeling.name %></option>
-        <% end %>
-      </select>
-
-      <script>
-        var settings = {};
-        new TomSelect('#tom-select-it',settings);
-      </script>
-
-      <% if @selected_feeling_names.count > 0 %>
-        <p>
-          Currently viewing feelings:
-          <%= @selected_feeling_names.join(", ") %>
-        </p>
-      <% else %>
-        <p>
-          Currently viewing feelings: all feelings
-        </p>
+    <p class="filter-section-label">Feeling</p>
+    <select id="feeling-select" name="feelings[]" multiple placeholder="e.g. confident, cozy...">
+      <% @list_of_feelings.each do |a_feeling| %>
+        <option value="<%= a_feeling.id %>" <%= "selected" if @selected_feeling_ids.include?(a_feeling.id.to_s) %>><%= a_feeling.name %></option>
       <% end %>
+    </select>
 
-      <p><strong>Occasions</strong></p>
-
+    <p class="filter-section-label">Occasion</p>
+    <select id="occasion-select" name="occasions[]" multiple placeholder="e.g. work, date night...">
       <% @list_of_occasions.each do |an_occasion| %>
-        <label class="form-check-label" for="occasion_<%= an_occasion.id %>_box"><%= an_occasion.name %></label>
-        <input id="occasion_<%= an_occasion.id %>_box" type="checkbox" name="query_occasion_<%= an_occasion.id %>" value="<%= an_occasion.name %>" <%= "checked" if @selected_occasion_names.include?(an_occasion.name) %>>
+        <option value="<%= an_occasion.id %>" <%= "selected" if @selected_occasion_names.include?(an_occasion.name) %>><%= an_occasion.name %></option>
       <% end %>
+    </select>
 
-      <p></p>
+    <div class="mt-3">
+      <button type="submit" class="btn btn-outline-primary btn-sm" name="query_mode" value="surprise">Surprise me ✨</button>
+    </div>
+  </form>
+</div>
 
-      <% if @selected_occasion_names.count > 0 %>
-        <p>
-          Currently viewing occasion:
-          <%= @selected_occasion_names.join(", ") %>
-        </p>
-      <% else %>
-        <p>
-          Currently viewing occasion: all occasions
-        </p>
-      <% end %>
+<script>
+  document.querySelectorAll('#filter_form input[type="checkbox"]').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+      document.getElementById('filter_form').submit();
+    });
+  });
 
-      <p>
-        <button type="submit" class="btn btn-outline-primary" name="query_mode" value="filter">Apply filters</button>
-        <button type="submit" class="btn btn-outline-primary" name="query_mode" value="surprise">Surprise me</button>
-      </p>
-    </form>
-  </div>
-  <%# end %>
+  ['feeling-select', 'occasion-select'].forEach(function(id) {
+    new TomSelect('#' + id, {
+      plugins: ['remove_button'],
+      onChange: function() {
+        document.getElementById('filter_form').submit();
+      }
+    });
+  });
+</script>
 
   <% if @list_of_outfits.count == 0 %>
     <div class="empty_state_box">

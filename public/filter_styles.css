@@ -1,3 +1,117 @@
+/* Tom Select custom theme */
+.ts-wrapper .ts-control {
+  background-color: transparent;
+  border: 1px solid #982380;
+  border-radius: 12px;
+  padding: 6px 10px;
+  box-shadow: none;
+  cursor: text;
+}
+
+.ts-wrapper.focus .ts-control {
+  border-color: #982380;
+  box-shadow: 0 0 0 3px rgba(152, 35, 128, 0.15);
+}
+
+.ts-wrapper .ts-control .item {
+  background-color: #982380;
+  color: white;
+  border-radius: 999px;
+  padding: 2px 8px 2px 12px;
+  border: none;
+  font-size: 0.85rem;
+}
+
+.ts-wrapper .ts-control .item .remove {
+  color: rgba(255, 255, 255, 0.7);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  margin-left: 6px;
+  padding-left: 6px;
+}
+
+.ts-wrapper .ts-control .item .remove:hover {
+  color: white;
+  background: transparent;
+}
+
+.ts-wrapper .ts-control input {
+  color: #982380;
+}
+
+.ts-wrapper .ts-control input::placeholder {
+  color: #982380;
+  opacity: 0.55;
+}
+
+.ts-dropdown {
+  border: 1px solid #f3cfe4;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(152, 35, 128, 0.12);
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.ts-dropdown .option {
+  color: #333;
+  padding: 9px 14px;
+  font-size: 0.9rem;
+}
+
+.ts-dropdown .option:hover,
+.ts-dropdown .option.active {
+  background-color: rgba(152, 35, 128, 0.08);
+  color: #982380;
+}
+
+.ts-dropdown .option.selected {
+  background-color: rgba(152, 35, 128, 0.05);
+  color: #982380;
+  font-weight: 500;
+}
+
+.filter-section-label {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #982380;
+  margin: 12px 0 6px;
+}
+
+.category-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #982380;
+  color: #982380;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.875rem;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.category-chip input[type="checkbox"] {
+  display: none;
+}
+
+.category-chip:hover {
+  background-color: rgba(152, 35, 128, 0.08);
+}
+
+.category-chip:has(input:checked) {
+  background-color: #982380;
+  color: white;
+}
+
 .active_filters_box {
   background-color: #fff4fb;
   border: 1px solid #f3cfe4;
