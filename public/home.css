@@ -256,6 +256,20 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   letter-spacing: 0.02em;
   transition: opacity 0.3s ease;
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .inspo-loading-inner {
+    padding: 24px 20px;
+  }
+
+  .inspo-loading-message {
+    font-size: 0.95rem;
+    max-width: 100%;
+    letter-spacing: 0;
+  }
 }
 
 /* =============================================
@@ -359,6 +373,12 @@ h1, h2, h3, h4, h5, h6 {
 .inspo-regen-btn:hover {
   background: rgba(255, 255, 255, 0.95);
   color: #8b1a4a;
+}
+
+@media (hover: none) {
+  .inspo-regen-btn {
+    opacity: 1;
+  }
 }
 
 .inspo-card:hover {
