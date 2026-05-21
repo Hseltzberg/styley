@@ -123,10 +123,28 @@ class OutfitsController < ApplicationController
       vibe.save
     end
 
+    params.fetch("new_feeling_names", []).each do |feeling_name|
+      next if feeling_name.strip.empty?
+      feeling = Feeling.find_or_create_by(name: feeling_name.strip.downcase)
+      vibe = Vibe.new
+      vibe.outfit_id = the_outfit.id
+      vibe.feeling_id = feeling.id
+      vibe.save
+    end
+
     params.fetch("occasions", []).each do |occasion_id|
       place = Place.new
       place.outfit_id = the_outfit.id
       place.occasion_id = occasion_id
+      place.save
+    end
+
+    params.fetch("new_occasion_names", []).each do |occasion_name|
+      next if occasion_name.strip.empty?
+      occasion = Occasion.find_or_create_by(name: occasion_name.strip.downcase)
+      place = Place.new
+      place.outfit_id = the_outfit.id
+      place.occasion_id = occasion.id
       place.save
     end
 

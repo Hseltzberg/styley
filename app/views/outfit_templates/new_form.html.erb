@@ -54,7 +54,7 @@
 
         <div style="margin-bottom: 28px;">
           <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">How does it make you feel?</p>
-          <div class="category-chips">
+          <div class="category-chips" id="feelings-chips">
             <% @list_of_feelings.each do |a_feeling| %>
               <label class="category-chip">
                 <input type="checkbox" name="feelings[]" value="<%= a_feeling.id %>">
@@ -62,11 +62,18 @@
               </label>
             <% end %>
           </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+            <input type="text" id="new-feeling-input" placeholder="Add your own feeling…"
+                   style="border: 1.5px dashed #c9a0b4; border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; color: #3d0a28; background: transparent; outline: none; width: 200px;">
+            <button type="button" onclick="addCustomChip('feeling')"
+                    style="background: #8b1a4a; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
+          </div>
+          <div id="new-feelings-container"></div>
         </div>
 
         <div style="margin-bottom: 28px;">
           <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">Perfect for</p>
-          <div class="category-chips">
+          <div class="category-chips" id="occasions-chips">
             <% @list_of_occasions.each do |an_occasion| %>
               <label class="category-chip">
                 <input type="checkbox" name="occasions[]" value="<%= an_occasion.id %>">
@@ -74,6 +81,13 @@
               </label>
             <% end %>
           </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+            <input type="text" id="new-occasion-input" placeholder="Add your own occasion…"
+                   style="border: 1.5px dashed #c9a0b4; border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; color: #3d0a28; background: transparent; outline: none; width: 200px;">
+            <button type="button" onclick="addCustomChip('occasion')"
+                    style="background: #8b1a4a; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
+          </div>
+          <div id="new-occasions-container"></div>
         </div>
 
         <div style="margin-bottom: 28px;">
@@ -143,6 +157,53 @@
     dot.style.color = "#aaa";
     document.getElementById("step-indicator-2").style.color = "#aaa";
   }
+
+  function addCustomChip(type) {
+    var inputId = type === 'feeling' ? 'new-feeling-input' : 'new-occasion-input';
+    var chipsId = type === 'feeling' ? 'feelings-chips' : 'occasions-chips';
+    var containerId = type === 'feeling' ? 'new-feelings-container' : 'new-occasions-container';
+    var paramName = type === 'feeling' ? 'new_feeling_names[]' : 'new_occasion_names[]';
+
+    var input = document.getElementById(inputId);
+    var name = input.value.trim();
+    if (!name) return;
+
+    // Add a visual chip
+    var chipsDiv = document.getElementById(chipsId);
+    var label = document.createElement('label');
+    label.className = 'category-chip';
+    label.style.background = '#8b1a4a';
+    label.style.color = 'white';
+    label.style.borderColor = '#8b1a4a';
+    label.textContent = name;
+    chipsDiv.appendChild(label);
+
+    // Add hidden input so it's submitted with the form
+    var container = document.getElementById(containerId);
+    var hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = paramName;
+    hidden.value = name;
+    container.appendChild(hidden);
+
+    input.value = '';
+  }
+
+  // Allow Enter key to add a chip
+  document.addEventListener('DOMContentLoaded', function() {
+    ['new-feeling-input', 'new-occasion-input'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            var type = id === 'new-feeling-input' ? 'feeling' : 'occasion';
+            addCustomChip(type);
+          }
+        });
+      }
+    });
+  });
 
   // Photo preview
   document.getElementById("photo-input").addEventListener("input", function() {
