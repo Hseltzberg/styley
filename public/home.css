@@ -450,6 +450,21 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
 }
 
+.inspo-card--pinned {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.inspo-pinned-message {
+  color: #8b1a4a;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+}
+
 .inspo-pin-btn {
   background-color: #8b1a4a;
   color: white;

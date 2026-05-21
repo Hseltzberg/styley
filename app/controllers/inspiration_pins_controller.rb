@@ -13,7 +13,11 @@ class InspirationPinsController < ApplicationController
       key_pieces:          params[:key_pieces]
     )
     pin.save
-    redirect_to("/mood-board")
+    if turbo_frame_request?
+      render :create
+    else
+      redirect_to("/mood-board")
+    end
   end
 
   def destroy
