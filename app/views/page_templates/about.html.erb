@@ -1,4 +1,23 @@
-<div class="about-hero">
-  <h1>Welcome to Styley</h1>
-  <p>We are so glad you're here</p>
+<div class="about-page">
+
+  <div class="about-hero">
+    <h1 class="about-headline">Get dressed.<br>Feel like yourself.</h1>
+  </div>
+
+  <div class="about-body">
+    <p class="about-lead">Getting dressed is a daily act of intention. Styley exists to make it feel that way.</p>
+
+    <p class="about-text">We believe everyone has a fashion north star — an instinct for how clothes make you feel, and how you need to feel to own the day. Styley helps you find yours: your closet distilled into feelings and purpose, with an editorial eye when you need one.</p>
+
+    <p class="about-tenets">No trends. No algorithm. No overthinking.</p>
+
+    <p class="about-everyone"><em>For the emo girl with a big presentation at school. The ER nurse on her night out. Your grandpa on his way to the grocery store.<br>Everyone deserves to dress with intention.</em></p>
+
+    <% unless current_user.present? %>
+      <div class="about-cta">
+        <a href="/users/sign_up" class="btn btn-primary btn-lg about-cta-btn">Get started</a>
+      </div>
+    <% end %>
+  </div>
+
 </div>

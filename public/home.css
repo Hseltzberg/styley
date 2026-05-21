@@ -494,9 +494,69 @@ h1, h2, h3, h4, h5, h6 {
 /* =============================================
    About page
    ============================================= */
-.about-hero {
-  text-align: center;
-  padding: 80px 20px;
+.about-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 24px 100px;
+}
+
+.about-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-style: italic;
+  color: #3d0a28;
+  line-height: 1.15;
+  margin-bottom: 56px;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-lead {
+  font-size: 1.15rem;
+  color: #3d0a28;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.about-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.about-tenets {
+  font-size: 0.95rem;
+  color: #8b1a4a;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.about-everyone {
+  font-size: 1rem;
+  color: #3d0a28;
+  line-height: 1.8;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.about-cta {
+  padding-top: 16px;
+}
+
+.about-cta-btn {
+  border-radius: 999px;
+  padding: 12px 36px;
+}
+
+@media (max-width: 600px) {
+  .about-headline {
+    font-size: 2.2rem;
+  }
 }
 
 /* =============================================
