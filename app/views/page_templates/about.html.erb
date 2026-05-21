@@ -1,17 +1,31 @@
 <div class="about-page">
 
   <div class="about-hero">
-    <h1 class="about-headline">Get dressed.<br>Feel like yourself.</h1>
+    <h1 class="about-headline">
+      <span class="about-headline-primary">Get dressed.</span>
+      <span class="about-headline-secondary">Feel like yourself.</span>
+    </h1>
   </div>
 
   <div class="about-body">
     <p class="about-lead">Getting dressed is a daily act of intention. Styley exists to make it feel that way.</p>
 
-    <p class="about-text">We believe everyone has a fashion north star — an instinct for how clothes make you feel, and how you need to feel to own the day. Styley helps you find yours: your closet distilled into feelings and purpose, with an editorial eye when you need one.</p>
+    <p class="about-text">Everyone has a style north star — an instinct for how clothes make you feel, and how you need to feel to meet the moment. Styley helps you find yours: your closet distilled into feelings and purpose, with an editorial eye when you need it.</p>
 
-    <p class="about-tenets">No trends. No algorithm. No overthinking.</p>
+    <div class="about-tenets">
+      <span>No trends.</span>
+      <span>No algorithm.</span>
+      <span>No overthinking.</span>
+    </div>
 
-    <p class="about-everyone"><em>For the emo girl with a big presentation at school. The ER nurse on her night out. Your grandpa on his way to the grocery store.<br>Everyone deserves to dress with intention.</em></p>
+   <ul class="about-everyone-list">
+        <li>The ER nurse on her only night out.</li>
+        <li>The teenager going to prom in a small town.</li>
+        <li>Your grandpa on his way to watch birds at the park.</li>
+      </ul>
+    <div class="about-everyone">
+      <p>Everyone deserves to dress with purpose.</p>
+    </div>
 
     <% unless current_user.present? %>
       <div class="about-cta">
