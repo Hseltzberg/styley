@@ -50,12 +50,11 @@ task({ sample_data: :environment }) do
     "Comfortable enough for a long day but still feels styled.",
   ]
 
-  outfit_photo_paths = Dir.glob(Rails.root.join("public", "sample_photos", "*.{jpg,jpeg,png}").to_s)
+  outfit_photo_paths = Dir.glob(Rails.root.join("public", "sample_photos", "*.{jpg,jpeg,png}").to_s).shuffle
 
-  10.times do
+  outfit_photo_paths.each do |selected_photo_path|
     outfit = Outfit.new
 
-    selected_photo_path = outfit_photo_paths.sample
     selected_photo_file = File.open(selected_photo_path)
     outfit.outfit_photo = selected_photo_file
 
