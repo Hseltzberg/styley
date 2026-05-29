@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <form action="/insert_outfit" method="post" id="new-outfit-form">
+  <form action="/insert_outfit" method="post" id="new-outfit-form" enctype="multipart/form-data">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
     <!-- Step 1: Photo + Name -->
@@ -23,8 +23,8 @@
       <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(139,26,74,0.08); margin-bottom: 20px;">
 
         <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Outfit photo URL</label>
-          <input class="form-control" type="text" name="query_outfit_photo" placeholder="Paste a photo URL..." id="photo-input"
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Outfit photo</label>
+          <input class="form-control" type="file" name="query_outfit_photo" id="photo-input"
                  style="border-radius: 12px; padding: 12px 16px; max-width: 100%;">
         </div>
 

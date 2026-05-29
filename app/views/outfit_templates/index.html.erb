@@ -119,7 +119,7 @@
         <% the_user = matching_users.at(0) %>
 
         <div class="pin-card <%= an_outfit.card_size %>" onclick="location.href='/outfits/<%= an_outfit.id %>'">
-          <img class="pin-image" src="<%= an_outfit.outfit_photo %>">
+          <img class="pin-image" src="<%= an_outfit.outfit_photo_url %>">
           <div class="pin-overlay">
             <h3 class="pin-headline"><%= an_outfit.note_headline %></h3>
             <a class="pin-view-link" href="/outfits/<%= an_outfit.id %>">view outfit</a>

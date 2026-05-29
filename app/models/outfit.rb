@@ -13,6 +13,7 @@
 #  user_id       :integer
 #
 class Outfit < ApplicationRecord
+mount_uploader(:outfit_photo, OutfitPhotoUploader)
   belongs_to(:user, counter_cache: :outfit_uploads_count)
   has_many(:places, dependent: :destroy)
   has_many(:vibes, dependent: :destroy)
