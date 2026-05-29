@@ -206,7 +206,11 @@ class OutfitsController < ApplicationController
     matching_outfits = Outfit.where({ :id => params.fetch("path_id") })
     the_outfit = matching_outfits.at(0)
 
-    the_outfit.outfit_photo = params.fetch("query_outfit_photo")
+    uploaded_file = params.fetch("query_outfit_photo", nil)
+    if uploaded_file.present?
+      the_outfit.outfit_photo = uploaded_file
+    end
+    
     the_outfit.note_headline = params.fetch("query_note_headline", "")
     the_outfit.note_details = params.fetch("query_note_details", "")
     if params.fetch("query_is_public", "false") == "true"

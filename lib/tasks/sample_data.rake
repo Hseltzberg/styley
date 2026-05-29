@@ -19,7 +19,7 @@ task({ sample_data: :environment }) do
 
   [
     { email: "alice@example.com", style: style_descriptions[0] },
-    { email: "bob@example.com",   style: style_descriptions[1] },
+    { email: "bob@example.com", style: style_descriptions[1] },
     { email: "carol@example.com", style: style_descriptions[2] },
   ].each do |attrs|
     user = User.new
@@ -32,11 +32,6 @@ task({ sample_data: :environment }) do
 
   users = User.all
 
-  outfit_photos = [
-    "https://picsum.photos/300?random=1",
-    "https://picsum.photos/300?random=2",
-    "https://picsum.photos/300?random=3",
-  ]
   note_headlines = [
     "Blue heels only",
     "Good for errands",
@@ -55,9 +50,15 @@ task({ sample_data: :environment }) do
     "Comfortable enough for a long day but still feels styled.",
   ]
 
+  outfit_photo_paths = Dir.glob(Rails.root.join("public", "sample_photos", "*.{jpg,jpeg,png}").to_s)
+
   10.times do
     outfit = Outfit.new
-    outfit.outfit_photo = outfit_photos.sample
+
+    selected_photo_path = outfit_photo_paths.sample
+    selected_photo_file = File.open(selected_photo_path)
+    outfit.outfit_photo = selected_photo_file
+
     outfit.user_id = users.sample.id
     outfit.note_headline = note_headlines.sample
     outfit.note_details = note_details_list.sample
@@ -147,7 +148,7 @@ task({ sample_data: :environment }) do
       description: "Ivory cashmere turtleneck tucked into wide-leg camel trousers, finished with simple leather loafers. Nothing loud, everything considered.",
       why_timeless: "Neutral palette and precise tailoring transcend seasons and decades.",
       color_palette: ["#e8dcc8", "#c4a882", "#f5f0e8"].to_json,
-      key_pieces: ["cashmere turtleneck", "wide-leg trousers", "leather loafers"].to_json
+      key_pieces: ["cashmere turtleneck", "wide-leg trousers", "leather loafers"].to_json,
     },
     {
       title: "Parisian Off-Duty",
@@ -155,8 +156,8 @@ task({ sample_data: :environment }) do
       description: "Slim dark denim, a crisp white poplin shirt slightly untucked, and a structured black blazer thrown over the shoulders. Effortless but precise.",
       why_timeless: "The white shirt and dark denim combination has anchored wardrobes for fifty years.",
       color_palette: ["#1a1a2e", "#ffffff", "#2d2d2d"].to_json,
-      key_pieces: ["white poplin shirt", "dark slim denim", "structured blazer"].to_json
-    }
+      key_pieces: ["white poplin shirt", "dark slim denim", "structured blazer"].to_json,
+    },
   ].each do |pin_attrs|
     pin = InspirationPin.new(pin_attrs)
     pin.user_id = users.sample.id

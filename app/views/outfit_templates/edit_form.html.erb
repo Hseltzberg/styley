@@ -10,9 +10,16 @@
 
 <% current_season_names = @the_outfit.seasons.map { |a_season| a_season.name } %>
 
-<form action="/modify_outfit/<%= @the_outfit.id %>" method="post">
-  <label for="photo_box">Outfit photo URL</label>
-  <input id="photo_box" type="text" name="query_outfit_photo" value="<%= @the_outfit.outfit_photo %>">
+<div>
+  <p>Current photo</p>
+  <img src="<%= @the_outfit.outfit_photo_url %>"
+       alt="<%= @the_outfit.note_headline %>"
+       style="max-width: 300px; width: 100%; height: auto; border-radius: 16px;">
+</div>
+
+<form action="/modify_outfit/<%= @the_outfit.id %>" method="post" enctype="multipart/form-data">
+  <label for="photo_box">Outfit photo</label>
+  <input id="photo_box" type="file" name="query_outfit_photo">
 
   <p>
     I feel
