@@ -1,4 +1,4 @@
-<h1><%= current_user.username %>'s closet</h1>
+<h1><%= (current_user.username.presence || current_user.email.split("@").first) %>'s closet</h1>
 
 <% if @list_of_outfits.count > 0 %>
   <h2>you've got great taste 😉</h2>
@@ -126,5 +126,6 @@
           </div>
         </div>
       <% end %>
+    </div>
 
-    <% end %>
+  <% end %>

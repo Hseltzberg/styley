@@ -54,7 +54,7 @@
         <% the_user = User.find_by(id: an_outfit.user_id) %>
         <a href="/outfits/<%= an_outfit.id %>" style="text-decoration: none; color: inherit;">
           <div class="pin-card <%= an_outfit.card_size %>">
-            <img class="pin-image" src="<%= an_outfit.outfit_photo %>" alt="<%= an_outfit.note_headline %>">
+            <img class="pin-image" src="<%= an_outfit.outfit_photo_url %>" alt="<%= an_outfit.note_headline %>">
             <div class="pin-overlay">
               <p class="pin-user">@<%= the_user&.username || "styley" %></p>
               <p class="pin-headline"><%= an_outfit.note_headline %></p>
@@ -86,7 +86,7 @@
     <div class="pin-board" style="margin-top: 12px;">
       <% @list_of_public_outfits.first(6).each do |an_outfit| %>
         <div class="pin-card <%= an_outfit.card_size %>">
-          <img class="pin-image" src="<%= an_outfit.outfit_photo %>" alt="">
+          <img class="pin-image" src="<%= an_outfit.outfit_photo_url %>" alt="">
         </div>
       <% end %>
     </div>

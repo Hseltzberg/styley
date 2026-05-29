@@ -1,148 +1,234 @@
-<h2>Edit</h2>
+<% current_feeling_ids = @the_outfit.feelings.map(&:id) %>
+<% current_occasion_ids = @the_outfit.occasions.map(&:id) %>
+<% current_season_names = @the_outfit.seasons.map { |s| s.name } %>
 
-<% current_feeling_1 = @the_outfit.feelings.at(0) %>
-<% current_feeling_2 = @the_outfit.feelings.at(1) %>
-<% current_feeling_3 = @the_outfit.feelings.at(2) %>
+<div class="outfit-form-wrap">
 
-<% current_occasion_1 = @the_outfit.occasions.at(0) %>
-<% current_occasion_2 = @the_outfit.occasions.at(1) %>
-<% current_occasion_3 = @the_outfit.occasions.at(2) %>
+  <div style="text-align: center; margin-bottom: 32px;">
+    <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #3d0a28; margin-bottom: 6px;">Edit Outfit</h1>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 20px;">
+      <div id="step-indicator-1" style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #8b1a4a; font-weight: 600;">
+        <span style="width: 28px; height: 28px; border-radius: 50%; background: #8b1a4a; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">1</span>
+        The Look
+      </div>
+      <div style="width: 40px; height: 1px; background: #e8ddd8;"></div>
+      <div id="step-indicator-2" style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #aaa; font-weight: 600;">
+        <span id="step2-dot" style="width: 28px; height: 28px; border-radius: 50%; background: #e8ddd8; color: #aaa; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">2</span>
+        The Story
+      </div>
+    </div>
+  </div>
 
-<% current_season_names = @the_outfit.seasons.map { |a_season| a_season.name } %>
+  <form action="/modify_outfit/<%= @the_outfit.id %>" method="post" id="edit-outfit-form" enctype="multipart/form-data">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-<div>
-  <p>Current photo</p>
-  <img src="<%= @the_outfit.outfit_photo_url %>"
-       alt="<%= @the_outfit.note_headline %>"
-       style="max-width: 300px; width: 100%; height: auto; border-radius: 16px;">
-</div>
+    <!-- Step 1: Photo + Name -->
+    <div id="step-1">
+      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(139,26,74,0.08); margin-bottom: 20px;">
 
-<form action="/modify_outfit/<%= @the_outfit.id %>" method="post" enctype="multipart/form-data">
-  <label for="photo_box">Outfit photo</label>
-  <input id="photo_box" type="file" name="query_outfit_photo">
-
-  <p>
-    I feel
-    <div>
-      <select name="query_feeling_id_1" id="feeling_id_1">
-        <option value="">Choose a feeling</option>
-        <% @list_of_feelings.each do |a_feeling| %>
-          <option value="<%= a_feeling.id %>" <%= "selected" if current_feeling_1 != nil && a_feeling.id == current_feeling_1.id %>>
-          <%= a_feeling.name %>
-        </option>
-          <% end %>
-        </select>
-
-        or
-
-        <input id="new_feeling_1" type="text" name="query_new_feeling_1" placeholder="Create a new feeling">
-      </p>
-
-      <p>
-        <select name="query_feeling_id_2" id="feeling_id_2">
-          <option value="">Choose a feeling</option>
-          <% @list_of_feelings.each do |a_feeling| %>
-            <option value="<%= a_feeling.id %>" <%= "selected" if current_feeling_2 != nil && a_feeling.id == current_feeling_2.id %>>
-          <%= a_feeling.name %>
-        </option>
-            <% end %>
-          </select>
-
-          or
-
-          <input id="new_feeling_2" type="text" name="query_new_feeling_2" placeholder="Create a new feeling">
-        </p>
-
-        <p>
-          <select name="query_feeling_id_3" id="feeling_id_3">
-            <option value="">Choose a feeling</option>
-            <% @list_of_feelings.each do |a_feeling| %>
-              <option value="<%= a_feeling.id %>" <%= "selected" if current_feeling_3 != nil && a_feeling.id == current_feeling_3.id %>>
-          <%= a_feeling.name %>
-        </option>
-              <% end %>
-            </select>
-
-            or
-
-            <input id="new_feeling_3" type="text" name="query_new_feeling_3" placeholder="Create a new feeling">
-          </p>
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Current photo</label>
+          <img src="<%= @the_outfit.outfit_photo_url %>"
+               alt="<%= @the_outfit.note_headline %>"
+               style="max-width: 100%; max-height: 320px; object-fit: cover; border-radius: 16px; border: 2px solid #e8ddd8; margin-bottom: 16px;">
         </div>
 
-        <p> Perfect for </p>
-        <select name="query_occasion_id_1" id="occasion_id_1">
-          <option value="">Choose an occasion</option>
-          <% @list_of_occasions.each do |an_occasion| %>
-            <option value="<%= an_occasion.id %>" <%= "selected" if current_occasion_1 != nil && an_occasion.id == current_occasion_1.id %>>
-          <%= an_occasion.name %>
-        </option>
+        <div style="margin-bottom: 24px;">
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Replace photo</label>
+          <input class="form-control" type="file" name="query_outfit_photo" id="photo-input"
+                 style="border-radius: 12px; padding: 12px 16px; max-width: 100%;">
+        </div>
+
+        <div id="photo-preview" style="display: none; margin-bottom: 24px;">
+          <img id="preview-img" src="" alt="Preview"
+               style="max-width: 100%; max-height: 320px; object-fit: cover; border-radius: 16px; border: 2px solid #e8ddd8;">
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Give it a name</label>
+          <input class="form-control" type="text" name="query_note_headline" value="<%= @the_outfit.note_headline %>"
+                 placeholder="e.g. Power meeting look"
+                 style="border-radius: 12px; padding: 12px 16px; max-width: 100%;">
+        </div>
+      </div>
+
+      <div style="text-align: right;">
+        <button type="button" onclick="goToStep2()" class="btn btn-primary"
+                style="border-radius: 999px; padding: 11px 32px; font-size: 0.95rem;">
+          Next: The Story →
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Context -->
+    <div id="step-2" style="display: none;">
+      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(139,26,74,0.08); margin-bottom: 20px;">
+
+        <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">How does it make you feel?</p>
+          <div class="category-chips" id="feelings-chips">
+            <% @list_of_feelings.each do |a_feeling| %>
+              <label class="category-chip">
+                <input type="checkbox" name="feelings[]" value="<%= a_feeling.id %>" <%= "checked" if current_feeling_ids.include?(a_feeling.id) %>>
+                <%= a_feeling.name %>
+              </label>
             <% end %>
-          </select>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+            <input type="text" id="new-feeling-input" placeholder="Add your own feeling…"
+                   style="border: 1.5px dashed #c9a0b4; border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; color: #3d0a28; background: transparent; outline: none; width: 200px;">
+            <button type="button" onclick="addCustomChip('feeling')"
+                    style="background: #8b1a4a; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
+          </div>
+          <div id="new-feelings-container"></div>
+        </div>
 
-          or
-
-          <input id="new_occasion_1" type="text" name="query_new_occasion_1" placeholder="Create a new occasion">
-        </p>
-
-        <p>
-          <select name="query_occasion_id_2" id="occasion_id_2">
-            <option value="">Choose an occasion</option>
+        <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">Perfect for</p>
+          <div class="category-chips" id="occasions-chips">
             <% @list_of_occasions.each do |an_occasion| %>
-              <option value="<%= an_occasion.id %>" <%= "selected" if current_occasion_2 != nil && an_occasion.id == current_occasion_2.id %>>
-          <%= an_occasion.name %>
-        </option>
-              <% end %>
-            </select>
-            or
+              <label class="category-chip">
+                <input type="checkbox" name="occasions[]" value="<%= an_occasion.id %>" <%= "checked" if current_occasion_ids.include?(an_occasion.id) %>>
+                <%= an_occasion.name %>
+              </label>
+            <% end %>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+            <input type="text" id="new-occasion-input" placeholder="Add your own occasion…"
+                   style="border: 1.5px dashed #c9a0b4; border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; color: #3d0a28; background: transparent; outline: none; width: 200px;">
+            <button type="button" onclick="addCustomChip('occasion')"
+                    style="background: #8b1a4a; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
+          </div>
+          <div id="new-occasions-container"></div>
+        </div>
 
-            <input id="new_occasion_2" type="text" name="query_new_occasion_2" placeholder="Create a new occasion">
-          </p>
+        <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">Season</p>
+          <div class="category-chips">
+            <% ["winter", "spring", "summer", "fall"].each do |season| %>
+              <label class="category-chip">
+                <input type="checkbox" name="query_season_<%= season %>" value="<%= season %>" <%= "checked" if current_season_names.include?(season) %>>
+                <%= season.capitalize %>
+              </label>
+            <% end %>
+          </div>
+        </div>
 
-          <p>
-            <select name="query_occasion_id_3" id="occasion_id_3">
-              <option value="">Choose an occasion</option>
-              <% @list_of_occasions.each do |an_occasion| %>
-                <option value="<%= an_occasion.id %>" <%= "selected" if current_occasion_3 != nil && an_occasion.id == current_occasion_3.id %>>
-          <%= an_occasion.name %>
-        </option>
-                <% end %>
-              </select>
+        <div style="margin-bottom: 28px;">
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Note to self</label>
+          <textarea class="form-control" name="query_note_details"
+                    placeholder="Looks best with the blue heels, but not great for walking all day."
+                    rows="3" style="border-radius: 12px; padding: 12px 16px; max-width: 100%; resize: vertical;"><%= @the_outfit.note_details %></textarea>
+        </div>
 
-              or
+        <div>
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Who can see this?</p>
+          <div style="display: flex; gap: 20px;">
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; color: #444;">
+              <input class="form-check-input" type="radio" name="query_is_public" value="false" <%= "checked" unless @the_outfit.is_public %> style="margin: 0;">
+              Just me
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; color: #444;">
+              <input class="form-check-input" type="radio" name="query_is_public" value="true" <%= "checked" if @the_outfit.is_public %> style="margin: 0;">
+              Styley community
+            </label>
+          </div>
+        </div>
+      </div>
 
-              <input id="new_occasion_3" type="text" name="query_new_occasion_3" placeholder="Create a new occasion">
-            </p>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="button" onclick="goToStep1()"
+                style="background: transparent; border: none; color: #8b1a4a; font-size: 0.9rem; cursor: pointer; padding: 0; opacity: 0.7;">
+          ← Back
+        </button>
+        <button type="submit" class="btn btn-primary"
+                style="border-radius: 999px; padding: 11px 36px; font-size: 0.95rem;">
+          Update outfit
+        </button>
+      </div>
+    </div>
 
-            In the
+  </form>
+</div>
 
-            <label for="winter_box">Winter</label>
-            <input id="winter_box" type="checkbox" name="query_season_winter" value="winter" <%= "checked" if current_season_names.include?("winter") %>>
+<script>
+  function goToStep2() {
+    document.getElementById("step-1").style.display = "none";
+    document.getElementById("step-2").style.display = "block";
+    var dot = document.getElementById("step2-dot");
+    dot.style.background = "#8b1a4a";
+    dot.style.color = "white";
+    document.getElementById("step-indicator-2").style.color = "#8b1a4a";
+  }
 
-            <label for="spring_box">Spring</label>
-            <input id="spring_box" type="checkbox" name="query_season_spring" value="spring" <%= "checked" if current_season_names.include?("spring") %>>
+  function goToStep1() {
+    document.getElementById("step-2").style.display = "none";
+    document.getElementById("step-1").style.display = "block";
+    var dot = document.getElementById("step2-dot");
+    dot.style.background = "#e8ddd8";
+    dot.style.color = "#aaa";
+    document.getElementById("step-indicator-2").style.color = "#aaa";
+  }
 
-            <label for="summer_box">Summer</label>
-            <input id="summer_box" type="checkbox" name="query_season_summer" value="summer" <%= "checked" if current_season_names.include?("summer") %>>
+  function addCustomChip(type) {
+    var inputId = type === 'feeling' ? 'new-feeling-input' : 'new-occasion-input';
+    var chipsId = type === 'feeling' ? 'feelings-chips' : 'occasions-chips';
+    var containerId = type === 'feeling' ? 'new-feelings-container' : 'new-occasions-container';
+    var paramName = type === 'feeling' ? 'new_feeling_names[]' : 'new_occasion_names[]';
 
-            <label for="fall_box">Fall</label>
-            <input id="fall_box" type="checkbox" name="query_season_fall" value="fall" <%= "checked" if current_season_names.include?("fall") %>>
-            <p>
-              <label for="headline_box">Note headline</label>
-              <input id="headline_box" type="text" name="query_note_headline" value="<%= @the_outfit.note_headline %>">
-            </p>
+    var input = document.getElementById(inputId);
+    var name = input.value.trim();
+    if (!name) return;
 
-            <p>
-              <label for="details_box">Note to self</label>
-              <textarea id="details_box" name="query_note_details"><%= @the_outfit.note_details %></textarea>
-            </p>
+    var chipsDiv = document.getElementById(chipsId);
+    var label = document.createElement('label');
+    label.className = 'category-chip';
+    label.style.background = '#8b1a4a';
+    label.style.color = 'white';
+    label.style.borderColor = '#8b1a4a';
+    label.textContent = name;
+    chipsDiv.appendChild(label);
 
-            <p>Who can see this outfit?</p>
+    var container = document.getElementById(containerId);
+    var hidden = document.createElement('input');
+    hidden.type = 'hidden';
+    hidden.name = paramName;
+    hidden.value = name;
+    container.appendChild(hidden);
 
-            <label for="public_choice">Styley community</label>
-            <input id="public_choice" type="radio" name="query_is_public" value="true">
+    input.value = '';
+  }
 
-            <label for="private_choice">Just me</label>
-            <input id="private_choice" type="radio" name="query_is_public" value="false" checked>
+  document.addEventListener('DOMContentLoaded', function() {
+    ['new-feeling-input', 'new-occasion-input'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            var type = id === 'new-feeling-input' ? 'feeling' : 'occasion';
+            addCustomChip(type);
+          }
+        });
+      }
+    });
 
-            <button>Update outfit</button>
-          </form>
+    var photoInput = document.getElementById("photo-input");
+    if (photoInput) {
+      photoInput.addEventListener("change", function() {
+        var preview = document.getElementById("photo-preview");
+        var img = document.getElementById("preview-img");
+        if (this.files && this.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            img.src = e.target.result;
+            preview.style.display = "block";
+          };
+          reader.readAsDataURL(this.files[0]);
+        } else {
+          preview.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
