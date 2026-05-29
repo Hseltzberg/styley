@@ -1,6 +1,5 @@
 class OutfitPhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
-end
 
   # Include RMagick, MiniMagick, or Vips support:
   # include CarrierWave::RMagick

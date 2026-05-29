@@ -87,6 +87,11 @@ class OutfitsController < ApplicationController
     matching_outfits = Outfit.where({ :id => params.fetch("path_id") })
     @the_outfit = matching_outfits.at(0)
 
+    if @the_outfit.nil?
+      redirect_to("/outfits")
+      return
+    end
+
     render({ :template => "outfit_templates/show" })
   end
 
