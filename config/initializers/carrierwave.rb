@@ -1,3 +1,4 @@
 CarrierWave.configure do |config|
-  config.cache_storage = :fog
+  config.cache_storage = :file
+  config.cache_dir = Rails.root.join("tmp", "uploads")
 end
