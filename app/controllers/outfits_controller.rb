@@ -106,9 +106,14 @@ class OutfitsController < ApplicationController
   def create
     pp "CREATE HIT"
 
+    if params[:query_outfit_photo].blank?
+      redirect_to new_outfit_path, alert: "Please select a photo before submitting."
+      return
+    end
+
     the_outfit = Outfit.new
     the_outfit.user_id = current_user.id
-    the_outfit.outfit_photo = params.fetch("query_outfit_photo")
+    the_outfit.outfit_photo = params[:query_outfit_photo]
     the_outfit.note_headline = params.fetch("query_note_headline", "")
     the_outfit.note_details = params.fetch("query_note_details", "")
     the_outfit.card_size = ["small", "medium", "tall"].sample
