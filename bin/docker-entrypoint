@@ -10,6 +10,9 @@ fi
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
   ./bin/rails db:seed
+  if [ "${LOAD_SAMPLE_DATA}" == "true" ]; then
+    ./bin/rails sample_data
+  fi
 fi
 
 exec "${@}"
