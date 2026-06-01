@@ -158,44 +158,14 @@ class OutfitsController < ApplicationController
       place.save
     end
 
-    if params.fetch("query_season_winter", "") != ""
-      matching_seasons = Season.where({ :name => "winter" })
-      season_winter = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = season_winter.id
-      outfit_season.save
-    end
-
-    if params.fetch("query_season_spring", "") != ""
-      matching_seasons = Season.where({ :name => "spring" })
-      season_spring = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = season_spring.id
-      outfit_season.save
-    end
-
-    if params.fetch("query_season_summer", "") != ""
-      matching_seasons = Season.where({ :name => "summer" })
-      season_summer = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = season_summer.id
-      outfit_season.save
-    end
-
-    if params.fetch("query_season_fall", "") != ""
-      matching_seasons = Season.where({ :name => "fall" })
-      season_fall = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = season_fall.id
-      outfit_season.save
+    ["winter", "spring", "summer", "fall"].each do |season_name|
+      if params.fetch("query_season_#{season_name}", "") != ""
+        season = Season.find_or_create_by(name: season_name)
+        outfit_season = OutfitSeason.new
+        outfit_season.outfit_id = the_outfit.id
+        outfit_season.season_id = season.id
+        outfit_season.save
+      end
     end
 
     redirect_to("/outfits")
@@ -235,44 +205,14 @@ class OutfitsController < ApplicationController
       an_outfit_season.destroy
     end
 
-    if params.fetch("query_season_winter", "") != ""
-      matching_seasons = Season.where({ :name => "winter" })
-      the_season = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = the_season.id
-      outfit_season.save
-    end
-
-    if params.fetch("query_season_spring", "") != ""
-      matching_seasons = Season.where({ :name => "spring" })
-      the_season = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = the_season.id
-      outfit_season.save
-    end
-
-    if params.fetch("query_season_summer", "") != ""
-      matching_seasons = Season.where({ :name => "summer" })
-      the_season = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = the_season.id
-      outfit_season.save
-    end
-
-    if params.fetch("query_season_fall", "") != ""
-      matching_seasons = Season.where({ :name => "fall" })
-      the_season = matching_seasons.at(0)
-
-      outfit_season = OutfitSeason.new
-      outfit_season.outfit_id = the_outfit.id
-      outfit_season.season_id = the_season.id
-      outfit_season.save
+    ["winter", "spring", "summer", "fall"].each do |season_name|
+      if params.fetch("query_season_#{season_name}", "") != ""
+        season = Season.find_or_create_by(name: season_name)
+        outfit_season = OutfitSeason.new
+        outfit_season.outfit_id = the_outfit.id
+        outfit_season.season_id = season.id
+        outfit_season.save
+      end
     end
 
     matching_vibes = Vibe.where({ :outfit_id => the_outfit.id })
