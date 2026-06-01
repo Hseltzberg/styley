@@ -24,6 +24,7 @@ gem "ai-chat"
 gem "dotenv"
 gem "carrierwave"
 gem "cloudinary"
+gem "web_rake"
 
 group :development, :test do
   gem "debug", platforms: %i[mri windows], require: "debug/prelude" # Ruby debugger
