@@ -1,4 +1,11 @@
 class OutfitsController < ApplicationController
+  ADMIN_EMAIL = "alice@example.com"
+
+  def authorize_outfit_edit!(outfit)
+    unless current_user.email == ADMIN_EMAIL || outfit.user_id == current_user.id
+      redirect_to("/outfits", alert: "You can only edit your own outfits.")
+    end
+  end
   def index
     matching_outfits = Outfit.where({ :user_id => current_user.id })
 
@@ -175,6 +182,9 @@ class OutfitsController < ApplicationController
     matching_outfits = Outfit.where({ :id => params.fetch("path_id") })
     @the_outfit = matching_outfits.at(0)
 
+    authorize_outfit_edit!(@the_outfit)
+    return if performed?
+
     @list_of_feelings = Feeling.where({}).order({ :name => :asc })
     @list_of_occasions = Occasion.where({}).order({ :name => :asc })
     @list_of_seasons = Season.where({}).order({ :name => :asc })
@@ -185,6 +195,9 @@ class OutfitsController < ApplicationController
   def update
     matching_outfits = Outfit.where({ :id => params.fetch("path_id") })
     the_outfit = matching_outfits.at(0)
+
+    authorize_outfit_edit!(the_outfit)
+    return if performed?
 
     uploaded_file = params.fetch("query_outfit_photo", nil)
     if uploaded_file.present?
@@ -263,6 +276,9 @@ class OutfitsController < ApplicationController
   def destroy
     matching_outfits = Outfit.where({ :id => params.fetch("path_id") })
     the_outfit = matching_outfits.at(0)
+
+    authorize_outfit_edit!(the_outfit)
+    return if performed?
 
     the_outfit.destroy
 
