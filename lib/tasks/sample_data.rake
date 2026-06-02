@@ -39,6 +39,10 @@ task({ sample_data: :environment }) do
     "Cute but not all-day",
     "Easy win",
     "Comfy and polished",
+    "Add leather",
+    "Long earrings",
+    "Travel approved"
+
   ]
 
   note_details_list = [
@@ -51,6 +55,7 @@ task({ sample_data: :environment }) do
   ]
 
   outfit_photo_paths = Dir.glob(Rails.root.join("public", "sample_photos", "*.{jpg,jpeg,png}").to_s).shuffle
+  headline_cycle = note_headlines.shuffle.cycle
 
   outfit_photo_paths.each do |selected_photo_path|
     outfit = Outfit.new
@@ -59,7 +64,7 @@ task({ sample_data: :environment }) do
     outfit.outfit_photo = selected_photo_file
 
     outfit.user_id = users.sample.id
-    outfit.note_headline = note_headlines.sample
+    outfit.note_headline = headline_cycle.next
     outfit.note_details = note_details_list.sample
     outfit.is_public = [true, false].sample
     outfit.card_size = ["small", "medium", "tall"].sample
