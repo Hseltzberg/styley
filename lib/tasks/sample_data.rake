@@ -54,6 +54,16 @@ task({ sample_data: :environment }) do
     "Comfortable enough for a long day but still feels styled.",
   ]
 
+  note_reflection_list = [
+    "Got three compliments. Will wear again.",
+    "Felt more put-together than I expected — good surprise.",
+    "A bit stiff at first but loosened up by noon.",
+    "Felt exactly right for the occasion.",
+    "Overdressed for the vibe but still glad I wore it.",
+    nil,
+    nil,
+  ]
+
   outfit_photo_paths = Dir.glob(Rails.root.join("public", "sample_photos", "*.{jpg,jpeg,png}").to_s).shuffle
   headline_cycle = note_headlines.shuffle.cycle
 
@@ -66,6 +76,7 @@ task({ sample_data: :environment }) do
     outfit.user_id = users.sample.id
     outfit.note_headline = headline_cycle.next
     outfit.note_details = note_details_list.sample
+    outfit.note_reflection = note_reflection_list.sample
     outfit.is_public = [true, false].sample
     outfit.card_size = ["small", "medium", "tall"].sample
     outfit.save

@@ -2,15 +2,16 @@
 #
 # Table name: outfits
 #
-#  id            :bigint           not null, primary key
-#  card_size     :string           default("medium"), not null
-#  is_public     :boolean          default(FALSE), not null
-#  note_details  :text
-#  note_headline :string
-#  outfit_photo  :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  user_id       :integer
+#  id              :bigint           not null, primary key
+#  card_size       :string           default("medium"), not null
+#  is_public       :boolean          default(FALSE), not null
+#  note_details    :text
+#  note_headline   :string
+#  note_reflection :text
+#  outfit_photo    :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  user_id         :integer
 #
 class Outfit < ApplicationRecord
 mount_uploader(:outfit_photo, OutfitPhotoUploader)

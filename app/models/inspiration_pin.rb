@@ -2,16 +2,16 @@
 #
 # Table name: inspiration_pins
 #
-#  id                 :bigint           not null, primary key
-#  user_id            :integer
-#  title              :string
+#  id                  :bigint           not null, primary key
+#  color_palette       :string
+#  description         :text
 #  editorial_reference :string
-#  description        :text
-#  why_timeless       :string
-#  color_palette      :string
-#  key_pieces         :string
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  key_pieces          :string
+#  title               :string
+#  why_timeless        :string
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  user_id             :integer
 #
 class InspirationPin < ApplicationRecord
   belongs_to :user

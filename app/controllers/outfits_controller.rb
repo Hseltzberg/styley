@@ -123,6 +123,7 @@ class OutfitsController < ApplicationController
     the_outfit.outfit_photo = params[:query_outfit_photo]
     the_outfit.note_headline = params.fetch("query_note_headline", "")
     the_outfit.note_details = params.fetch("query_note_details", "")
+    the_outfit.note_reflection = params.fetch("query_note_reflection", "")
     the_outfit.card_size = ["small", "medium", "tall"].sample
     if params.fetch("query_is_public", "false") == "true"
       the_outfit.is_public = true
@@ -206,6 +207,7 @@ class OutfitsController < ApplicationController
     
     the_outfit.note_headline = params.fetch("query_note_headline", "")
     the_outfit.note_details = params.fetch("query_note_details", "")
+    the_outfit.note_reflection = params.fetch("query_note_reflection", "")
     if params.fetch("query_is_public", "false") == "true"
       the_outfit.is_public = true
     else

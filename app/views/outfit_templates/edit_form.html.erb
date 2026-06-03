@@ -121,6 +121,13 @@
                     rows="3" style="border-radius: 12px; padding: 12px 16px; max-width: 100%; resize: vertical;"><%= @the_outfit.note_details %></textarea>
         </div>
 
+        <div style="margin-bottom: 28px;">
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">How did you feel wearing it?</label>
+          <textarea class="form-control" name="query_note_reflection"
+                    placeholder="Felt more confident than expected. Got three compliments."
+                    rows="2" style="border-radius: 12px; padding: 12px 16px; max-width: 100%; resize: vertical;"><%= @the_outfit.note_reflection %></textarea>
+        </div>
+
         <div>
           <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Who can see this?</p>
           <div style="display: flex; gap: 20px;">
