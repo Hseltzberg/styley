@@ -1,7 +1,7 @@
 /* Tom Select custom theme */
 .ts-wrapper .ts-control {
   background-color: transparent;
-  border: 1px solid #8c3040;
+  border: 1px solid #7B2C00;
   border-radius: 12px;
   padding: 6px 10px;
   box-shadow: none;
@@ -9,12 +9,12 @@
 }
 
 .ts-wrapper.focus .ts-control {
-  border-color: #8c3040;
-  box-shadow: 0 0 0 3px rgba(140, 48, 64, 0.15);
+  border-color: #7B2C00;
+  box-shadow: 0 0 0 3px rgba(123, 44, 0, 0.15);
 }
 
 .ts-wrapper .ts-control .item {
-  background-color: #8c3040;
+  background-color: #7B2C00;
   color: white;
   border-radius: 999px;
   padding: 2px 8px 2px 12px;
@@ -35,18 +35,18 @@
 }
 
 .ts-wrapper .ts-control input {
-  color: #8c3040;
+  color: #7B2C00;
 }
 
 .ts-wrapper .ts-control input::placeholder {
-  color: #8c3040;
+  color: #7B2C00;
   opacity: 0.55;
 }
 
 .ts-dropdown {
-  border: 1px solid #e2d5c3;
+  border: 1px solid #A3BACB;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(140, 48, 64, 0.12);
+  box-shadow: 0 4px 16px rgba(163, 186, 203, 0.2);
   overflow: hidden;
   margin-top: 4px;
 }
@@ -59,13 +59,13 @@
 
 .ts-dropdown .option:hover,
 .ts-dropdown .option.active {
-  background-color: rgba(140, 48, 64, 0.08);
-  color: #8c3040;
+  background-color: rgba(123, 44, 0, 0.08);
+  color: #7B2C00;
 }
 
 .ts-dropdown .option.selected {
-  background-color: rgba(140, 48, 64, 0.05);
-  color: #8c3040;
+  background-color: rgba(123, 44, 0, 0.05);
+  color: #7B2C00;
   font-weight: 500;
 }
 
@@ -74,7 +74,7 @@
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #8c3040;
+  color: #7B2C00;
   margin: 12px 0 6px;
 }
 
@@ -90,8 +90,8 @@
   align-items: center;
   padding: 6px 14px;
   border-radius: 999px;
-  border: 1px solid #8c3040;
-  color: #8c3040;
+  border: 1px solid #7B2C00;
+  color: #7B2C00;
   background-color: transparent;
   cursor: pointer;
   user-select: none;
@@ -104,17 +104,17 @@
 }
 
 .category-chip:hover {
-  background-color: rgba(140, 48, 64, 0.08);
+  background-color: rgba(123, 44, 0, 0.08);
 }
 
 .category-chip:has(input:checked) {
-  background-color: #8c3040;
+  background-color: #7B2C00;
   color: white;
 }
 
 .active_filters_box {
-  background-color: #f5ece3;
-  border: 1px solid #e2d5c3;
+  background-color: #F3E9DC;
+  border: 1px solid #A3BACB;
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 20px;
@@ -126,14 +126,14 @@
   margin-right: 8px;
   margin-bottom: 8px;
   border-radius: 999px;
-  background-color: #f5ece3;
-  border: 1px solid #b5603e;
-  color: #b5603e;
+  background-color: #F3E9DC;
+  border: 1px solid #B99984;
+  color: #B99984;
 }
 
 .empty_state_box {
-  background-color: #f5ece3;
-  border: 1px dashed #e2d5c3;
+  background-color: #F3E9DC;
+  border: 1px dashed #A3BACB;
   border-radius: 16px;
   padding: 20px;
   margin-top: 20px;

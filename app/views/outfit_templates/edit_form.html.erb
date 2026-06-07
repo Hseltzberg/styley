@@ -7,13 +7,13 @@
   <div style="text-align: center; margin-bottom: 32px;">
     <h1 style="font-family: 'Playfair Display', serif; font-size: 2rem; color: #3d0a28; margin-bottom: 6px;">Edit Outfit</h1>
     <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 20px;">
-      <div id="step-indicator-1" style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #8b1a4a; font-weight: 600;">
-        <span style="width: 28px; height: 28px; border-radius: 50%; background: #8b1a4a; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">1</span>
+      <div id="step-indicator-1" style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #7B2C00; font-weight: 600;">
+        <span style="width: 28px; height: 28px; border-radius: 50%; background: #7B2C00; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">1</span>
         The Look
       </div>
-      <div style="width: 40px; height: 1px; background: #e8ddd8;"></div>
+      <div style="width: 40px; height: 1px; background: #A3BACB;"></div>
       <div id="step-indicator-2" style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #aaa; font-weight: 600;">
-        <span id="step2-dot" style="width: 28px; height: 28px; border-radius: 50%; background: #e8ddd8; color: #aaa; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">2</span>
+        <span id="step2-dot" style="width: 28px; height: 28px; border-radius: 50%; background: #A3BACB; color: #aaa; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;">2</span>
         The Story
       </div>
     </div>
@@ -24,28 +24,28 @@
 
     <!-- Step 1: Photo + Name -->
     <div id="step-1">
-      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(139,26,74,0.08); margin-bottom: 20px;">
+      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(123,44,0,0.08); margin-bottom: 20px;">
 
         <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Current photo</label>
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Current photo</label>
           <img src="<%= @the_outfit.outfit_photo_url %>"
                alt="<%= @the_outfit.note_headline %>"
-               style="max-width: 100%; max-height: 320px; object-fit: cover; border-radius: 16px; border: 2px solid #e8ddd8; margin-bottom: 16px;">
+               style="max-width: 100%; max-height: 320px; object-fit: cover; border-radius: 16px; border: 2px solid #A3BACB; margin-bottom: 16px;">
         </div>
 
         <div style="margin-bottom: 24px;">
-          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Replace photo</label>
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Replace photo</label>
           <input class="form-control" type="file" name="query_outfit_photo" id="photo-input"
                  style="border-radius: 12px; padding: 12px 16px; max-width: 100%;">
         </div>
 
         <div id="photo-preview" style="display: none; margin-bottom: 24px;">
           <img id="preview-img" src="" alt="Preview"
-               style="max-width: 100%; max-height: 320px; object-fit: cover; border-radius: 16px; border: 2px solid #e8ddd8;">
+               style="max-width: 100%; max-height: 320px; object-fit: cover; border-radius: 16px; border: 2px solid #A3BACB;">
         </div>
 
         <div>
-          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Give it a name</label>
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Give it a name</label>
           <input class="form-control" type="text" name="query_note_headline" value="<%= @the_outfit.note_headline %>"
                  placeholder="e.g. Power meeting look"
                  style="border-radius: 12px; padding: 12px 16px; max-width: 100%;">
@@ -62,10 +62,10 @@
 
     <!-- Step 2: Context -->
     <div id="step-2" style="display: none;">
-      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(139,26,74,0.08); margin-bottom: 20px;">
+      <div style="background: white; border-radius: 20px; padding: 32px; box-shadow: 0 2px 12px rgba(123,44,0,0.08); margin-bottom: 20px;">
 
         <div style="margin-bottom: 28px;">
-          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">How does it make you feel?</p>
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 12px;">How does it make you feel?</p>
           <div class="category-chips" id="feelings-chips">
             <% @list_of_feelings.each do |a_feeling| %>
               <label class="category-chip">
@@ -78,13 +78,13 @@
             <input type="text" id="new-feeling-input" placeholder="Add your own feeling…"
                    style="border: 1.5px dashed #c9a0b4; border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; color: #3d0a28; background: transparent; outline: none; width: 200px;">
             <button type="button" onclick="addCustomChip('feeling')"
-                    style="background: #8b1a4a; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
+                    style="background: #7B2C00; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
           </div>
           <div id="new-feelings-container"></div>
         </div>
 
         <div style="margin-bottom: 28px;">
-          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">Perfect for</p>
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 12px;">Perfect for</p>
           <div class="category-chips" id="occasions-chips">
             <% @list_of_occasions.each do |an_occasion| %>
               <label class="category-chip">
@@ -97,13 +97,13 @@
             <input type="text" id="new-occasion-input" placeholder="Add your own occasion…"
                    style="border: 1.5px dashed #c9a0b4; border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; color: #3d0a28; background: transparent; outline: none; width: 200px;">
             <button type="button" onclick="addCustomChip('occasion')"
-                    style="background: #8b1a4a; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
+                    style="background: #7B2C00; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
           </div>
           <div id="new-occasions-container"></div>
         </div>
 
         <div style="margin-bottom: 28px;">
-          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 12px;">Season</p>
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 12px;">Season</p>
           <div class="category-chips">
             <% ["winter", "spring", "summer", "fall"].each do |season| %>
               <label class="category-chip">
@@ -115,21 +115,21 @@
         </div>
 
         <div style="margin-bottom: 28px;">
-          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Note to self</label>
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Note to self</label>
           <textarea class="form-control" name="query_note_details"
                     placeholder="Looks best with the blue heels, but not great for walking all day."
                     rows="3" style="border-radius: 12px; padding: 12px 16px; max-width: 100%; resize: vertical;"><%= @the_outfit.note_details %></textarea>
         </div>
 
         <div style="margin-bottom: 28px;">
-          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">How did you feel wearing it?</label>
+          <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">How did you feel wearing it?</label>
           <textarea class="form-control" name="query_note_reflection"
                     placeholder="Felt more confident than expected. Got three compliments."
                     rows="2" style="border-radius: 12px; padding: 12px 16px; max-width: 100%; resize: vertical;"><%= @the_outfit.note_reflection %></textarea>
         </div>
 
         <div>
-          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8b1a4a; font-weight: 600; margin-bottom: 10px;">Who can see this?</p>
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Who can see this?</p>
           <div style="display: flex; gap: 20px;">
             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9rem; color: #444;">
               <input class="form-check-input" type="radio" name="query_is_public" value="false" <%= "checked" unless @the_outfit.is_public %> style="margin: 0;">
@@ -145,7 +145,7 @@
 
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <button type="button" onclick="goToStep1()"
-                style="background: transparent; border: none; color: #8b1a4a; font-size: 0.9rem; cursor: pointer; padding: 0; opacity: 0.7;">
+                style="background: transparent; border: none; color: #7B2C00; font-size: 0.9rem; cursor: pointer; padding: 0; opacity: 0.7;">
           ← Back
         </button>
         <button type="submit" class="btn btn-primary"
@@ -163,16 +163,16 @@
     document.getElementById("step-1").style.display = "none";
     document.getElementById("step-2").style.display = "block";
     var dot = document.getElementById("step2-dot");
-    dot.style.background = "#8b1a4a";
+    dot.style.background = "#7B2C00";
     dot.style.color = "white";
-    document.getElementById("step-indicator-2").style.color = "#8b1a4a";
+    document.getElementById("step-indicator-2").style.color = "#7B2C00";
   }
 
   function goToStep1() {
     document.getElementById("step-2").style.display = "none";
     document.getElementById("step-1").style.display = "block";
     var dot = document.getElementById("step2-dot");
-    dot.style.background = "#e8ddd8";
+    dot.style.background = "#A3BACB";
     dot.style.color = "#aaa";
     document.getElementById("step-indicator-2").style.color = "#aaa";
   }
@@ -190,9 +190,9 @@
     var chipsDiv = document.getElementById(chipsId);
     var label = document.createElement('label');
     label.className = 'category-chip';
-    label.style.background = '#8b1a4a';
+    label.style.background = '#7B2C00';
     label.style.color = 'white';
-    label.style.borderColor = '#8b1a4a';
+    label.style.borderColor = '#7B2C00';
     label.textContent = name;
     chipsDiv.appendChild(label);
 
