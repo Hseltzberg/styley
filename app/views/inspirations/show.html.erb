@@ -12,7 +12,7 @@
   <div class="inspiration-header">
     <h1 class="inspiration-title">Get Inspired</h1>
     <% if current_user.style_description.present? %>
-      <p class="inspiration-style-echo">Styling based on your taste: <em><%= current_user.style_description.truncate(90) %></em></p>
+      <p class="inspiration-style-echo">Styling based on your taste: <em><%= current_user.style_description.truncate(50) %></em></p>
     <% else %>
       <p class="inspiration-style-echo">
         <a href="/users/edit">Add your style influences</a> to get more personal results.
