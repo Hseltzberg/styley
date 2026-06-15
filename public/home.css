@@ -2,6 +2,16 @@
 /* =============================================
    Bootstrap color overrides
    ============================================= */
+.alert-success {
+  background-color: #F3E9DC;
+  border-color: #e2d5c3;
+  color: #7B2C00;
+}
+
+.alert-success .btn-close {
+  filter: none;
+  opacity: 0.6;
+}
 :root {
   --bs-primary: #7B2C00;
   --bs-primary-rgb: 123, 44, 0;
@@ -35,7 +45,7 @@ body {
   font-family: 'Jost', sans-serif;
   min-height: 100vh;
   margin: 0;
-  background-color: #F3E9DC;
+  background-color: whitesmoke;
   background-image: none;
 }
 

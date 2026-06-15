@@ -19,7 +19,6 @@
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 48px;">
     <a href="/outfits" style="text-decoration: none;">
       <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-size: 2rem; margin-bottom: 10px;">👗</div>
         <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">My Closet</div>
         <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;"><%= current_user.outfit_uploads.count %> outfits saved</div>
       </div>
@@ -27,7 +26,6 @@
 
     <a href="/outfits/new" style="text-decoration: none;">
       <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-size: 2rem; margin-bottom: 10px;">✚</div>
         <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">Add Outfit</div>
         <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;">Log a new look</div>
       </div>
@@ -35,7 +33,6 @@
 
     <a href="/inspiration" style="text-decoration: none;">
       <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-size: 2rem; margin-bottom: 10px;">✨</div>
         <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">Get Inspired</div>
         <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;">AI editorial picks</div>
       </div>
@@ -43,7 +40,6 @@
 
     <a href="/mood-board" style="text-decoration: none;">
       <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-size: 2rem; margin-bottom: 10px;">📌</div>
         <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">Mood Board</div>
         <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;"><%= current_user.inspiration_pins.count %> pinned looks</div>
       </div>
