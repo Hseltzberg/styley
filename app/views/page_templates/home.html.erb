@@ -3,53 +3,53 @@
 <div style="max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px;">
 
   <div style="margin-bottom: 36px;">
-    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: #2a1215; margin-bottom: 4px;">
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: #141B2B; margin-bottom: 4px;">
       Hey, <em><%= current_user.username.presence || current_user.email.split("@").first %></em>
     </h1>
-    <p style="color: #7B2C00; font-size: 1rem; opacity: 0.8;">Let's figure out what you're wearing.</p>
+    <p style="color: #3D5675; font-size: 1rem; opacity: 0.8;">Let's figure out what you're wearing.</p>
   </div>
 
   <% if @days_since_last_outfit.present? && @days_since_last_outfit >= 7 %>
-    <div style="background: #f5ece3; border: 1px solid #e2d5c3; border-radius: 16px; padding: 14px 20px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
-      <p style="margin: 0; color: #7B2C00; font-size: 0.9rem; font-style: italic;">It's been a while — how have you been getting dressed?</p>
-      <a href="/outfits/new" style="color: #2a1215; font-size: 0.85rem; white-space: nowrap; text-decoration: none; font-weight: 600;">Log a look →</a>
+    <div style="background: #FAFAF6; border: 1px solid #DEDDD3; border-radius: 16px; padding: 14px 20px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+      <p style="margin: 0; color: #3D5675; font-size: 0.9rem; font-style: italic;">It's been a while — how have you been getting dressed?</p>
+      <a href="/outfits/new" style="color: #141B2B; font-size: 0.85rem; white-space: nowrap; text-decoration: none; font-weight: 600;">Log a look →</a>
     </div>
   <% end %>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 48px;">
     <a href="/outfits" style="text-decoration: none;">
-      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">My Closet</div>
-        <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;"><%= current_user.outfit_uploads.count %> outfits saved</div>
+      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,86,117,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(61,86,117,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(61,86,117,0.1)'">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #141B2B; font-weight: 600;">My Closet</div>
+        <div style="color: #3D5675; font-size: 0.85rem; margin-top: 4px;"><%= current_user.outfit_uploads.count %> outfits saved</div>
       </div>
     </a>
 
     <a href="/outfits/new" style="text-decoration: none;">
-      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">Add Outfit</div>
-        <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;">Log a new look</div>
+      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,86,117,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(61,86,117,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(61,86,117,0.1)'">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #141B2B; font-weight: 600;">Add Outfit</div>
+        <div style="color: #3D5675; font-size: 0.85rem; margin-top: 4px;">Log a new look</div>
       </div>
     </a>
 
     <a href="/inspiration" style="text-decoration: none;">
-      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">Get Inspired</div>
-        <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;">AI editorial picks</div>
+      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,86,117,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(61,86,117,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(61,86,117,0.1)'">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #141B2B; font-weight: 600;">Get Inspired</div>
+        <div style="color: #3D5675; font-size: 0.85rem; margin-top: 4px;">AI editorial picks</div>
       </div>
     </a>
 
     <a href="/mood-board" style="text-decoration: none;">
-      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(123,44,0,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(123,44,0,0.1)'">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #2a1215; font-weight: 600;">Mood Board</div>
-        <div style="color: #7B2C00; font-size: 0.85rem; margin-top: 4px;"><%= current_user.inspiration_pins.count %> pinned looks</div>
+      <div style="background: white; border-radius: 20px; padding: 24px; box-shadow: 0 2px 12px rgba(61,86,117,0.1); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(61,86,117,0.18)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 12px rgba(61,86,117,0.1)'">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #141B2B; font-weight: 600;">Mood Board</div>
+        <div style="color: #3D5675; font-size: 0.85rem; margin-top: 4px;"><%= current_user.inspiration_pins.count %> pinned looks</div>
       </div>
     </a>
   </div>
 
   <% if @list_of_public_outfits.any? %>
     <div style="margin-bottom: 16px; display: flex; align-items: baseline; gap: 12px;">
-      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #2a1215; margin: 0;">Real People, Real Outfits:</h2>
-      <span style="font-family: 'Jost', sans-serif; color: #7B2C00; font-size: 0.85rem; opacity: 0.7;">looks from the Styley community.</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #141B2B; margin: 0;">Real People, Real Outfits:</h2>
+      <span style="font-family: 'Jost', sans-serif; color: #3D5675; font-size: 0.85rem; opacity: 0.7;">looks from the Styley community.</span>
     </div>
 
     <div class="pin-board">
@@ -73,10 +73,10 @@
 <% else %>
 
 <div style="max-width: 700px; margin: 80px auto; padding: 0 20px; text-align: center;">
-  <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #2a1215; font-style: italic; margin-bottom: 16px;">
+  <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; color: #141B2B; font-style: italic; margin-bottom: 16px;">
     Dress with intention.
   </h1>
-  <p style="font-family: 'Jost', sans-serif; font-size: 1.15rem; color: #7B2C00; line-height: 1.7; max-width: 520px; margin: 0 auto 36px;">
+  <p style="font-family: 'Jost', sans-serif; font-size: 1.15rem; color: #3D5675; line-height: 1.7; max-width: 520px; margin: 0 auto 36px;">
     Styley helps you curate your closet mindfully — log outfits, find your style, and get editorial-quality inspiration matched to your mood.
   </p>
   <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
@@ -85,7 +85,7 @@
   </div>
 
   <% if @list_of_public_outfits.any? %>
-    <p style="font-family: 'Jost', sans-serif; color: #7B2C00; font-size: 0.85rem; margin-top: 48px; opacity: 0.6;">Community looks</p>
+    <p style="font-family: 'Jost', sans-serif; color: #3D5675; font-size: 0.85rem; margin-top: 48px; opacity: 0.6;">Community looks</p>
     <div class="pin-board" style="margin-top: 12px;">
       <% @list_of_public_outfits.first(6).each do |an_outfit| %>
         <div class="pin-card <%= an_outfit.card_size %>">

@@ -1,12 +1,12 @@
 <div style="max-width: 1100px; margin: 0 auto; padding: 32px 20px 16px;">
   <div style="margin-bottom: 28px;">
-    <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #3d0a28; margin-bottom: 4px;">
+    <h1 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #141B2B; margin-bottom: 4px;">
       <%= (current_user.username.presence || current_user.email.split("@").first) %>'s closet
     </h1>
     <% if @list_of_outfits.count > 0 %>
-      <p style="color: #7B2C00; font-size: 1rem; opacity: 0.8;">You've got great taste.</p>
+      <p style="color: #3D5675; font-size: 1rem; opacity: 0.8;">You've got great taste.</p>
     <% else %>
-      <p style="color: #7B2C00; font-size: 1rem; opacity: 0.8;"><a href="/outfits/new" style="color: #7B2C00;">Start building your closet →</a></p>
+      <p style="color: #3D5675; font-size: 1rem; opacity: 0.8;"><a href="/outfits/new" style="color: #3D5675;">Start building your closet →</a></p>
     <% end %>
   </div>
 </div>
@@ -18,13 +18,13 @@
 
 <% if current_user.outfit_uploads.count > 0 && !any_filters_active %>
   <div style="margin-bottom: 28px;">
-    <p style="font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #3d0a28; font-style: italic; margin-bottom: 14px;">How do you want to feel today?</p>
+    <p style="font-family: 'Playfair Display', serif; font-size: 1.05rem; color: #141B2B; font-style: italic; margin-bottom: 14px;">How do you want to feel today?</p>
     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
       <% @list_of_feelings.each do |f| %>
         <a href="/outfits?feelings[]=<%= f.id %>"
-           style="padding: 7px 18px; border-radius: 999px; background: #F3E9DC; border: 1px solid #A3BACB; color: #7B2C00; font-size: 0.875rem; text-decoration: none; transition: background 0.15s, color 0.15s, border-color 0.15s;"
-           onmouseover="this.style.background='#7B2C00';this.style.color='white';this.style.borderColor='#7B2C00'"
-           onmouseout="this.style.background='#F3E9DC';this.style.color='#7B2C00';this.style.borderColor='#A3BACB'">
+           style="padding: 7px 18px; border-radius: 999px; background: #F3E9DC; border: 1px solid #A3BACB; color: #3D5675; font-size: 0.875rem; text-decoration: none; transition: background 0.15s, color 0.15s, border-color 0.15s;"
+           onmouseover="this.style.background='#3D5675';this.style.color='white';this.style.borderColor='#3D5675'"
+           onmouseout="this.style.background='#F3E9DC';this.style.color='#3D5675';this.style.borderColor='#A3BACB'">
           <%= f.name %>
         </a>
       <% end %>
@@ -35,22 +35,24 @@
 <% if current_user.outfit_uploads.count > 0 %>
   <div style="margin-bottom: 20px;">
     <a href="#" id="surprise-btn"
-       style="display: inline-block; padding: 12px 32px; border-radius: 999px; background: #7B2C00; color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; box-shadow: 0 4px 16px rgba(123,44,0,0.25); transition: transform 0.15s, box-shadow 0.15s;"
-       onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(123,44,0,0.35)'"
-       onmouseout="if(!this.dataset.active){this.style.transform='';this.style.boxShadow='0 4px 16px rgba(123,44,0,0.25)'}">
+       style="display: inline-block; padding: 12px 32px; border-radius: 999px; background: #3D5675; color: white; text-decoration: none; font-size: 0.95rem; font-weight: 500; box-shadow: 0 4px 16px rgba(61,86,117,0.25); transition: transform 0.15s, box-shadow 0.15s;"
+       onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(61,86,117,0.35)'"
+       onmouseout="if(!this.dataset.active){this.style.transform='';this.style.boxShadow='0 4px 16px rgba(61,86,117,0.25)'}">
       Surprise me ✨
     </a>
   </div>
 <% end %>
 
 <button
-    class="btn btn-outline-primary"
     id="filter_toggle"
     type="button"
     data-bs-toggle="collapse"
     data-bs-target="#filter_box"
     aria-expanded="<%= any_filters_active %>"
-    aria-controls="filter_box">
+    aria-controls="filter_box"
+    style="display: inline-block; padding: 12px 32px; border-radius: 999px; background: #3D5675; color: white; border: none; font-size: 0.95rem; font-weight: 500; box-shadow: 0 4px 16px rgba(61,86,117,0.25); transition: transform 0.15s, box-shadow 0.15s;"
+    onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 24px rgba(61,86,117,0.35)'"
+    onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(61,86,117,0.25)'">
   Filter
 </button>
 
@@ -189,16 +191,16 @@
       </div>
     <% end %>
 
-    <div class="pin-board">
+    <div class="gallery-grid">
       <% @list_of_outfits.each do |an_outfit| %>
-        <div class="pin-card <%= an_outfit.card_size %>" onclick="location.href='/outfits/<%= an_outfit.id %>'">
-          <img class="pin-image" src="<%= an_outfit.outfit_photo_url %>" crossorigin="anonymous" data-palette="palette-<%= an_outfit.id %>">
-          <div class="pin-overlay">
-            <h3 class="pin-headline"><%= an_outfit.note_headline %></h3>
-            <a class="pin-view-link" href="/outfits/<%= an_outfit.id %>">view outfit</a>
+        <a href="/outfits/<%= an_outfit.id %>" class="gallery-entry">
+          <img src="<%= an_outfit.outfit_photo_url %>" alt="<%= an_outfit.note_headline %>">
+          <div class="gallery-overlay">
+            <% if an_outfit.note_headline.present? %>
+              <p class="gallery-headline"><%= an_outfit.note_headline %></p>
+            <% end %>
           </div>
-          <div id="palette-<%= an_outfit.id %>" style="position: absolute; bottom: 0; left: 0; right: 0; height: 5px; display: flex; opacity: 0; transition: opacity 0.5s ease; z-index: 3;"></div>
-        </div>
+        </a>
       <% end %>
     </div>
 
