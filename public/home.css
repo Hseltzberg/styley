@@ -787,3 +787,72 @@ input,
   border-color: #74798A;
   box-shadow: 0 0 0 0.25rem rgba(61, 86, 117, 0.2);
 }
+
+/* =============================================
+   iOS / touch fixes
+   ============================================= */
+
+/* Stop iOS from auto-inflating text when rotated to landscape */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* 100vh on iOS includes the area behind Safari's toolbars; dvh tracks the visible area */
+body {
+  min-height: 100dvh;
+  -webkit-tap-highlight-color: rgba(61, 86, 117, 0.15);
+}
+
+/* Keep the FAB clear of the home indicator / rounded corners (needs viewport-fit=cover) */
+.fab {
+  bottom: calc(28px + env(safe-area-inset-bottom));
+  right: calc(28px + env(safe-area-inset-right));
+}
+
+.site-nav {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.inspo-loading-overlay {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+@media (hover: none) {
+  /* iOS zooms the page when focusing any input under 16px */
+  input,
+  select,
+  textarea,
+  .form-control,
+  .form-select,
+  .ts-wrapper .ts-control,
+  .ts-wrapper .ts-control input {
+    font-size: 16px !important;
+  }
+
+  /* Content that only appeared on hover is unreachable on touch: always show it */
+  .pin-view-link,
+  .gallery-headline {
+    opacity: 1;
+    transform: none;
+  }
+
+  .gallery-overlay {
+    background: linear-gradient(to top, rgba(20, 27, 43, 0.55) 0%, transparent 60%);
+  }
+
+  /* Tapping triggers :hover and it "sticks" on iOS; neutralize the lift/zoom effects */
+  .pin-card:hover,
+  .inspo-card:hover,
+  .fab:hover,
+  .gallery-entry:hover img {
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Fixed-height pins are too tall on a phone screen */
+  .pin-card.medium .pin-image { height: 260px; }
+  .pin-card.tall .pin-image   { height: 340px; }
+}

@@ -11,18 +11,19 @@
     <script src="https://cdn.jsdelivr.net/npm/tom-select@2.6.1/dist/js/tom-select.complete.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
 
-<!--    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>-->
-
     <link rel="stylesheet" href="/filter_styles.css">
-    <link rel="stylesheet" href="/home.css?v=7">
+    <link rel="stylesheet" href="/home.css?v=8">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Josefin+Sans:wght@100;300;400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <title>styley</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Styley">
+    <meta name="theme-color" content="#3D5675">
+    <link rel="manifest" href="/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -112,12 +113,6 @@
   <% if current_user.present? %>
     <a href="/outfits/new" class="fab" title="New outfit">+</a>
   <% end %>
-
-  <script>
-    $(document).ready(function() {
-        $('.js-example-basic-multiple').select2();
-    });
-  </script>
 
 </body>
 

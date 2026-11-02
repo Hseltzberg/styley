@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
   get("/about_us", { :controller => "pages", :action => "about" })
   # Routes for the Outfit season resource:
 
