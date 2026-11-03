@@ -1,6 +1,7 @@
 <% current_feeling_ids = @the_outfit.feelings.map(&:id) %>
 <% current_occasion_ids = @the_outfit.occasions.map(&:id) %>
 <% current_season_names = @the_outfit.seasons.map { |s| s.name } %>
+<% current_collection_ids = @the_outfit.collections.map(&:id) %>
 
 <div class="outfit-form-wrap">
 
@@ -115,6 +116,25 @@
         </div>
 
         <div style="margin-bottom: 28px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 12px;">Collections</p>
+          <div class="category-chips" id="collections-chips">
+            <% @list_of_collections.each do |a_collection| %>
+              <label class="category-chip">
+                <input type="checkbox" name="collections[]" value="<%= a_collection.id %>" <%= "checked" if current_collection_ids.include?(a_collection.id) %>>
+                <%= a_collection.name %>
+              </label>
+            <% end %>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+            <input type="text" id="new-collection-input" placeholder="New collection, e.g. SS26, resort…"
+                   style="border: 1.5px dashed #c9a0b4; border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; color: #3d0a28; background: transparent; outline: none; width: 240px;">
+            <button type="button" onclick="addCustomChip('collection')"
+                    style="background: #7B2C00; color: white; border: none; border-radius: 999px; padding: 6px 14px; font-size: 0.82rem; cursor: pointer; white-space: nowrap;">+ Add</button>
+          </div>
+          <div id="new-collections-container"></div>
+        </div>
+
+        <div style="margin-bottom: 28px;">
           <label style="display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Note to self</label>
           <textarea class="form-control" name="query_note_details"
                     placeholder="Looks best with the blue heels, but not great for walking all day."
@@ -178,10 +198,10 @@
   }
 
   function addCustomChip(type) {
-    var inputId = type === 'feeling' ? 'new-feeling-input' : 'new-occasion-input';
-    var chipsId = type === 'feeling' ? 'feelings-chips' : 'occasions-chips';
-    var containerId = type === 'feeling' ? 'new-feelings-container' : 'new-occasions-container';
-    var paramName = type === 'feeling' ? 'new_feeling_names[]' : 'new_occasion_names[]';
+    var inputId = 'new-' + type + '-input';
+    var chipsId = type + 's-chips';
+    var containerId = 'new-' + type + 's-container';
+    var paramName = 'new_' + type + '_names[]';
 
     var input = document.getElementById(inputId);
     var name = input.value.trim();
@@ -207,13 +227,13 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    ['new-feeling-input', 'new-occasion-input'].forEach(function(id) {
+    ['new-feeling-input', 'new-occasion-input', 'new-collection-input'].forEach(function(id) {
       var el = document.getElementById(id);
       if (el) {
         el.addEventListener('keydown', function(e) {
           if (e.key === 'Enter') {
             e.preventDefault();
-            var type = id === 'new-feeling-input' ? 'feeling' : 'occasion';
+            var type = id.replace('new-', '').replace('-input', '');
             addCustomChip(type);
           }
         });

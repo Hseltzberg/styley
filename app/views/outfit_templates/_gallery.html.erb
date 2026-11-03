@@ -1,0 +1,12 @@
+<div class="gallery-grid">
+  <% outfits.each do |an_outfit| %>
+    <a href="/outfits/<%= an_outfit.id %>" class="gallery-entry">
+      <img src="<%= an_outfit.outfit_photo_url %>" alt="<%= an_outfit.note_headline %>">
+      <div class="gallery-overlay">
+        <% if an_outfit.note_headline.present? %>
+          <p class="gallery-headline"><%= an_outfit.note_headline %></p>
+        <% end %>
+      </div>
+    </a>
+  <% end %>
+</div>

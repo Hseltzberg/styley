@@ -19,7 +19,9 @@ mount_uploader(:outfit_photo, OutfitPhotoUploader)
   has_many(:places, dependent: :destroy)
   has_many(:vibes, dependent: :destroy)
   has_many(:outfit_seasons, dependent: :destroy)
+  has_many(:outfit_collections, dependent: :destroy)
   has_many :feelings, through: :vibes, source: :feeling
   has_many :seasons, through: :outfit_seasons, source: :season
   has_many :occasions, through: :places, source: :occasion
+  has_many :collections, through: :outfit_collections, source: :collection
 end

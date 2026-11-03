@@ -136,6 +136,16 @@ Rails.application.routes.draw do
 
   #------------------------------
 
+  # Routes for the Collection resource (outfits are added to collections from the outfit form):
+
+  # UPDATE
+  post("/modify_collection/:path_id", { :controller => "collections", :action => "update" })
+
+  # DELETE
+  post("/delete_collection/:path_id", { :controller => "collections", :action => "destroy" })
+
+  #------------------------------
+
   devise_for :users
   get("/", :controller => "pages", :action => "home")
   get("/inspiration", { :controller => "inspirations", :action => "show" })

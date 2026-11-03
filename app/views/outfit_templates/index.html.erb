@@ -191,18 +191,57 @@
       </div>
     <% end %>
 
-    <div class="gallery-grid">
-      <% @list_of_outfits.each do |an_outfit| %>
-        <a href="/outfits/<%= an_outfit.id %>" class="gallery-entry">
-          <img src="<%= an_outfit.outfit_photo_url %>" alt="<%= an_outfit.note_headline %>">
-          <div class="gallery-overlay">
-            <% if an_outfit.note_headline.present? %>
-              <p class="gallery-headline"><%= an_outfit.note_headline %></p>
-            <% end %>
-          </div>
-        </a>
+    <% if @list_of_collections.empty? %>
+      <%= render "outfit_templates/gallery", outfits: @list_of_outfits %>
+      <p style="color: #3D5675; font-size: 0.9rem; opacity: 0.75; margin-top: 20px;">
+        Tip: group your closet into collections like SS26, FW or resort — add one when you edit an outfit.
+      </p>
+    <% else %>
+      <% visible_groups = @collection_groups.select { |g| g[:outfits].any? } %>
+
+      <% if visible_groups.count + (@uncollected_outfits.any? ? 1 : 0) > 1 %>
+        <nav class="collection-jump" aria-label="Jump to collection">
+          <% visible_groups.each do |group| %>
+            <a href="#collection-<%= group[:collection].id %>"><%= group[:collection].name %> <span><%= group[:outfits].count %></span></a>
+          <% end %>
+          <% if @uncollected_outfits.any? %>
+            <a href="#collection-none">Everything else <span><%= @uncollected_outfits.count %></span></a>
+          <% end %>
+        </nav>
       <% end %>
-    </div>
+
+      <% visible_groups.each do |group| %>
+        <% a_collection = group[:collection] %>
+        <section class="collection-group" id="collection-<%= a_collection.id %>">
+          <header class="collection-header">
+            <h2><%= a_collection.name %></h2>
+            <span class="collection-count"><%= pluralize(group[:outfits].count, "look") %></span>
+            <form action="/modify_collection/<%= a_collection.id %>" method="post" class="collection-action"
+                  onsubmit="var n = prompt('Rename collection', <%= a_collection.name.to_json %>); if (!n || !n.trim()) return false; this.elements['query_name'].value = n; return true;">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <input type="hidden" name="query_name" value="">
+              <button type="submit">Rename</button>
+            </form>
+            <form action="/delete_collection/<%= a_collection.id %>" method="post" class="collection-action"
+                  onsubmit="return confirm('Delete the collection “<%= j a_collection.name %>”? Your outfits stay in your closet.');">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <button type="submit">Delete</button>
+            </form>
+          </header>
+          <%= render "outfit_templates/gallery", outfits: group[:outfits] %>
+        </section>
+      <% end %>
+
+      <% if @uncollected_outfits.any? %>
+        <section class="collection-group" id="collection-none">
+          <header class="collection-header">
+            <h2>Everything else</h2>
+            <span class="collection-count"><%= pluralize(@uncollected_outfits.count, "look") %></span>
+          </header>
+          <%= render "outfit_templates/gallery", outfits: @uncollected_outfits %>
+        </section>
+      <% end %>
+    <% end %>
 
   <% end %>
 

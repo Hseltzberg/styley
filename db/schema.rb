@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_06_03_120000) do
+ActiveRecord::Schema[8.0].define(version: 2026_11_03_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "collections", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "name"], name: "index_collections_on_user_id_and_name", unique: true
+  end
 
   create_table "feelings", force: :cascade do |t|
     t.string "name"
@@ -36,6 +44,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_03_120000) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "outfit_collections", force: :cascade do |t|
+    t.integer "outfit_id", null: false
+    t.integer "collection_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id", "outfit_id"], name: "index_outfit_collections_on_collection_id_and_outfit_id", unique: true
+    t.index ["outfit_id"], name: "index_outfit_collections_on_outfit_id"
   end
 
   create_table "outfit_seasons", force: :cascade do |t|

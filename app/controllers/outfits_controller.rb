@@ -69,7 +69,16 @@ class OutfitsController < ApplicationController
       matching_outfits = matching_outfits.where({ :id => selected_outfit_ids })
     end
 
-    @list_of_outfits = matching_outfits.order({ :created_at => :desc })
+    @list_of_outfits = matching_outfits.order({ :created_at => :desc }).includes(:collections)
+
+    # Group the closet by the user's own collections. An outfit can sit in
+    # several collections; anything not in one lands in "Everything else".
+    @list_of_collections = current_user.collections.order({ :name => :asc })
+    @collection_groups = @list_of_collections.map do |a_collection|
+      outfits_in_group = @list_of_outfits.select { |an_outfit| an_outfit.collections.include?(a_collection) }
+      { :collection => a_collection, :outfits => outfits_in_group }
+    end
+    @uncollected_outfits = @list_of_outfits.select { |an_outfit| an_outfit.collections.empty? }
 
     if params.fetch("query_mode", "") == "surprise"
       random_outfit = @list_of_outfits.to_a.sample
@@ -106,6 +115,7 @@ class OutfitsController < ApplicationController
     @list_of_feelings = Feeling.where({}).order({ :name => :asc })
     @list_of_occasions = Occasion.where({}).order({ :name => :asc })
     @list_of_seasons = Season.where({}).order({ :name => :asc })
+    @list_of_collections = current_user.collections.order({ :name => :asc })
 
     render({ :template => "outfit_templates/new_form" })
   end
@@ -176,6 +186,8 @@ class OutfitsController < ApplicationController
       end
     end
 
+    assign_collections(the_outfit)
+
     redirect_to("/outfits")
   end
 
@@ -189,6 +201,7 @@ class OutfitsController < ApplicationController
     @list_of_feelings = Feeling.where({}).order({ :name => :asc })
     @list_of_occasions = Occasion.where({}).order({ :name => :asc })
     @list_of_seasons = Season.where({}).order({ :name => :asc })
+    @list_of_collections = @the_outfit.user.collections.order({ :name => :asc })
 
     render({ :template => "outfit_templates/edit_form" })
   end
@@ -272,6 +285,8 @@ class OutfitsController < ApplicationController
       place.save
     end
 
+    assign_collections(the_outfit)
+
     redirect_to("/outfits/#{the_outfit.id}")
   end
 
@@ -285,5 +300,28 @@ class OutfitsController < ApplicationController
     the_outfit.destroy
 
     redirect_to("/outfits")
+  end
+
+  private
+
+  # Replaces the outfit's collections with the ones checked on the form,
+  # plus any new collection names typed in. Only the outfit owner's
+  # collections can be used.
+  def assign_collections(the_outfit)
+    owner_collections = the_outfit.user.collections
+    the_outfit.outfit_collections.destroy_all
+
+    chosen = owner_collections.where({ :id => params.fetch("collections", []) }).to_a
+
+    params.fetch("new_collection_names", []).each do |collection_name|
+      name = collection_name.to_s.strip
+      next if name.empty?
+      existing = owner_collections.where("LOWER(name) = ?", name.downcase).first
+      chosen.push(existing || owner_collections.create!({ :name => name }))
+    end
+
+    chosen.uniq.each do |a_collection|
+      OutfitCollection.create!({ :outfit_id => the_outfit.id, :collection_id => a_collection.id })
+    end
   end
 end

@@ -54,6 +54,19 @@
         </div>
       </div>
 
+      <% if @the_outfit.collections.any? %>
+        <div style="margin-bottom: 20px;">
+          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Collections</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <% @the_outfit.collections.order(:name).each do |a_collection| %>
+              <a href="/outfits#collection-<%= a_collection.id %>" style="padding: 5px 14px; border-radius: 999px; background: #F3E9DC; border: 1px solid #A3BACB; color: #7B2C00; font-size: 0.85rem; text-decoration: none;">
+                <%= a_collection.name %>
+              </a>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
       <div style="margin-bottom: 28px;">
         <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: #7B2C00; font-weight: 600; margin-bottom: 10px;">Season</p>
         <div style="display: flex; flex-wrap: wrap; gap: 8px;">
