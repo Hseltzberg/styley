@@ -181,3 +181,15 @@ task({ sample_data: :environment }) do
 
   p "Added #{InspirationPin.count} inspiration pins"
 end
+
+# Used by bin/docker-entrypoint on every boot. Loading sample data wipes the
+# database and re-uploads ~57 MB of photos to Cloudinary, so only do it when
+# the database is empty (e.g. a brand-new database).
+desc "Load sample data only if there are no outfits yet"
+task({ sample_data_if_empty: :environment }) do
+  if Outfit.exists?
+    p "Sample data already present (#{Outfit.count} outfits); skipping"
+  else
+    Rake::Task["sample_data"].invoke
+  end
+end
